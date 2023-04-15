@@ -15,30 +15,10 @@ export class ECommerceComponent  implements OnInit {
   constructor(private router:Router,
     private translateService: TranslateService) {};
 
-    user!: { firstName: string; lastName: string; };
-  welcome!: string;
-  usernameLabel!: string;
-  passwordLabel!: string;
-
+  user!: { firstName: string; lastName: string; };
   ngOnInit(): void {
-    // this.translate.use(this.translate.store.currentLang);
-
-    console.log("Main ecomerce component");
-    // this.router.navigateByUrl("/auth/login");
-
-    this.user = { firstName: 'mahmoud', lastName: 'khalifa' };
-    // // synchronous. Also interpolate the 'firstName' parameter with a value.
-    //  this.welcome = this.translate.instant('welcomeMessage', { firstName: "kholfaa" });
     log.info(this.translateService.translations);
-    // asynchronous - gets translations then completes.
-    // this.translate.get(['login.username', 'login.password'])
-    //   .subscribe(translations => {
-    //     this.usernameLabel = translations['login.username'];
-    //     this.passwordLabel = translations['login.password'];
-    //     // this.welcome = translations['welcomeMessage' , { firstName: "kh"}];
-    //   });
-
-
+    this.user = { firstName: 'mahmoud', lastName: 'khalifa' };
   }
 
 }
