@@ -40,22 +40,21 @@ export class AppComponent implements OnInit, OnDestroy {
     // private languageTrackerService: LanguageTrackerService
     )
     {
-    // translate.addLangs(['en', 'ar']);
-    // translate.setDefaultLang('en');
-    // this.translate.use("en");
-    // const browserLang = translate.getBrowserLang();
+      // const browserLang = translate.getBrowserLang();
     //  translate.use(browserLang.match(/en|ar/) ? browserLang : 'en');
     }
 
   ngOnInit(): void {
     //START POINT OF THE APPLICATION FIRST com will render
     this.analytics.trackPageViews();
+    // this.seoService.trackCanonicalChanges();
+
     console.log("app component");
+    log.debug('init');
 
     // if (environment.production) {
     //   Logger.enableProductionMode();
     // }
-    log.debug('init');
 
      // Setup translations
      this.i18nService.init(environment.defaultLanguage, environment.supportedLanguages);
@@ -91,12 +90,6 @@ export class AppComponent implements OnInit, OnDestroy {
     //    });
 
   // this.router.navigateByUrl("/auth/login");
-  //   let test = this.translate.currentLoader.getTranslation("en").subscribe();
-  //   let testasas = this.translate.currentLoader.getTranslation("en");
-  //   this.translate.onTranslationChange.subscribe((event: TranslationChangeEvent) => {
-  //  console.log("onTranslationChange")
-  //     // do something
-  //   });
 
     // this.subForSubject = this.languageTrackerService
     //   .GetMessage()
@@ -109,12 +102,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.i18nService.destroy();
+// if (this.subForSubject) this.subForSubject.unsubscribe();
   }
 
-  // ngOnDestroy(): void {
-  //   // if (this.subForSubject) this.subForSubject.unsubscribe();
-  // }
-  //   // this.router.navigateByUrl("/login");
-  //   // this.seoService.trackCanonicalChanges();
+
 
 }

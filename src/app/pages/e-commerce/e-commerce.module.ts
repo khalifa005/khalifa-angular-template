@@ -59,33 +59,6 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader, TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-// export function createTranslateLoader(http: HttpClient) {
-//   return new TranslateHttpLoader(http, '../../../assets/i18n/', '.json');
-// }
-
-// // AoT requires an exported function for factories.
-// export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-//   return new TranslateHttpLoader(http, '../../../assets/i18n/', '.json');
-// }
-
-// export function createTranslateLoader(http: HttpClient) {
-//   console.log('FeatureModule createTranslateLoader');
-//   return new TranslateHttpLoader(
-//     http, './assets/i18n/', '.json');
-// }
-
-// // AoT requires an exported function for factories
-// export function HttpLoaderFactory(http: HttpClient) {
-//   return new TranslateHttpLoader(http, '../../../assets/i18n/','.json');
-//   // return new TranslateHttpLoader(http, '../assets/i18n/','.json');
-// }
-// export function createTranslateLoader(http: HttpClient) {
-//   return new TranslateHttpLoader(http, '../../../assets/i18n/', '.json');
-// }
-
-// export function createTranslateLoader(http: HttpClient) {
-//   return new TranslateHttpLoader(http, './assets/i18n/lazy/', '.json');
-// }
 
 @NgModule({
   imports: [
@@ -103,33 +76,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     NgxChartsModule,
     LeafletModule,
     TranslateModule
-    // TranslateModule.forChild({ extend: true })
-    // TranslateModule.forChild({
-    //   loader: {
-    //     provide: TranslateLoader,
-    //     useFactory: createTranslateLoader,
-    //     deps: [HttpClient]
-    //   },
-    //   isolate: true, // <-- PLAY WITH IT
-    //   extend: true // <-- PLAY WITH IT
-    // })
-  // TranslateModule.forChild({
-  //   loader: {
-  //     provide: TranslateLoader,
-  //     useFactory: createTranslateLoader,
-  //     deps: [HttpClient]
-  //   },
-  //   isolate: false, // <-- PLAY WITH IT
-  //   extend: true // <-- PLAY WITH IT
-  // })
-  // TranslateModule.forChild({
-  //   loader: {
-  //     provide: TranslateLoader,
-  //     useFactory: (createTranslateLoader),
-  //     deps: [HttpClient]
-  //   },
-  //   isolate: true
-  // })
   ],
   declarations: [
     ECommerceComponent,
@@ -171,45 +117,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
   ],
 })
 export class ECommerceModule {
-  constructor() {
-
-    // this.translationService.store.onLangChange
-    //   .subscribe((lang: LangChangeEvent) => {
-    //     console.log(' ==> FeatureModule ', lang);
-    //     this.translationService.use(lang.lang);
-    //   });
-    // const currentLang = this.translateService.currentLang;
-    // this.translateService.currentLang = '';
-    // this.translateService.store.onLangChange.subscribe(
-    //   (lang: LangChangeEvent) => {
-    //     console.log(' ==> LazyLoadedModule ', lang);
-    //     this.translateService.use(lang.lang);
-    //   }
-    // );
-
-    // const currentLang = this.translateService.currentLang;
-    // this.translateService.currentLang = '';
-    // this.translateService.store.onLangChange.subscribe(
-    //   (lang: LangChangeEvent) => {
-    //     console.log(' ==> LazyLoadedModule ', lang);
-    //     // this.translateService.use(lang.lang);
-    //     //move
-    //   }
-    // );
-    // const currentLang = translateService.currentLang;
-    // translateService.currentLang = '';
-    //  translateService.use(currentLang);
-
-    //  this.translateService.use('ar');
-
-// //     //the lan will change and this will execute
-// this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
-// console.log("LangChangeEvent")
-//    // do something
-//    this.translateService.use(event.lang);
-//    let tets = this.translateService.currentLang;
-//  });
-
-}
+  constructor() {}
 
 }

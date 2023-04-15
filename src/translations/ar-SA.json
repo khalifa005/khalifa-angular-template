@@ -1,5 +1,11 @@
 {
   "APP_NAME": "اسيج",
   "About": "عنا",
-  "Hello world !": "اهلا وسهلا"
+  "Hello world !": "اهلا وسهلا",
+
+  "welcomeMessage": "{{ firstName }}مرحبا بك يا !",
+  "login": {
+    "username": "المستخدم ",
+    "password": "الرقم السري"
+  }
 }

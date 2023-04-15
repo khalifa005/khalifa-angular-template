@@ -3,5 +3,11 @@
   "About": "About",
   "Hello world !": "Hello world !",
   "Home": "Home",
-  "Version": "Version"
+  "Version": "Version",
+
+  "welcomeMessage": "Thanks for joining, {{ firstName }}! It's great to have you!",
+  "login": {
+    "username": "Enter your user name",
+    "password": "Password here"
+  }
 }

@@ -38,14 +38,7 @@ export class ECommerceComponent  implements OnInit {
     //     // this.welcome = translations['welcomeMessage' , { firstName: "kh"}];
     //   });
 
-    //   this.translate.use('ar');
 
-    //       //the lan will change and this will execute
-    // this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-    //   console.log("LangChangeEvent")
-    //      // do something
-    //      this.translate.use("en");
-    //    });
   }
 
 }

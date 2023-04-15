@@ -26,27 +26,10 @@ export class PagesComponent {
   constructor(
     // public translate: TranslateService,
     private languageTrackerService: LanguageTrackerService,
-
     private injector: Injector,
     private router: Router)
     {}
 
-    // @ViewChild("outlet", {read: ViewContainerRef}) outletRef: ViewContainerRef;
-    // @ViewChild("content", {read: TemplateRef}) contentRef: TemplateRef<any>;
-
-    // private rerender() {
-    //   this.outletRef.clear();
-    //   this.outletRef.createEmbeddedView(this.contentRef);
-    // }
-
-//   ngOnInit(): void { //the lan will change and this will execute
-//     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-//       console.log("LangChangeEvent")
-//          // do something
-//          this.rerender();
-//         //  this.translate.use(event.lang);
-//        });
-// }
 }
 
 
