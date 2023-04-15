@@ -75,6 +75,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     NgxEchartsModule,
     NgxChartsModule,
     LeafletModule,
+
     TranslateModule
   ],
   declarations: [

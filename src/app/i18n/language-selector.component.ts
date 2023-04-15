@@ -1,30 +1,30 @@
-// import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
-// import { I18nService } from './i18n.service';
-// import { cwd } from 'process';
+import { I18nService } from './i18n.service';
+import { cwd } from 'process';
 
-// @Component({
-//   selector: 'ngx-app-language-selector',
-//   templateUrl: './language-selector.component.html',
-//   styleUrls: ['./language-selector.component.scss'],
-// })
-// export class LanguageSelectorComponent implements OnInit {
-//   @Input() icon = false;
+@Component({
+  selector: 'ngx-app-language-selector',
+  templateUrl: './language-selector.component.html',
+  styleUrls: ['./language-selector.component.scss'],
+})
+export class LanguageSelectorComponent implements OnInit {
+  @Input() icon = false;
 
-//   constructor(private i18nService: I18nService) {}
+  constructor(private i18nService: I18nService) {}
 
-//   ngOnInit() {}
+  ngOnInit() {}
 
-//   setLanguage(language: string) {
-//     this.i18nService.language = language;
-//     console.log(language);//en-US
-//   }
+  setLanguage(language: string) {
+    this.i18nService.language = language;
+    console.log(language);//en-US
+  }
 
-//   get currentLanguage(): string {
-//     return this.i18nService.language;
-//   }
+  get currentLanguage(): string {
+    return this.i18nService.language;
+  }
 
-//   get languages(): string[] {
-//     return this.i18nService.supportedLanguages;
-//   }
-// }
+  get languages(): string[] {
+    return this.i18nService.supportedLanguages;
+  }
+}
