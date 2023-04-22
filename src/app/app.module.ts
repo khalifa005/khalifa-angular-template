@@ -42,8 +42,11 @@ import { RouterModule } from '@angular/router';
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
 
+    //what we added start from here
     TranslateModule.forRoot(),
     SharedModule,
+
+
     AppRoutingModule,
 
   ],

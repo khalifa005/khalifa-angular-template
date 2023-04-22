@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 
 //this is a use case on how to use behavioural subject
+//made by khalifa
 @Injectable({
   providedIn: 'root'
 })
