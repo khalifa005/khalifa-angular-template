@@ -5,4 +5,7 @@
  */
 export const environment = {
   production: true,
+  serverUrl: '/api/production',
+  defaultLanguage: 'ar-SA',
+  supportedLanguages: ['en-US', 'ar-SA'],
 };

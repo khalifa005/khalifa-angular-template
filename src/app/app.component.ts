@@ -49,12 +49,16 @@ export class AppComponent implements OnInit, OnDestroy {
     this.analytics.trackPageViews();
     // this.seoService.trackCanonicalChanges();
 
-    console.log("app component");
-    log.debug('init');
+    if (environment.production) {
+      Logger.enableProductionMode();
+    }
 
-    // if (environment.production) {
-    //   Logger.enableProductionMode();
-    // }
+      if (environment.production) {
+         log.error(environment.serverUrl);
+    }else{
+      log.debug(environment.serverUrl);
+
+    }
 
      // Setup translations
      this.i18nService.init(environment.defaultLanguage, environment.supportedLanguages);

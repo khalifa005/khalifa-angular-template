@@ -23,9 +23,7 @@ const log = new Logger('page');
 //implements OnInit
 export class PagesComponent implements OnInit {
 //here is the main page that will still appear in all the app
-  // orignalMenu = MENU_ITEMS;
   menu = [];
-  // menu  = MENU_ITEMS.;
 
 enableSide:boolean= true;
 
@@ -51,21 +49,14 @@ enableSide:boolean= true;
   }
 
   sideMenuTranslationInt(lanChanged:boolean){
-    // let menuTranslatedas = MENU_ITEMS.slice();
-    console.log("before orignalMenu");
-     log.info(MENU_ITEMS);
-    // const menuTranslated = [...MENU_ITEMS];
     const menuTranslated = MENU_ITEMS.map(u => ({ ...u, }));
     menuTranslated.forEach(item => {
-      // item.title = this.localizationService.instant(item.title)
 
       this.localizationService.get(item.title).subscribe((text:string) => {
-        // console.log(this.orignalMenu);
         item.title = text
       });
 
     });
-    console.log("orignalMenu");
      log.info(MENU_ITEMS);
     this.menu = menuTranslated;
    }

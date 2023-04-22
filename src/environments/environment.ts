@@ -10,7 +10,7 @@
 
 export const environment = {
   production: false,
-  serverUrl: '/api',
+  serverUrl: '/api/dev',
   defaultLanguage: 'ar-SA',
   supportedLanguages: ['en-US', 'ar-SA'],
 };
