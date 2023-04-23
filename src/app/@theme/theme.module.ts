@@ -31,6 +31,7 @@ import {
   RoundPipe,
   TimingPipe,
   NumberWithCommasPipe,
+  TranslatorPipe,
 } from './pipes';
 import {
   OneColumnLayoutComponent,
@@ -72,8 +73,6 @@ const COMPONENTS = [
   TwoColumnsLayoutComponent,
   SwitcherComponent,
   LayoutDirectionSwitcherComponent,
-  // LangSwitcherComponent,
-  // LangSwitcherListComponent,
 ];
 const PIPES = [
   CapitalizePipe,
@@ -81,19 +80,13 @@ const PIPES = [
   RoundPipe,
   TimingPipe,
   NumberWithCommasPipe,
+  TranslatorPipe
 ];
 
 
 
 @NgModule({
   imports: [CommonModule, ...NB_MODULES
-  //   TranslateModule.forChild({
-  //     loader: {provide: TranslateLoader, useClass: CustomLoader},
-  //     // compiler: {provide: TranslateCompiler, useClass: CustomCompiler},
-  //     // parser: {provide: TranslateParser, useClass: CustomParser},
-  //     // missingTranslationHandler: {provide: MissingTranslationHandler, useClass: CustomHandler},
-  //     isolate: true
-  // })
     // ,NbThemeModule.forRoot(nbThemeOptions, nbJSThemes, nbMediaBreakpoints, 'rtl')
   ],
   exports: [CommonModule, ...PIPES, ...COMPONENTS],

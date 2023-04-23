@@ -2,7 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "importHelpers": true,
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       // "@env": ["src/environments/environment"],
       // "@shared/*": ["src/app/shared/*"],
