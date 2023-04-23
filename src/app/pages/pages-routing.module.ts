@@ -20,6 +20,11 @@ const routes: Routes = [{
       component: DashboardComponent,
     },
     {
+      path: 'ticket',
+      loadChildren: () => import('./tickets/tickets.module')
+        .then(m => m.TicketsModule),
+    },
+    {
       path: 'layout',
       loadChildren: () => import('./layout/layout.module')
         .then(m => m.LayoutModule),

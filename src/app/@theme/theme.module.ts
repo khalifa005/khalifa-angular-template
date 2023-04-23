@@ -56,7 +56,6 @@ const NB_MODULES = [
   NbSearchModule,
   NbSidebarModule,
   NbContextMenuModule,
-  NbSecurityModule,
   NbButtonModule,
   NbSelectModule,
   NbIconModule,
@@ -95,7 +94,7 @@ const PIPES = [
   //     // missingTranslationHandler: {provide: MissingTranslationHandler, useClass: CustomHandler},
   //     isolate: true
   // })
-    // NbThemeModule.forRoot(nbThemeOptions, nbJSThemes, nbMediaBreakpoints, 'rtl')
+    // ,NbThemeModule.forRoot(nbThemeOptions, nbJSThemes, nbMediaBreakpoints, 'rtl')
   ],
   exports: [CommonModule, ...PIPES, ...COMPONENTS],
   declarations: [...COMPONENTS, ...PIPES],

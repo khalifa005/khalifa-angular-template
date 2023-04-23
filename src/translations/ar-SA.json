@@ -3,6 +3,8 @@
   "E-commerce": "الرئيسية",
   "About": "عنا",
   "Hello world !": "اهلا وسهلا",
+  "tickets-list": "الشكاوى",
+  "tickets": "الشكاوى",
 
   "welcomeMessage": "{{ firstName }}مرحبا بك يا !",
   "login": {

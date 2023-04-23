@@ -17,6 +17,19 @@ export const MENU_ITEMS: NbMenuItem[] = [
     group: true,
   },
   {
+    title: 'tickets',
+    icon: 'file-text-outline',
+    children: [
+      {
+        title: 'tickets-list',
+        icon: 'grid-outline',
+        link: '/pages/ticket/list',
+      },
+    ],
+  },
+
+
+  {
     title: 'Layout',
     icon: 'layout-outline',
     children: [

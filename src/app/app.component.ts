@@ -60,6 +60,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
     }
 
+  // this.router.navigateByUrl("/auth/login");
+  //  this.router.navigateByUrl("/com");
+
      // Setup translations
      this.i18nService.init(environment.defaultLanguage, environment.supportedLanguages);
 
@@ -93,7 +96,6 @@ export class AppComponent implements OnInit, OnDestroy {
     //      this.translate.use("en");
     //    });
 
-  // this.router.navigateByUrl("/auth/login");
 
     // this.subForSubject = this.languageTrackerService
     //   .GetMessage()

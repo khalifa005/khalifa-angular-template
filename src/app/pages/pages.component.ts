@@ -14,7 +14,6 @@ const log = new Logger('page');
   styleUrls: ['pages.component.scss'],
   template: `
     <ngx-one-column-layout>
-    <!-- *ngIf="enableSide" -->
       <nb-menu  #menuItems  [items]="menu"></nb-menu>
       <router-outlet></router-outlet>
     </ngx-one-column-layout>
@@ -35,26 +34,38 @@ enableSide:boolean= true;
     private changeDetectorRef: ChangeDetectorRef,
     private router: Router)
     {
-        this.sideMenuTranslationInt(false);
+        this.sideMenuTranslationInt();
     }
 
     ngOnInit(): void {
 
-      log.info(this.localizationService.currentLang);
       this.localizationService.onLangChange.subscribe((event: LangChangeEvent) => {
-        // this.enableSide = false;
-        this.sideMenuTranslationInt(true);
+        this.sideMenuTranslationInt();
 
        });
   }
 
-  sideMenuTranslationInt(lanChanged:boolean){
+  sideMenuTranslationInt(){
     const menuTranslated = MENU_ITEMS.map(u => ({ ...u, }));
+
     menuTranslated.forEach(item => {
 
       this.localizationService.get(item.title).subscribe((text:string) => {
         item.title = text
       });
+
+
+      if(item.children){
+       const subMenuTranslated = item.children.map(u => ({ ...u, }));
+
+       subMenuTranslated.forEach(subItem => {
+          this.localizationService.get(subItem.title).subscribe((text:string) => {
+            subItem.title = text
+          });
+        });
+
+        item.children = subMenuTranslated;
+      }
 
     });
      log.info(MENU_ITEMS);

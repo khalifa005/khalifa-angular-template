@@ -4,10 +4,10 @@
     "importHelpers": true,
     "baseUrl": "./",
     "paths": {
-      "@env": ["src/environments/environment"],
+      // "@env": ["src/environments/environment"],
       // "@shared/*": ["src/app/shared/*"],
       // "@core/*": ["src/app/core/*"],
-      "@pages/*":["src/app/pages/*"]
+      // "@pages/*":["src/app/pages/*"]
     },
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports":true,

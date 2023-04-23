@@ -6,6 +6,9 @@
   "Home": "Home",
   "Version": "Version",
 
+  "tickets-list": "Tickets",
+  "tickets": "Tickets",
+
   "welcomeMessage": "Thanks for joining, {{ firstName }}! It's great to have you!",
   "login": {
     "username": "Enter your user name",

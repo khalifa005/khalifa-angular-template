@@ -10,6 +10,8 @@ import {
   NbChatModule,
   NbDatepickerModule,
   NbDialogModule,
+  NbLayoutComponent,
+  NbLayoutModule,
   NbMenuModule,
   NbSidebarModule,
   NbToastrModule,
@@ -18,18 +20,18 @@ import {
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { MyComponentComponent } from './my-component/my-component.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [	AppComponent,
+      MyComponentComponent
+   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-
     RouterModule,
     BrowserAnimationsModule,
-    SharedModule,
-
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),
@@ -41,12 +43,12 @@ import { RouterModule } from '@angular/router';
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
-
     //what we added start from here
+    NbLayoutModule,
     TranslateModule.forRoot(),
     SharedModule,
 
-
+    ThemeModule,
     AppRoutingModule,
 
   ],
