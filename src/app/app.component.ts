@@ -17,13 +17,14 @@ import { Logger } from './@core/utils/logger.service';
 import { Title } from '@angular/platform-browser';
 import { filter } from 'rxjs/operators';
 
-const log = new Logger('App');
 
 @Component({
   selector: 'ngx-app',
   template: '<router-outlet></router-outlet>',
 })
 export class AppComponent implements OnInit, OnDestroy {
+
+  private log = new Logger(AppComponent.name);
 
   subForSubject: Subscription;
 
@@ -54,9 +55,9 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
       if (environment.production) {
-         log.error(environment.serverUrl);
+         this.log.error(environment.serverUrl);
     }else{
-      log.debug(environment.serverUrl);
+      this.log.debug(environment.serverUrl);
 
     }
 

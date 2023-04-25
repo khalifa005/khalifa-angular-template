@@ -8,6 +8,7 @@
 
   "tickets-list": "Tickets",
   "tickets": "Tickets",
+  "add-ticket": "Add ticket",
 
   "welcomeMessage": "Thanks for joining, {{ firstName }}! It's great to have you!",
   "login": {

@@ -5,6 +5,7 @@
   "Hello world !": "اهلا وسهلا",
   "tickets-list": "الشكاوى",
   "tickets": "الشكاوى",
+  "add-ticket": "إضافة شكوى",
 
   "welcomeMessage": "{{ firstName }}مرحبا بك يا !",
   "login": {

@@ -25,6 +25,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
         icon: 'grid-outline',
         link: '/pages/ticket/list',
       },
+      {
+        title: 'add-ticket',
+        icon: 'file-add-outline',
+        link: '/pages/ticket/add',
+      },
     ],
   },
 
