@@ -38,14 +38,20 @@
           <div class="form-group">
             <label for="adressfield" class="label" translate>address</label>
 
-            <input type="text"
+            <input
+             type="text"
              nbInput fullWidth
              id="adressfield"
              placeholder="{{ 'address' | translate }}"
+             status="danger"
+             [status]=" form.get('addressLine').invalid ? 'danger' : null"
              formControlName="addressLine"
              >
-             <div *ngIf="form.get('addressLine').invalid && (form.get('addressLine').dirty || form.get('addressLine').touched)">
-              Please provide a addressLine.
+             <div
+             translate
+             class="text-danger"
+             *ngIf="form.get('addressLine').invalid && (form.get('addressLine').dirty || form.get('addressLine').touched)">
+              please-provide-value
             </div>
 
           </div>

@@ -7,11 +7,14 @@
   "tickets": "الشكاوى",
   "add-ticket": "إضافة شكوى",
   "address": "العنوان",
+  "please-provide-value": "الرجاء ادخال قيمة",
 
   "welcomeMessage": "{{ firstName }}مرحبا بك يا !",
   "login": {
     "username": "المستخدم ",
     "password": "الرقم السري"
   }
+
+
 
 }

@@ -10,6 +10,7 @@
   "tickets": "Tickets",
   "add-ticket": "Add ticket",
   "address": "Adress",
+  "please-provide-value": "please fill the required field",
 
   "welcomeMessage": "Thanks for joining, {{ firstName }}! It's great to have you!",
   "login": {
