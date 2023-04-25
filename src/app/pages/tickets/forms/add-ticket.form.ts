@@ -7,7 +7,7 @@ export class TicketDto{
   city:string;
   addressLine:string;
   state:string;
-  zip:number;
+  zip:string;
 }
 
 export class TicketForm extends FormGroup {
@@ -18,13 +18,14 @@ export class TicketForm extends FormGroup {
 
   constructor(readonly model: TicketDto, readonly fb: FormBuilder = new FormBuilder())
   {
-    super(fb.group({
+    super(
 
+      fb.group({
       addressLine: [model?.addressLine, Validators.required],
       city: [model?.city, Validators.required],
       state: [model?.state, Validators.required],
       zip: [model?.zip, [Validators.required, Validators.maxLength(5), Validators.minLength(5)]]
-    })
+    }).controls
 
     );
   }
@@ -74,11 +75,4 @@ export class TicketForm extends FormGroup {
 //   city2: [],
 //   state2: ['Ohio'],
 //   zip2: [null, [Validators.required, Validators.maxLength(5), Validators.minLength(5)]]
-// });
-
-// form = new FormGroup({
-//   addressLine1: new FormControl(null, Validators.required),
-//   city: new FormControl(),
-//   state: new FormControl('Ohio'),
-//   zip: new FormControl(null, [Validators.required, Validators.maxLength(5), Validators.minLength(5)])
 // });

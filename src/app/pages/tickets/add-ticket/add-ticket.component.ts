@@ -17,36 +17,47 @@ export class AddTicketComponent implements OnInit {
 
    }
 
-  ticketForm: TicketForm;
-
   ticketDto: TicketDto = {
     // id:'1',
     addressLine: '123 Main St',
     city: 'Your City',
     state: 'OH',
-    zip: 12345
+    zip: '433'
 };
 
-form = new FormGroup({
-  addressLine: new FormControl(null, Validators.required),
-  city: new FormControl(),
-  state: new FormControl('Ohio'),
-  zip: new FormControl(null, [Validators.required, Validators.maxLength(5), Validators.minLength(5)])
-});
+// form = this.fb.group({
+//   addressLine: ['', Validators.required],
+//   city: [],
+//   state: ['Ohio'],
+//   zip: ['', [Validators.required, Validators.maxLength(5), Validators.minLength(5)]]
+// });
 
+form: TicketForm;
   ngOnInit() {
+    this.form = new TicketForm(this.ticketDto);
 
-    // this.ticketForm = new TicketForm(this.ticketDto);
-
-    //test
-    // this.ticketForm.get('addressLine')
-    // .valueChanges.subscribe((adressValue: string) => {
-    //   this.log.info(adressValue);
-    // });
     this.form.get('addressLine')
     .valueChanges.subscribe((adressValue: string) => {
       this.log.info(adressValue);
     });
+  }
+
+updateFormAddress() {
+  // let tets = this.form.get('addressLine');
+
+  this.form.patchValue({addressLine: 'new addressLine'});
+}
+
+fullFormUpdate() {
+  this.form.setValue({addressLine: 'new full address', city: 'tanta', state:'state', zip:'12345'});
+}
+
+reset() {
+  this.form.reset();
+}
+save(){
+    this.log.info("reactive form submitted");
+    this.log.info(this.form);
   }
 
 }
