@@ -9,6 +9,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { TranslateModule, TranslateLoader, TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { TranslateModule, TranslateLoader, TranslateService, LangChangeEvent } f
     ECommerceModule,
     MiscellaneousModule,
     TranslateModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     PagesComponent,

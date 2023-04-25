@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { TicketsComponent } from './tickets.component';
 import { TicketsListComponent } from './tickets-list/tickets-list.component';
@@ -7,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NbInputModule, NbCardModule, NbButtonModule, NbActionsModule, NbUserModule, NbCheckboxModule, NbRadioModule, NbDatepickerModule, NbSelectModule, NbIconModule } from '@nebular/theme';
 import { FormsRoutingModule } from '../forms/forms-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from '../../shared/shared.module';
 
 const components = [
   TicketsComponent,
@@ -18,6 +20,8 @@ const components = [
 @NgModule({
   imports: [
     //  ThemeModule,
+    // SharedModule,
+    CommonModule,
     TicketsRoutingModule,
     ReactiveFormsModule,
     TranslateModule,

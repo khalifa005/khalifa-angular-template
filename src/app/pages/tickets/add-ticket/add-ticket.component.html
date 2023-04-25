@@ -29,8 +29,8 @@
 </div> -->
 
 
-<div class="row">
-  <form>
+<div class="row" >
+  <form [formGroup]="form" *ngIf="form">
 
     <nb-card>
       <nb-card-header translate>add-ticket</nb-card-header>
@@ -38,11 +38,16 @@
           <div class="form-group">
             <label for="adressfield" class="label" translate>address</label>
 
-            <input type="email"
+            <input type="text"
              nbInput fullWidth
              id="adressfield"
-             placeholder="{{ 'address' | translate }}" >
+             placeholder="{{ 'address' | translate }}"
+             formControlName="addressLine"
+             >
           </div>
+          <!-- formControlName="addressLine" -->
+          <!-- formControlName="addressLine" -->
+
 
 
           <div class="form-group">

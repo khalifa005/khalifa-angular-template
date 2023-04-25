@@ -3,15 +3,15 @@ import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms"
 import { zip } from "rxjs";
 
 export class TicketDto{
-  id:string;
+  // id:string;
   city:string;
   addressLine:string;
   state:string;
   zip:number;
 }
 
-export class AddressForm extends FormGroup {
-  readonly addressLine1 = this.get('addressLine1') as FormControl;
+export class TicketForm extends FormGroup {
+  readonly addressLine = this.get('addressLine') as FormControl;
   readonly city = this.get('city') as FormControl;
   readonly state = this.get('state') as FormControl;
   readonly zip = this.get('zip') as FormControl;
@@ -20,7 +20,7 @@ export class AddressForm extends FormGroup {
   {
     super(fb.group({
 
-      addressLine1: [model?.addressLine, Validators.required],
+      addressLine: [model?.addressLine, Validators.required],
       city: [model?.city, Validators.required],
       state: [model?.state, Validators.required],
       zip: [model?.zip, [Validators.required, Validators.maxLength(5), Validators.minLength(5)]]
