@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { Address, AddressForm } from '../forms/add-ticket.form';
+import { TicketDto, AddressForm } from '../forms/add-ticket.form';
 
 @Component({
   selector: 'ngx-add-ticket',
@@ -15,15 +15,16 @@ export class AddTicketComponent implements OnInit {
 
   form: AddressForm;
 
-  address: Address = {
-    addressLine1: '123 Main St',
+  ticketDto: TicketDto = {
+    id:'1',
+    addressLine: '123 Main St',
     city: 'Your City',
     state: 'OH',
     zip: 12345
 };
 
   ngOnInit() {
-    this.form = new AddressForm(this.address);
+    this.form = new AddressForm(this.ticketDto);
   }
 
 }

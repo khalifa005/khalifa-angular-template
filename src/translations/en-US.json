@@ -9,6 +9,7 @@
   "tickets-list": "Tickets",
   "tickets": "Tickets",
   "add-ticket": "Add ticket",
+  "address": "Adress",
 
   "welcomeMessage": "Thanks for joining, {{ firstName }}! It's great to have you!",
   "login": {

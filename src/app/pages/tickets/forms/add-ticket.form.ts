@@ -2,9 +2,10 @@ import { state } from "@angular/animations";
 import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms";
 import { zip } from "rxjs";
 
-export class Address{
+export class TicketDto{
+  id:string;
   city:string;
-  addressLine1:string;
+  addressLine:string;
   state:string;
   zip:number;
 }
@@ -15,11 +16,11 @@ export class AddressForm extends FormGroup {
   readonly state = this.get('state') as FormControl;
   readonly zip = this.get('zip') as FormControl;
 
-  constructor(readonly model: Address, readonly fb: FormBuilder = new FormBuilder())
+  constructor(readonly model: TicketDto, readonly fb: FormBuilder = new FormBuilder())
   {
     super(fb.group({
 
-      addressLine1: [model?.addressLine1, Validators.required],
+      addressLine1: [model?.addressLine, Validators.required],
       city: [model?.city, Validators.required],
       state: [model?.state, Validators.required],
       zip: [model?.zip, [Validators.required, Validators.maxLength(5), Validators.minLength(5)]]
