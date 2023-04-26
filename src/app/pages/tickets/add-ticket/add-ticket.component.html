@@ -7,26 +7,45 @@
     <nb-card>
       <nb-card-header translate>add-ticket</nb-card-header>
       <nb-card-body>
-          <div class="form-group">
-            <label for="adressfield" class="label" translate>address</label>
 
+        <div class="form-group">
+            <label for="adressfield" class="label" translate>ticket.title</label>
             <input
              type="text"
              nbInput fullWidth
              id="adressfield"
-             placeholder="{{ 'address' | translate }}"
+             placeholder="{{ 'ticket.title' | translate }}"
              status="danger"
-             [status]=" form.get('addressLine').invalid ? 'danger' : null"
-             formControlName="addressLine"
+             [status]=" form.get('title').invalid ? 'danger' : null"
+             formControlName="title"
              >
+             <div
+             translate
+             class="text-danger"
+             *ngIf="form.get('title').invalid && (form.get('title').dirty || form.get('title').touched)">
+             validations.please-provide-value
+            </div>
+          </div>
+
+          <div class="form-group">
+
+            <nb-select
+            id="category"
+            placeholder="{{ 'ticket.category' | translate }}"
+            [formControl]="form.categoryId">
+
+              <nb-option value="1">Option 1</nb-option>
+              <nb-option *ngFor="let x of categoryTypes" value="x.id" >
+                {{x.nameEn | translator : x.nameAr}}
+              </nb-option>
+            </nb-select>
 
              <div
              translate
              class="text-danger"
-             *ngIf="form.get('addressLine').invalid && (form.get('addressLine').dirty || form.get('addressLine').touched)">
+             *ngIf="form.get('title').invalid && (form.get('title').dirty || form.get('title').touched)">
              validations.please-provide-value
             </div>
-
           </div>
 
           <div class="form-group">

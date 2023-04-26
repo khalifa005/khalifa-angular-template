@@ -1,3 +1,5 @@
+import { LookupDto } from './../../../@core/models/lookup.model';
+import { GetTicketLookupsService } from './../../../@core/api/services/tickets/lookups.service';
 import { Logger } from './../../../@core/utils/logger.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
@@ -18,29 +20,43 @@ export class AddTicketComponent implements OnInit, OnDestroy {
 
   private subs: Subscription[] = [];
 
-  constructor(public fb: FormBuilder) {}
+  constructor(
+    public fb: FormBuilder,
+    private ticketLookupsService: GetTicketLookupsService) {}
 
   ticketDto: TicketDto = {
-    // id:'1',
-    addressLine: '123 Main St',
-    city: 'Your City',
-    state: 'OH',
-    zip: '433'
+    id:'1',
+    categoryId:'1',
+    insuranceTypeId:'1',
+    caseTitleTypeId:'1',
+    policyNumber:'1',
+    claimNumber:'1',
+    plateNumber:'123',
+    plateLetters:'abc',
+    najmCaseId:'1',
+    cityId:'1',
+    title:'test',
+    description:'details',
 };
 
 form: TicketForm;
+categoryTypes: LookupDto[];
 
 ngOnInit() {
   //GET from api service and ini the form
     this.form = new TicketForm(this.ticketDto);
 
     //track changes
-    const sub1 = this.form.get('addressLine')
-    .valueChanges.subscribe((adressValue: string) => {
-      this.log.info(adressValue);
-    });
+    const sub1 = this.form.get('title')
+    .valueChanges.subscribe((titleValue: string) => {
 
+      this.log.info(titleValue);
+    });
     this.subs.push(sub1);
+
+    //load loockups
+    this.categoryTypes = this.ticketLookupsService.getCategoryType();
+    this.log.info(this.categoryTypes);
 }
 
 save(){
@@ -70,13 +86,13 @@ updateFormAddressField() {
   // let tets = this.form.get('addressLine');
 //no nned because we update from form.ts file by the constuctor
 //use for the fields dependencies
-  this.form.patchValue({addressLine: 'new addressLine'});
+  this.form.patchValue({title: 'new title val'});
 }
 
 fullFormUpdate() {
 //no nned because we update from form.ts file by the constuctor
 
-  this.form.setValue({addressLine: 'new full address', city: 'tanta', state:'state', zip:'12345'});
+  // this.form.setValue({addressLine: 'new full address', city: 'tanta', state:'state', zip:'12345'});
 }
 
 reset() {

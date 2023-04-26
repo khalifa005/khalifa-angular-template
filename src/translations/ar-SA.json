@@ -8,15 +8,21 @@
   "add-ticket": "إضافة شكوى",
   "address": "العنوان",
 
-
   "welcomeMessage": "{{ firstName }}مرحبا بك يا !",
+
+  "sideMenuItems": {
+    "test": ""
+  },
 
   "login": {
     "username": "المستخدم ",
     "password": "الرقم السري"
   },
 
-
+  "ticket": {
+    "title": "عنوان الطلب",
+    "order": "تصنيف الطلب"
+  },
   "validations": {
     "please-provide-value": "الرجاء ادخال قيمة"
   },

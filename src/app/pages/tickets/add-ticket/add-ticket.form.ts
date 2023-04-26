@@ -4,20 +4,43 @@ import { zip } from "rxjs";
 import { TicketDto } from "../models/ticket.dto";
 
 export class TicketForm extends FormGroup {
-  readonly addressLine = this.get('addressLine') as FormControl;
-  readonly city = this.get('city') as FormControl;
-  readonly state = this.get('state') as FormControl;
-  readonly zip = this.get('zip') as FormControl;
+  readonly categoryId = this.get('categoryId') as FormControl;
+  readonly insuranceTypeId = this.get('insuranceTypeId') as FormControl;
+  readonly caseTitleTypeId = this.get('caseTitleTypeId') as FormControl;
+
+  readonly policyNumber = this.get('policyNumber') as FormControl;
+  readonly claimNumber = this.get('claimNumber') as FormControl;
+  readonly plateNumber = this.get('plateNumber') as FormControl;
+  readonly plateLetters = this.get('plateLetters') as FormControl;
+  readonly najmCaseId = this.get('najmCaseId') as FormControl;
+
+  readonly cityId = this.get('cityId') as FormControl;
+
+  readonly title = this.get('title') as FormControl;
+  readonly description = this.get('description') as FormControl;
 
   constructor(readonly model: TicketDto, readonly fb: FormBuilder = new FormBuilder())
   {
     super(
 
       fb.group({
-      addressLine: [model?.addressLine, Validators.required],
-      city: [model?.city, Validators.required],
-      state: [model?.state, Validators.required],
-      zip: [model?.zip, [Validators.required, Validators.maxLength(5), Validators.minLength(5)]]
+        categoryId: [model?.categoryId, Validators.required],
+        insuranceTypeId: [model?.insuranceTypeId, Validators.required],
+        caseTitleTypeId: [model?.caseTitleTypeId, Validators.required],
+
+        policyNumber: [model?.policyNumber, Validators.required],
+
+        //required in certin cases
+        claimNumber: [model?.claimNumber, Validators.required],
+        plateNumber: [model?.plateNumber, Validators.required],
+        plateLetters: [model?.plateLetters, Validators.required],
+
+        najmCaseId: [model?.najmCaseId, Validators.required],
+        cityId: [model?.cityId, Validators.required],
+        title: [model?.title, Validators.required],
+        description: [model?.description],
+
+      // zip: [model?.zip, [Validators.required, Validators.maxLength(5), Validators.minLength(5)]]
     }).controls
 
     );

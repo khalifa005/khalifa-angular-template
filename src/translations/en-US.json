@@ -13,6 +13,12 @@
 
 
   "welcomeMessage": "Thanks for joining, {{ firstName }}! It's great to have you!",
+
+
+  "ticket": {
+    "title": "ticket title"
+  },
+
   "login": {
     "username": "Enter your user name",
     "password": "Password here"

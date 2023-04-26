@@ -9,6 +9,7 @@ import { NbInputModule, NbCardModule, NbButtonModule, NbActionsModule, NbUserMod
 import { FormsRoutingModule } from '../forms/forms-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '../../shared/shared.module';
+import { ThemeModule } from '../../@theme/theme.module';
 
 const components = [
   TicketsComponent,
@@ -19,13 +20,13 @@ const components = [
 
 @NgModule({
   imports: [
-    //  ThemeModule,
+    // themeModule,
     // SharedModule,
     CommonModule,
     TicketsRoutingModule,
     ReactiveFormsModule,
     TranslateModule,
-    //ThemeModule,
+    ThemeModule,
     // ngFormsModule,
 
     NbInputModule,
