@@ -51,6 +51,7 @@ ngOnInit() {
     .valueChanges.subscribe((titleValue: string) => {
 
       this.log.info(titleValue);
+      this.log.info(this.form);
     });
     this.subs.push(sub1);
 

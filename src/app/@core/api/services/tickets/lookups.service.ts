@@ -18,8 +18,8 @@ export class GetTicketLookupsService {
         nameAr: AppDefaultValues.DropDownAllOptionAr,
         nameEn: AppDefaultValues.DropDownAllOptionEn,
       },
-      { id: 1, nameAr: 'طلب', nameEn: 'compalin' },
-      { id: 2, nameAr: 'شكوى', nameEn: 'order' },
+      { id: 1, nameAr: 'طلب', nameEn: 'order' },
+      { id: 2, nameAr: 'شكوى', nameEn: 'complain' },
     ];
     return this.categoryTypes;
   }

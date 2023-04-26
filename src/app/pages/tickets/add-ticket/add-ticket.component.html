@@ -33,9 +33,7 @@
             id="category"
             placeholder="{{ 'ticket.category' | translate }}"
             [formControl]="form.categoryId">
-
-              <nb-option value="1">Option 1</nb-option>
-              <nb-option *ngFor="let x of categoryTypes" value="x.id" >
+              <nb-option *ngFor="let x of categoryTypes" [value]="x.id" >
                 {{x.nameEn | translator : x.nameAr}}
               </nb-option>
             </nb-select>

@@ -21,6 +21,7 @@
 
   "ticket": {
     "title": "عنوان الطلب",
+    "category": "نوع",
     "order": "تصنيف الطلب"
   },
   "validations": {

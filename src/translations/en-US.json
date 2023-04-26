@@ -16,7 +16,8 @@
 
 
   "ticket": {
-    "title": "ticket title"
+    "title": "ticket title",
+    "category": "category"
   },
 
   "login": {
