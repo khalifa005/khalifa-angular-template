@@ -28,12 +28,6 @@ export class AddTicketComponent implements OnInit, OnDestroy {
     zip: '433'
 };
 
-// form = this.fb.group({
-//   addressLine: ['', Validators.required],
-//   city: [],
-//   state: ['Ohio'],
-//   zip: ['', [Validators.required, Validators.maxLength(5), Validators.minLength(5)]]
-// });
 
 form: TicketForm;
 
