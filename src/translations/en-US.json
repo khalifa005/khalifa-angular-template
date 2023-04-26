@@ -10,11 +10,18 @@
   "tickets": "Tickets",
   "add-ticket": "Add ticket",
   "address": "Adress",
-  "please-provide-value": "please fill the required field",
+
 
   "welcomeMessage": "Thanks for joining, {{ firstName }}! It's great to have you!",
   "login": {
     "username": "Enter your user name",
     "password": "Password here"
+  },
+  "validations": {
+    "please-provide-value": "please fill the required field"
+  },
+  "forms": {
+    "please-provide-value": "please fill the required field"
   }
+
 }

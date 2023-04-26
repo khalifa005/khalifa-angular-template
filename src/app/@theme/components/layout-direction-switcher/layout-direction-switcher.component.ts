@@ -13,8 +13,8 @@ import { Router } from '@angular/router';
     <ngx-switcher
       [firstValue]="directions.RTL"
       [secondValue]="directions.LTR"
-      [firstValueLabel]="'RTL'"
-      [secondValueLabel]="'LTR'"
+      [firstValueLabel]="'Ar'"
+      [secondValueLabel]="'En'"
       [value]="currentDirection"
       (valueChange)="toggleDirection($event)"
       [vertical]="vertical">
@@ -55,7 +55,7 @@ export class LayoutDirectionSwitcherComponent implements OnDestroy {
     if(newDirection == "rtl"){
       this.i18nService.language = 'ar-SA';
       //([`/${url}`])
-      
+
       // this.router.navigateByUrl('/',{skipLocationChange:true}).then(()=>{
       //   this.router.navigate([`/`]).then(()=>{
       //   console.log(`After navigation I am on:${this.router.url}`)

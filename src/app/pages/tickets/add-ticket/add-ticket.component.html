@@ -1,32 +1,4 @@
-<!-- <div class="row">
-  <form>
 
-    <nb-card>
-      <nb-card-header>add-ticket</nb-card-header>
-      <nb-card-body>
-          <div class="form-group">
-            <label for="adressfield" class="label" >address</label>
-
-            <input type="email"
-             nbInput fullWidth
-             id="adressfield"
-             placeholder="address">
-          </div>
-
-          <div class="form-group">
-            <label for="exampleInputPassword1" class="label">Password</label>
-            <input type="password" nbInput fullWidth id="exampleInputPassword1" placeholder="Password">
-          </div>
-          <div class="form-group">
-            <nb-checkbox>Check me out</nb-checkbox>
-          </div>
-          <button type="submit" nbButton status="danger">Submit</button>
-      </nb-card-body>
-    </nb-card>
-
-</form>
-
-</div> -->
 
 
 <div class="row" >
@@ -47,11 +19,12 @@
              [status]=" form.get('addressLine').invalid ? 'danger' : null"
              formControlName="addressLine"
              >
+
              <div
              translate
              class="text-danger"
              *ngIf="form.get('addressLine').invalid && (form.get('addressLine').dirty || form.get('addressLine').touched)">
-              please-provide-value
+             validations.please-provide-value
             </div>
 
           </div>
@@ -71,26 +44,3 @@
 
 </div>
 
-<!--
-<form class="address-form">
-  <mat-form-field>
-      <mat-label>Address Line 1</mat-label>
-      <input matInput [formControl]="form.addressLine1">
-  </mat-form-field>
-   <mat-form-field>
-      <mat-label>City</mat-label>
-      <input matInput [formControl]="form.city">
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-      <mat-label>State</mat-label>
-      <mat-select>
-          <mat-option *ngFor="let state of states" [formControl]="form.state">
-              {{ state }}
-          </mat-option>
-      </mat-select>
-  </mat-form-field>
-   <mat-form-field>
-      <mat-label>Zip</mat-label>
-      <input matInput [formControl]="form.zip">
-  </mat-form-field>
-</form> -->

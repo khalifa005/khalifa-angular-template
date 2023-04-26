@@ -1,7 +1,8 @@
 import { Logger } from './../../../@core/utils/logger.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { TicketDto, TicketForm } from '../forms/add-ticket.form';
+import { Subscription } from 'rxjs-compat';
 
 @Component({
   selector: 'ngx-add-ticket',
@@ -10,8 +11,10 @@ import { TicketDto, TicketForm } from '../forms/add-ticket.form';
 })
 
 
-export class AddTicketComponent implements OnInit {
+export class AddTicketComponent implements OnInit, OnDestroy {
   private log = new Logger(AddTicketComponent.name);
+
+  private subs: Subscription[] = [];
 
   constructor(public fb: FormBuilder) {
 
@@ -33,13 +36,17 @@ export class AddTicketComponent implements OnInit {
 // });
 
 form: TicketForm;
-  ngOnInit() {
+
+ngOnInit() {
     this.form = new TicketForm(this.ticketDto);
 
-    this.form.get('addressLine')
+    const sub1 = this.form.get('addressLine')
     .valueChanges.subscribe((adressValue: string) => {
       this.log.info(adressValue);
     });
+
+    this.subs.push(sub1);
+
   }
 
 updateFormAddress() {
@@ -59,5 +66,10 @@ save(){
     this.log.info("reactive form submitted");
     this.log.info(this.form);
   }
+
+  ngOnDestroy() {
+    this.subs.forEach((s) => s.unsubscribe());
+    }
+
 
 }
