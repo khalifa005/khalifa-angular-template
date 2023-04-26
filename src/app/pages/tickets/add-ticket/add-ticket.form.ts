@@ -1,14 +1,7 @@
 import { state } from "@angular/animations";
 import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms";
 import { zip } from "rxjs";
-
-export class TicketDto{
-  // id:string;
-  city:string;
-  addressLine:string;
-  state:string;
-  zip:string;
-}
+import { TicketDto } from "../models/ticket.dto";
 
 export class TicketForm extends FormGroup {
   readonly addressLine = this.get('addressLine') as FormControl;
