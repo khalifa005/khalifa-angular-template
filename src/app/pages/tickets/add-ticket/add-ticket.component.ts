@@ -30,7 +30,7 @@ export class AddTicketComponent implements OnInit, OnDestroy {
 
   ticketDto: TicketDto = {
     id:'1',
-    categoryId:'2',
+    categoryId:2,
     insuranceTypeId:'1',
     caseTitleTypeId:'1',
     policyNumber:'1',

@@ -1,3 +1,4 @@
+import { numeric } from './../../../@core/utils/static-data/regx';
 import { state } from "@angular/animations";
 import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms";
 import { zip } from "rxjs";
@@ -24,6 +25,8 @@ export class TicketForm extends FormGroup {
     super(
 
       fb.group({
+        // categoryId: [model?.categoryId, [Validators.required, numeric]],
+
         categoryId: [model?.categoryId, Validators.required],
         insuranceTypeId: [model?.insuranceTypeId, Validators.required],
         caseTitleTypeId: [model?.caseTitleTypeId, Validators.required],
