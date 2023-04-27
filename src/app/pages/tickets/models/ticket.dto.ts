@@ -10,7 +10,7 @@ export class TicketDto{
   plateNumber:string;
   plateLetters:string;
   najmCaseId:string;
-  cityId:string;
+  cityId:number;
   title:string;
   description:string;
   // files:[];//multiple files

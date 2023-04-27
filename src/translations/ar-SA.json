@@ -7,6 +7,7 @@
   "tickets": "الشكاوى",
   "add-ticket": "إضافة شكوى",
   "address": "العنوان",
+  "submit": "حفظ",
 
   "welcomeMessage": "{{ firstName }}مرحبا بك يا !",
 
@@ -26,12 +27,20 @@
     "caseTitleType": "نوع الحالة",
     "policyNumber": "رقم بوصلة التأمين",
     "policyNumberPlaceholder": "P/205/5515/18/00479064/00",
+    "plateLetters": "حرف اللحوحة",
+    "plateLettersPlaceholder": "س ص ع",
+    "plateNumber": "رقم اللوحة",
+    "plateNumberPlaceholder": "751",
+    "najmCaseId": "رقم حالة نجم",
+    "najmCaseIdPlaceholder": "1810009615",
+    "cityId": "المدينة",
 
 
     "claimNumberPlaceholder": "C/XXX/XXX/XXXXXXX",
     "claimNumber": "Claim number",
+    "description": "التفاصيل",
 
-    
+
     "select-category": "اختار نوع الطلب",
     "order": "تصنيف الطلب"
   },

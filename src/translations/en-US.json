@@ -10,6 +10,7 @@
   "tickets": "Tickets",
   "add-ticket": "Add ticket",
   "address": "Adress",
+  "submit": "submit",
 
 
   "welcomeMessage": "Thanks for joining, {{ firstName }}! It's great to have you!",
@@ -25,6 +26,17 @@
 
     "claimNumberPlaceholder": "C/XXX/XXX/XXXXXXX",
     "claimNumber": "Claim number",
+
+    "plateLetters": "Plate letters",
+    "plateLettersPlaceholder": "ACG",
+    "plateNumber": "Plate number",
+    "plateNumberPlaceholder": "576",
+
+    "najmCaseId": "Najm cases number",
+    "najmCaseIdPlaceholder": "1810009615",
+    "cityId": "City",
+    "description": "Description",
+
 
     "select-category": "Select order category"
 

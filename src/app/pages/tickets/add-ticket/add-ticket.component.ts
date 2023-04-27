@@ -24,6 +24,7 @@ export class AddTicketComponent implements OnInit, OnDestroy {
   categoryTypes: LookupDto[];
   insuranceTypes: LookupDto[];
   caseTitleTypes: LookupDto[];
+  cities: LookupDto[];
 
   constructor(
     public fb: FormBuilder,
@@ -32,6 +33,7 @@ export class AddTicketComponent implements OnInit, OnDestroy {
     this.categoryTypes = this.ticketLookupsService.getCategoryTypes();
     this.insuranceTypes = this.ticketLookupsService.getInsuranceTypes();
     this.caseTitleTypes = this.ticketLookupsService.getCaseTitleTypes();
+    this.cities = this.ticketLookupsService.getCities();
 
     // this.log.info(this.categoryTypes);
     }
@@ -46,7 +48,7 @@ export class AddTicketComponent implements OnInit, OnDestroy {
     plateNumber:'',
     plateLetters:'',
     najmCaseId:'',
-    cityId:'',
+    cityId:-1,
     title:'',
     description:'',
 };
@@ -92,11 +94,11 @@ private mapFormToTicketDto(form: TicketForm): TicketDto {
   } as TicketDto;
 }
 
-updateFormAddressField() {
+updateFormDescriptionField() {
   // let tets = this.form.get('addressLine');
 //no nned because we update from form.ts file by the constuctor
 //use for the fields dependencies
-  this.form.patchValue({title: 'new title val'});
+  this.form.patchValue({description: 'new title val'});
 }
 
 fullFormUpdate() {
@@ -105,6 +107,10 @@ fullFormUpdate() {
   // this.form.setValue({addressLine: 'new full address', city: 'tanta', state:'state', zip:'12345'});
 }
 
+get description() {
+  //get the description
+  return this.form.controls['description'];
+}
 reset() {
   this.form.reset();
 }

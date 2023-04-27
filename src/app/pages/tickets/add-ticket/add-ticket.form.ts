@@ -1,4 +1,5 @@
-import { numeric } from './../../../@core/utils/static-data/regx';
+import { numeric } from '../../../@core/utils/static-data/form.regx';
+import { alphaArabic } from '../../../@core/utils/static-data/form.regx';
 import { state } from "@angular/animations";
 import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms";
 import { zip } from "rxjs";
@@ -35,11 +36,11 @@ export class TicketForm extends FormGroup {
 
         //required in certin cases
         claimNumber: [model?.claimNumber, Validators.required],
-        plateNumber: [model?.plateNumber, Validators.required],
-        plateLetters: [model?.plateLetters, Validators.required],
+        plateNumber: [model?.plateNumber, [Validators.required, numeric]],
+        plateLetters: [model?.plateLetters,[ Validators.required, alphaArabic]],
 
         najmCaseId: [model?.najmCaseId, Validators.required],
-        cityId: [model?.cityId, Validators.required],
+        cityId: [model?.cityId, [Validators.required,Validators.min(1)]],
         title: [model?.title, Validators.required],
         description: [model?.description],
 
