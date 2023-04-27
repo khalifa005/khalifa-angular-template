@@ -17,7 +17,9 @@
 
   "ticket": {
     "title": "ticket title",
-    "category": "category"
+    "category": "category",
+    "select-category": "select order category"
+
   },
 
   "login": {

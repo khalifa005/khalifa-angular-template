@@ -22,11 +22,15 @@ export class AddTicketComponent implements OnInit, OnDestroy {
 
   constructor(
     public fb: FormBuilder,
-    private ticketLookupsService: GetTicketLookupsService) {}
+    private ticketLookupsService: GetTicketLookupsService) {
+    //load loockups
+    this.categoryTypes = this.ticketLookupsService.getCategoryType();
+    this.log.info(this.categoryTypes);
+    }
 
   ticketDto: TicketDto = {
     id:'1',
-    categoryId:'1',
+    categoryId:'2',
     insuranceTypeId:'1',
     caseTitleTypeId:'1',
     policyNumber:'1',
@@ -55,9 +59,7 @@ ngOnInit() {
     });
     this.subs.push(sub1);
 
-    //load loockups
-    this.categoryTypes = this.ticketLookupsService.getCategoryType();
-    this.log.info(this.categoryTypes);
+
 }
 
 save(){

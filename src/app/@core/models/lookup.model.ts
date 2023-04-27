@@ -1,9 +1,9 @@
 export class LookupDto {
-  id: number;
+  id: string;
   nameEn: string;
   nameAr: string;
 
-  constructor(id: number, nameAr: string) {
+  constructor(id: string, nameAr: string) {
     this.id = id;
     this.nameAr = nameAr;
   }

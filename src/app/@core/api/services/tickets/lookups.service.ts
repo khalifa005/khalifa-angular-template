@@ -18,8 +18,8 @@ export class GetTicketLookupsService {
         nameAr: AppDefaultValues.DropDownAllOptionAr,
         nameEn: AppDefaultValues.DropDownAllOptionEn,
       },
-      { id: 1, nameAr: 'طلب', nameEn: 'order' },
-      { id: 2, nameAr: 'شكوى', nameEn: 'complain' },
+      { id: '1', nameAr: 'طلب', nameEn: 'order' },
+      { id: '2', nameAr: 'شكوى', nameEn: 'complain' },
     ];
     return this.categoryTypes;
   }
@@ -29,10 +29,12 @@ export class GetTicketLookupsService {
 
     this.categoryTypes = [
       {
-        id: AppDefaultValues.DropDownAllOption, nameAr: AppDefaultValues.DropDownAllOptionAr, nameEn: AppDefaultValues.DropDownAllOptionEn,
+        id: AppDefaultValues.DropDownAllOption,
+         nameAr: AppDefaultValues.DropDownAllOptionAr,
+          nameEn: AppDefaultValues.DropDownAllOptionEn,
       },
-      { id: 1, nameAr: '', nameEn: '' },
-      { id: 2, nameAr: '', nameEn: '' },
+      { id: '1', nameAr: '', nameEn: '' },
+      { id: '2', nameAr: '', nameEn: '' },
     ];
 
     return this.categoryTypes;

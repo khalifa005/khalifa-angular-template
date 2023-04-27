@@ -15,7 +15,7 @@
              nbInput fullWidth
              id="adressfield"
              placeholder="{{ 'ticket.title' | translate }}"
-             status="danger"
+
              [status]=" form.get('title').invalid ? 'danger' : null"
              formControlName="title"
              >
@@ -28,11 +28,17 @@
           </div>
 
           <div class="form-group">
+            <!-- placeholder="{{ 'ticket.select-category' | translate }}" -->
+
+            <label for="category" class="label" translate>ticket.category</label>
 
             <nb-select
+            class="d-inline"
             id="category"
-            placeholder="{{ 'ticket.category' | translate }}"
-            [formControl]="form.categoryId">
+            [status]=" form.get('categoryId').invalid ? 'danger' : null"
+
+            formControlName="categoryId">
+
               <nb-option *ngFor="let x of categoryTypes" [value]="x.id" >
                 {{x.nameEn | translator : x.nameAr}}
               </nb-option>
