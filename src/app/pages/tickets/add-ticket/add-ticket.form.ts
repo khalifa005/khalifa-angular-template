@@ -1,5 +1,6 @@
 import { numeric } from '../../../@core/utils/static-data/form.regx';
 import { alphaArabic } from '../../../@core/utils/static-data/form.regx';
+import { optionalCarPolicyRequiredValidator } from '../../../@core/utils/static-data/form.regx';
 import { state } from "@angular/animations";
 import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms";
 import { zip } from "rxjs";
@@ -32,7 +33,7 @@ export class TicketForm extends FormGroup {
         insuranceTypeId: [model?.insuranceTypeId, [Validators.required, Validators.min(1)]],
         caseTitleTypeId: [model?.caseTitleTypeId, [Validators.required,Validators.min(1)]],
 
-        policyNumber: [model?.policyNumber, Validators.required],
+        policyNumber: [model?.policyNumber],
 
         //required in certin cases
         claimNumber: [model?.claimNumber, Validators.required],

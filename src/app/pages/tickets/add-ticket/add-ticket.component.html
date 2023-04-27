@@ -80,7 +80,107 @@
         </div>
       </div>
 
-      <div class="form-group">
+      <div *ngIf="!hideCarInsuranceSection">
+        <div class="form-group">
+          <label for="policyNumber" class="label" translate>ticket.policyNumber</label>
+          <input
+           type="text"
+           nbInput fullWidth
+           id="policyNumber"
+           placeholder="{{ 'ticket.policyNumberPlaceholder' | translate }}"
+
+           [status]="(form.get('policyNumber').invalid && (form.get('policyNumber').dirty || form.get('policyNumber').touched)) ? 'danger' : null"
+           formControlName="policyNumber"
+           >
+           <div
+           translate
+           class="text-danger"
+           *ngIf="form.get('policyNumber').invalid && (form.get('policyNumber').dirty || form.get('policyNumber').touched)">
+           validations.please-provide-value
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="claimNumber" class="label" translate>ticket.claimNumber</label>
+          <input
+           type="text"
+           nbInput fullWidth
+           id="claimNumber"
+           placeholder="{{ 'ticket.claimNumberPlaceholder' | translate }}"
+
+           [status]=" (form.get('claimNumber').invalid && (form.get('claimNumber').dirty || form.get('claimNumber').touched))? 'danger' : null"
+           formControlName="claimNumber"
+           >
+           <div
+           translate
+           class="text-danger"
+           *ngIf="form.get('claimNumber').invalid && (form.get('claimNumber').dirty || form.get('claimNumber').touched)">
+           validations.please-provide-value
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="plateNumber" class="label" translate>ticket.plateNumber</label>
+          <input
+           type="text"
+           nbInput fullWidth
+           pattern="^[0-9]*$"
+           id="plateNumber"
+           placeholder="{{ 'ticket.plateNumberPlaceholder' | translate }}"
+
+           [status]=" (form.get('plateNumber').invalid && (form.get('plateNumber').dirty || form.get('plateNumber').touched)) ? 'danger' : null"
+           formControlName="plateNumber"
+           >
+           <div
+           translate
+           class="text-danger"
+           *ngIf="form.get('plateNumber').invalid && (form.get('plateNumber').dirty || form.get('plateNumber').touched)">
+           validations.please-provide-value
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="plateLetters" class="label" translate>ticket.plateLetters</label>
+          <input
+           type="text"
+           nbInput fullWidth
+           pattern="[A-Za-z]{3}"
+           id="plateLetters"
+           placeholder="{{ 'ticket.plateLettersPlaceholder' | translate }}"
+
+           [status]=" (form.get('plateLetters').invalid && (form.get('plateLetters').dirty || form.get('plateLetters').touched)) ? 'danger' : null"
+           formControlName="plateLetters"
+           >
+           <div
+           translate
+           class="text-danger"
+           *ngIf="form.get('plateLetters').invalid && (form.get('plateLetters').dirty || form.get('plateLetters').touched)">
+           validations.please-provide-value
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="najmCaseId" class="label" translate>ticket.najmCaseId</label>
+          <input
+           type="text"
+           nbInput fullWidth
+           id="najmCaseId"
+           placeholder="{{ 'ticket.najmCaseIdPlaceholder' | translate }}"
+
+           [status]=" (form.get('najmCaseId').invalid && (form.get('najmCaseId').dirty || form.get('najmCaseId').touched)) ? 'danger' : null"
+           formControlName="najmCaseId"
+           >
+           <div
+           translate
+           class="text-danger"
+           *ngIf="form.get('najmCaseId').invalid && (form.get('najmCaseId').dirty || form.get('najmCaseId').touched)">
+           validations.please-provide-value
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="form-group">
         <label for="policyNumber" class="label" translate>ticket.policyNumber</label>
         <input
          type="text"
@@ -176,7 +276,7 @@
          *ngIf="form.get('najmCaseId').invalid && (form.get('najmCaseId').dirty || form.get('najmCaseId').touched)">
          validations.please-provide-value
         </div>
-      </div>
+      </div> -->
 
 
     </nb-card-body>

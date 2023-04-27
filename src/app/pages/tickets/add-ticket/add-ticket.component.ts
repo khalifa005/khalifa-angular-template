@@ -20,6 +20,7 @@ export class AddTicketComponent implements OnInit, OnDestroy {
 
   private subs: Subscription[] = [];
 
+  hideCarInsuranceSection: boolean = true;
   form: TicketForm;
   categoryTypes: LookupDto[];
   insuranceTypes: LookupDto[];
@@ -60,11 +61,22 @@ ngOnInit() {
     this.form = new TicketForm(this.ticketDto);
 
     //track changes
-    const sub1 = this.form.get('title')
-    .valueChanges.subscribe((titleValue: string) => {
+    const sub1 = this.form.get('insuranceTypeId')
+    .valueChanges.subscribe((insuranceTypeIdValue: number) => {
 
-      this.log.info(titleValue);
+      //if the use selected specific item do
+//try to extarct into function
+      if(insuranceTypeIdValue === 2){
+        this.hideCarInsuranceSection = false;
+      this.form.get('policyNumber').setValidators([Validators.required]);
+
+      }else{
+        this.hideCarInsuranceSection = true;
+        this.form.get('policyNumber').clearValidators();
+      }
+      this.form.get('policyNumber').updateValueAndValidity();
       this.log.info(this.form);
+
     });
     this.subs.push(sub1);
 
@@ -85,6 +97,7 @@ handleForm(form: TicketForm): void {
   let ticketDto =  this.mapFormToTicketDto(form);
 
   this.log.info(ticketDto);
+  // JSON.stringify(ticketDto);
 }
 
 private mapFormToTicketDto(form: TicketForm): TicketDto {
@@ -111,6 +124,9 @@ get description() {
   //get the description
   return this.form.controls['description'];
 }
+
+//check errors
+//formGroup.get('myEmailField').errors
 reset() {
   this.form.reset();
 }
