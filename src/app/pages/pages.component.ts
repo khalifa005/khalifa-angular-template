@@ -68,7 +68,7 @@ enableSide:boolean= true;
       }
 
     });
-     log.info(MENU_ITEMS);
+    //  log.info(MENU_ITEMS);
     this.menu = menuTranslated;
    }
 

@@ -1,8 +1,8 @@
 export class TicketDto{
   id:string;
   categoryId:number; //lookup
-  insuranceTypeId:string;//lookup
-  caseTitleTypeId:string;//lookup
+  insuranceTypeId:number;//lookup
+  caseTitleTypeId:number;//lookup
 
   //related to each other
   policyNumber:string;

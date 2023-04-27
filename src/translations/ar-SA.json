@@ -22,6 +22,16 @@
   "ticket": {
     "title": "عنوان الطلب",
     "category": "نوع",
+    "insuranceType": "نوع التامين",
+    "caseTitleType": "نوع الحالة",
+    "policyNumber": "رقم بوصلة التأمين",
+    "policyNumberPlaceholder": "P/205/5515/18/00479064/00",
+
+
+    "claimNumberPlaceholder": "C/XXX/XXX/XXXXXXX",
+    "claimNumber": "Claim number",
+
+    
     "select-category": "اختار نوع الطلب",
     "order": "تصنيف الطلب"
   },

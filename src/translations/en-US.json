@@ -16,9 +16,17 @@
 
 
   "ticket": {
-    "title": "ticket title",
-    "category": "category",
-    "select-category": "select order category"
+    "title": "Ticket title",
+    "category": "Category",
+    "insuranceType": "Insurance type",
+    "caseTitleType": "Case title type",
+    "policyNumber": "Policy number",
+    "policyNumberPlaceholder": "P/205/5515/18/00479064/00",
+
+    "claimNumberPlaceholder": "C/XXX/XXX/XXXXXXX",
+    "claimNumber": "Claim number",
+
+    "select-category": "Select order category"
 
   },
 
@@ -27,7 +35,7 @@
     "password": "Password here"
   },
   "validations": {
-    "please-provide-value": "please fill the required field"
+    "please-provide-value": "this field is required"
   },
   "forms": {
     "please-provide-value": "please fill the required field"

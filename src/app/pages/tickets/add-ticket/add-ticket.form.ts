@@ -27,9 +27,9 @@ export class TicketForm extends FormGroup {
       fb.group({
         // categoryId: [model?.categoryId, [Validators.required, numeric]],
 
-        categoryId: [model?.categoryId, Validators.required],
-        insuranceTypeId: [model?.insuranceTypeId, Validators.required],
-        caseTitleTypeId: [model?.caseTitleTypeId, Validators.required],
+        categoryId: [model?.categoryId, [Validators.required, Validators.max(2), Validators.min(1) ]],
+        insuranceTypeId: [model?.insuranceTypeId, [Validators.required, Validators.min(1)]],
+        caseTitleTypeId: [model?.caseTitleTypeId, [Validators.required,Validators.min(1)]],
 
         policyNumber: [model?.policyNumber, Validators.required],
 

@@ -20,21 +20,29 @@ export class AddTicketComponent implements OnInit, OnDestroy {
 
   private subs: Subscription[] = [];
 
+  form: TicketForm;
+  categoryTypes: LookupDto[];
+  insuranceTypes: LookupDto[];
+  caseTitleTypes: LookupDto[];
+
   constructor(
     public fb: FormBuilder,
     private ticketLookupsService: GetTicketLookupsService) {
     //load loockups
-    this.categoryTypes = this.ticketLookupsService.getCategoryType();
-    this.log.info(this.categoryTypes);
+    this.categoryTypes = this.ticketLookupsService.getCategoryTypes();
+    this.insuranceTypes = this.ticketLookupsService.getInsuranceTypes();
+    this.caseTitleTypes = this.ticketLookupsService.getCaseTitleTypes();
+
+    // this.log.info(this.categoryTypes);
     }
 
   ticketDto: TicketDto = {
     id:'1',
     categoryId:2,
-    insuranceTypeId:'1',
-    caseTitleTypeId:'1',
-    policyNumber:'1',
-    claimNumber:'1',
+    insuranceTypeId:1,
+    caseTitleTypeId:1,
+    policyNumber:'',
+    claimNumber:'',
     plateNumber:'123',
     plateLetters:'abc',
     najmCaseId:'1',
@@ -43,8 +51,7 @@ export class AddTicketComponent implements OnInit, OnDestroy {
     description:'details',
 };
 
-form: TicketForm;
-categoryTypes: LookupDto[];
+
 
 ngOnInit() {
   //GET from api service and ini the form
