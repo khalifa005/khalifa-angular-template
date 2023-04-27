@@ -4,7 +4,7 @@
 <div class="row" >
 
 
-<div class="col-lg-12">
+<div class="col-lg-8">
   <nb-card>
     <nb-card-header translate>add-ticket</nb-card-header>
     <nb-card-body>
@@ -17,7 +17,7 @@
            id="adressfield"
            placeholder="{{ 'ticket.title' | translate }}"
 
-           [status]=" form.get('title').invalid ? 'danger' : null"
+           [status]=" (form.get('title').invalid && (form.get('title').dirty || form.get('title').touched)) ? 'danger' : null"
            formControlName="title"
            >
            <div
@@ -35,7 +35,7 @@
         <nb-select
         class="d-inline"
         id="category"
-        [status]=" form.get('categoryId').invalid ? 'danger' : null"
+        [status]="(form.get('categoryId').invalid && (form.get('categoryId').dirty || form.get('categoryId').touched)) ? 'danger' : null"
 
         formControlName="categoryId">
 
@@ -59,7 +59,7 @@
         <nb-select
         class="d-inline"
         id="insuranceTypeId"
-        [status]=" form.get('insuranceTypeId').invalid ? 'danger' : null"
+        [status]="(form.get('insuranceTypeId').invalid && (form.get('insuranceTypeId').dirty || form.get('insuranceTypeId').touched)) ? 'danger' : null"
 
         formControlName="insuranceTypeId">
 
@@ -83,7 +83,7 @@
         <nb-select
         class="d-inline"
         id="caseTitleTypeId"
-        [status]=" form.get('caseTitleTypeId').invalid ? 'danger' : null"
+        [status]=" (form.get('caseTitleTypeId').invalid && (form.get('caseTitleTypeId').dirty || form.get('caseTitleTypeId').touched)) ? 'danger' : null"
 
         formControlName="caseTitleTypeId">
 
@@ -108,7 +108,7 @@
          id="policyNumber"
          placeholder="{{ 'ticket.policyNumberPlaceholder' | translate }}"
 
-         [status]=" form.get('policyNumber').invalid ? 'danger' : null"
+         [status]="(form.get('policyNumber').invalid && (form.get('policyNumber').dirty || form.get('policyNumber').touched)) ? 'danger' : null"
          formControlName="policyNumber"
          >
          <div
@@ -127,7 +127,7 @@
          id="claimNumber"
          placeholder="{{ 'ticket.claimNumberPlaceholder' | translate }}"
 
-         [status]=" form.get('claimNumber').invalid ? 'danger' : null"
+         [status]=" (form.get('claimNumber').invalid && (form.get('claimNumber').dirty || form.get('claimNumber').touched))? 'danger' : null"
          formControlName="claimNumber"
          >
          <div
