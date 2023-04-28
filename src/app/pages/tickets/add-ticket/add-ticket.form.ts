@@ -49,8 +49,24 @@ export class TicketForm extends FormGroup {
     }).controls
 
     );
+
+    this.handler();
   }
+
+  private handler(): void {
+    this.insuranceTypeId.valueChanges.subscribe((insuranceTypeIdValue: number) => {
+      if(insuranceTypeIdValue === 2){
+      this.policyNumber.setValidators([Validators.required]);
+
+      }else{
+        this.policyNumber.clearValidators();
+      }
+      this.policyNumber.updateValueAndValidity();
+    });
 }
+
+}
+
 
 
 

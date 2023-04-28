@@ -68,13 +68,13 @@ ngOnInit() {
 //try to extarct into function
       if(insuranceTypeIdValue === 2){
         this.hideCarInsuranceSection = false;
-      this.form.get('policyNumber').setValidators([Validators.required]);
+      // this.form.get('policyNumber').setValidators([Validators.required]);
 
       }else{
         this.hideCarInsuranceSection = true;
-        this.form.get('policyNumber').clearValidators();
+        // this.form.get('policyNumber').clearValidators();
       }
-      this.form.get('policyNumber').updateValueAndValidity();
+      // this.form.get('policyNumber').updateValueAndValidity();
       this.log.info(this.form);
 
     });
