@@ -1,3 +1,5 @@
+<!-- [formControl]="control" -->
+
 <div class="container" appDnd (fileDropped)="onFileDropped($event)">
 
   <input
@@ -24,7 +26,7 @@
 	<h3>Drag and drop file here</h3>
 	<label for="fileDropRef">Browse for file</label>
 </div>
-<div class="files-list">
+<div class="files-list" *ngIf="files !== undefined">
 	<div class="single-file" *ngFor="let file of files; let i = index">
 		<div class="file-icon" style="width: 50px">
 			<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

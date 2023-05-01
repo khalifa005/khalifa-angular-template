@@ -372,7 +372,7 @@
       <div class="form-group">
       <label class="label" translate>ticket.file</label>
 
-      <ngx-drag-filer-uploader></ngx-drag-filer-uploader>
+      <ngx-drag-filer-uploader [control]="form.controls['file']"  [progress]="progress" requiredFileType="image/png" ></ngx-drag-filer-uploader>
       </div>
 
 

@@ -6,12 +6,12 @@ import { FormControl } from '@angular/forms';
   templateUrl: './drag-filer-uploader.component.html',
   styleUrls: ['./drag-filer-uploader.component.scss']
 })
-export class DragFilerUploaderComponent {
+export class DragFilerUploaderComponent  {
 
   @Input() uploadProgress;
   @Input() requiredFileType:string;
-
-  @Input() formcontrol: FormControl;
+  @Input() control: FormControl;
+  // @Input() formcontrol: FormControl;
 
   files: any[] = [];
 
@@ -19,6 +19,7 @@ export class DragFilerUploaderComponent {
    * on file drop handler
    */
   onFileDropped($event) {
+
     this.prepareFilesList($event);
   }
 
@@ -35,12 +36,25 @@ export class DragFilerUploaderComponent {
    */
   deleteFile(index: number) {
     this.files.splice(index, 1);
+
+    if(this.control)
+    this.control.patchValue(null);
+
   }
 
   /**
    * Simulate the upload process
    */
   uploadFilesSimulator(index: number) {
+
+    if (this.files[index]) {
+
+      let fileData = this.files[index];
+      if(this.control)
+        this.control.patchValue(fileData);
+      }
+
+
     // setTimeout(() => {
     //   if (index === this.files.length) {
     //     return;

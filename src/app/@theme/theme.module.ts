@@ -52,6 +52,7 @@ import { DragFilerUploaderComponent } from './components/drag-filer-uploader/dra
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
+import { FormsModule } from '@angular/forms';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -69,6 +70,7 @@ const NB_MODULES = [
   NbProgressBarModule,
 
   ReactiveFormsModule,
+  FormsModule
 ];
 const COMPONENTS = [
   HeaderComponent,
