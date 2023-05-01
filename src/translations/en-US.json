@@ -11,6 +11,7 @@
   "add-ticket": "Add ticket",
   "address": "Adress",
   "submit": "submit",
+  "upload": "No file uploaded yet !",
 
 
   "welcomeMessage": "Thanks for joining, {{ firstName }}! It's great to have you!",
@@ -37,6 +38,7 @@
     "cityId": "City",
     "description": "Description",
 
+    "file": "Add file",
 
     "select-category": "Select order category"
 

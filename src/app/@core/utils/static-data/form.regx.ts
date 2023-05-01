@@ -1,4 +1,4 @@
-import { AbstractControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from "@angular/forms"
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from "@angular/forms"
 //use this in form validation
 
 // export const alpha: ValidatorFn = Validators.pattern('[a-zA-Z]*%content%#039;');
@@ -125,3 +125,21 @@ export function requiredIfValidator(predicate) {
 // {
 //   validators: this.checkIfAtLeastOneCommentIsAdded,
 // }
+
+export function RequiredFileType( type: string ) {
+  return function (control: FormControl) {
+    const file = control.value;
+    if ( file ) {
+      const extension = file.name.split('.')[1].toLowerCase();
+      if ( type.toLowerCase() !== extension.toLowerCase() ) {
+        return {
+          requiredFileType: true
+        };
+      }
+
+      return null;
+    }
+
+    return null;
+  };
+}

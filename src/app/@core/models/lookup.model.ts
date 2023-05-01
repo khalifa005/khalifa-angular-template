@@ -3,9 +3,13 @@ export class LookupDto {
   nameEn: string;
   nameAr: string;
 
-  constructor(id: number, nameAr: string) {
+  parentId?: number;
+
+
+  constructor(id: number, nameAr: string, nameEn: string) {
     this.id = id;
     this.nameAr = nameAr;
+    this.nameEn = nameEn;
   }
 }
 

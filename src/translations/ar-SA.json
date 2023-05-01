@@ -8,6 +8,7 @@
   "add-ticket": "إضافة شكوى",
   "address": "العنوان",
   "submit": "حفظ",
+  "upload": "لايوجد ملف",
 
   "welcomeMessage": "{{ firstName }}مرحبا بك يا !",
 
@@ -34,6 +35,7 @@
     "najmCaseId": "رقم حالة نجم",
     "najmCaseIdPlaceholder": "1810009615",
     "cityId": "المدينة",
+    "file": "اضف ملف",
 
 
     "claimNumberPlaceholder": "C/XXX/XXX/XXXXXXX",
