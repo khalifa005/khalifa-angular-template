@@ -13,6 +13,7 @@ export class TicketDto{
   cityId:number;
   title:string;
   description:string;
+  file:string;
   // files:[];//multiple files
 
 }

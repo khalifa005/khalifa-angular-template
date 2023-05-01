@@ -1,4 +1,5 @@
-import { numeric } from '../../../@core/utils/static-data/form.regx';
+import { AppDefaultValues } from './../../../@core/utils/static-data/default-values';
+import { RequiredFileType, numeric } from '../../../@core/utils/static-data/form.regx';
 import { alphaArabic } from '../../../@core/utils/static-data/form.regx';
 import { optionalCarPolicyRequiredValidator } from '../../../@core/utils/static-data/form.regx';
 import { state } from "@angular/animations";
@@ -21,6 +22,8 @@ export class TicketForm extends FormGroup {
 
   readonly title = this.get('title') as FormControl;
   readonly description = this.get('description') as FormControl;
+  readonly file = this.get('file') as FormControl;
+  readonly image = this.get('image') as FormControl;
 
   constructor(readonly model: TicketDto, readonly fb: FormBuilder = new FormBuilder())
   {
@@ -44,24 +47,51 @@ export class TicketForm extends FormGroup {
         cityId: [model?.cityId, [Validators.required,Validators.min(1)]],
         title: [model?.title, Validators.required],
         description: [model?.description],
+        file: [model?.file, [Validators.required, RequiredFileType('png')]],
+        image: [model?.file, [Validators.required]],
 
       // zip: [model?.zip, [Validators.required, Validators.maxLength(5), Validators.minLength(5)]]
     }).controls
 
     );
 
-    this.handler();
+    this.trackInsuranceTypeIdValue();
   }
 
-  private handler(): void {
+  private trackInsuranceTypeIdValue(): void {
     this.insuranceTypeId.valueChanges.subscribe((insuranceTypeIdValue: number) => {
+
+      this.caseTitleTypeId.reset(AppDefaultValues.DropDownAllOption);
+
       if(insuranceTypeIdValue === 2){
       this.policyNumber.setValidators([Validators.required]);
+      this.claimNumber.setValidators([Validators.required]);
+      this.plateLetters.setValidators([Validators.required]);
+      this.plateNumber.setValidators([Validators.required]);
+      this.najmCaseId.setValidators([Validators.required]);
 
       }else{
         this.policyNumber.clearValidators();
+        this.policyNumber.reset();
+
+        this.claimNumber.clearValidators();
+        this.claimNumber.reset();
+
+        this.plateLetters.clearValidators();
+        this.plateLetters.reset();
+
+        this.plateNumber.clearValidators();
+        this.plateNumber.reset();
+
+        this.najmCaseId.clearValidators();
+        this.najmCaseId.reset();
       }
+
       this.policyNumber.updateValueAndValidity();
+      this.claimNumber.updateValueAndValidity();
+      this.plateLetters.updateValueAndValidity();
+      this.plateNumber.updateValueAndValidity();
+      this.najmCaseId.updateValueAndValidity();
     });
 }
 
