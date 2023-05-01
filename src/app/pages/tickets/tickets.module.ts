@@ -8,7 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NbInputModule, NbCardModule, NbButtonModule, NbActionsModule, NbUserModule, NbCheckboxModule, NbRadioModule, NbDatepickerModule, NbSelectModule, NbIconModule } from '@nebular/theme';
 import { FormsRoutingModule } from '../forms/forms-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
-import { SharedModule } from '../../shared/shared.module';
 import { ThemeModule } from '../../@theme/theme.module';
 
 const components = [

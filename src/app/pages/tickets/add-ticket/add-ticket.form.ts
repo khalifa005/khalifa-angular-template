@@ -23,7 +23,7 @@ export class TicketForm extends FormGroup {
   readonly title = this.get('title') as FormControl;
   readonly description = this.get('description') as FormControl;
   readonly file = this.get('file') as FormControl;
-  readonly image = this.get('image') as FormControl;
+  // readonly image = this.get('image') as FormControl;
 
   constructor(readonly model: TicketDto, readonly fb: FormBuilder = new FormBuilder())
   {
@@ -48,7 +48,7 @@ export class TicketForm extends FormGroup {
         title: [model?.title, Validators.required],
         description: [model?.description],
         file: [model?.file, [Validators.required, RequiredFileType('png')]],
-        image: [model?.file, [Validators.required]],
+        // image: [model?.file, [Validators.required]],
 
       // zip: [model?.zip, [Validators.required, Validators.maxLength(5), Validators.minLength(5)]]
     }).controls

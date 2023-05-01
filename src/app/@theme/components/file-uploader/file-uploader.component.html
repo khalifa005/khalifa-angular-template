@@ -1,0 +1,19 @@
+
+<input type="file"
+       class="file-input"
+       [accept]="requiredFileType"
+       (change)="onFileSelected($event)" #fileUpload>
+
+       <nb-actions class="nb-custom" size="medium">
+        <nb-action>
+          <nb-action class="action-icon" icon="attach-2-outline" (click)="fileUpload.click()"></nb-action>
+
+          <span translate>{{file ? file.name : "upload"}}</span>
+        </nb-action>
+      </nb-actions>
+
+<nb-progress-bar
+*ngIf="uploadProgress"
+[value]="uploadProgress"
+status="primary"
+[displayValue]="true"></nb-progress-bar>

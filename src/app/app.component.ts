@@ -9,13 +9,13 @@ import { AnalyticsService } from './@core/utils/analytics.service';
 import { SeoService } from './@core/utils/seo.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { LangChangeEvent, TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
-import { Subscription } from 'rxjs-compat';
 import { LanguageTrackerService } from './@core/utils/language-tracker.service';
 import { cwd } from 'process';
 import { I18nService } from './i18n';
 import { Logger } from './@core/utils/logger.service';
 import { Title } from '@angular/platform-browser';
 import { filter } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 
 @Component({

@@ -15,6 +15,7 @@ import {
   NbLayoutDirection,
   DEFAULT_MEDIA_BREAKPOINTS,
   NbPopoverModule,
+  NbProgressBarModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 
@@ -45,8 +46,12 @@ import { SwitcherComponent } from './components/switcher/switcher.component';
 import { LayoutDirectionSwitcherComponent } from './components/layout-direction-switcher/layout-direction-switcher.component';
 import { MissingTranslationHandler, TranslateCompiler, TranslateLoader, TranslateModule, TranslateParser } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-// import { LangSwitcherListComponent } from './components/language-switcher/language-switcher-list/language-switcher-list.component';
-// import { LangSwitcherComponent } from './components/language-switcher/language-switcher.component';
+// import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
+import { DndDirective } from './components/drag-filer-uploader/dnd.directive';
+import { DragFilerUploaderComponent } from './components/drag-filer-uploader/drag-filer-uploader.component';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -60,7 +65,10 @@ const NB_MODULES = [
   NbSelectModule,
   NbIconModule,
   NbEvaIconsModule,
-  NbPopoverModule
+  NbPopoverModule,
+  NbProgressBarModule,
+
+  ReactiveFormsModule,
 ];
 const COMPONENTS = [
   HeaderComponent,
@@ -72,6 +80,11 @@ const COMPONENTS = [
   TwoColumnsLayoutComponent,
   SwitcherComponent,
   LayoutDirectionSwitcherComponent,
+
+  FileUploaderComponent,
+  DragFilerUploaderComponent,
+  DndDirective,
+  // ProgressComponent,
 ];
 const PIPES = [
   CapitalizePipe,
@@ -85,11 +98,15 @@ const PIPES = [
 
 
 @NgModule({
-  imports: [CommonModule, ...NB_MODULES
-    // ,NbThemeModule.forRoot(nbThemeOptions, nbJSThemes, nbMediaBreakpoints, 'rtl')
-  ],
-  exports: [CommonModule, ...PIPES, ...COMPONENTS],
-  declarations: [...COMPONENTS, ...PIPES],
+  imports: [
+    CommonModule,
+     ...NB_MODULES],
+  exports: [
+    CommonModule,
+     ...PIPES,
+      ...COMPONENTS],
+  declarations: [
+    ...COMPONENTS, ...PIPES],
 })
 export class ThemeModule {
   static forRoot(): ModuleWithProviders<ThemeModule> {

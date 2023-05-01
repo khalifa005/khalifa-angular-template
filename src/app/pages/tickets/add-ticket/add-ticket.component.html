@@ -30,6 +30,16 @@
           *ngIf="form.get('categoryId').invalid && (form.get('categoryId').dirty || form.get('categoryId').touched)">
           validations.please-provide-value
         </div>
+
+
+<!--
+          <div
+
+          class="text-danger"
+          *ngIf="form.get('categoryId').errors">
+          <div translate *ngIf="form.get('categoryId').errors.required"> validations.please-provide-value</div>
+          <div *ngIf="form.get('categoryId').errors.pattern">Date of Birth must be a valid date in the format YYYY-MM-DD</div>
+        </div> -->
       </div>
 
       <div class="form-group">
@@ -64,8 +74,11 @@
         class="d-inline"
         id="caseTitleTypeId"
         [status]=" (form.get('caseTitleTypeId').invalid && (form.get('caseTitleTypeId').dirty || form.get('caseTitleTypeId').touched)) ? 'danger' : null"
+        [disabled]="  form.get('insuranceTypeId').value !== -1 ? false : true"
 
         formControlName="caseTitleTypeId">
+        <nb-option [value]="dropDownAllOption.id" >
+          {{dropDownAllOption.nameEn | translator : dropDownAllOption.nameAr}}</nb-option>
 
           <nb-option *ngFor="let x of caseTitleTypes" [value]="x.id" >
             {{x.nameEn | translator : x.nameAr}}
@@ -350,6 +363,31 @@
          validations.please-provide-value
         </div>
       </div>
+<!--
+      <div class="form-group">
+      <label class="label" translate>ticket.file</label>
+      <ngx-file-uploader [formcontrol]="file"  [progress]="progress" requiredFileType="image/png"></ngx-file-uploader>
+      </div> -->
+
+      <div class="form-group">
+      <label class="label" translate>ticket.file</label>
+
+      <ngx-drag-filer-uploader></ngx-drag-filer-uploader>
+      </div>
+
+
+      <!-- <div class="form-group">
+        image with preview
+        <button type="button" (click)="fileUplaoder.click()">Upload</button>
+
+        <input type="file" #fileUplaoder (change)="onSelect($event)">
+        <div class="preview-image" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+          <img [src]="imagePreview" [alt]="form.value.title">
+        </div>
+        <br>
+
+      </div> -->
+
 
     </nb-card-body>
   </nb-card>

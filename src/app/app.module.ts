@@ -17,8 +17,7 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { SharedModule } from './shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { MyComponentComponent } from './my-component/my-component.component';
 
@@ -46,7 +45,6 @@ import { MyComponentComponent } from './my-component/my-component.component';
     //what we added start from here
     NbLayoutModule,
     TranslateModule.forRoot(),
-    SharedModule,
 
     ThemeModule,
     AppRoutingModule,
