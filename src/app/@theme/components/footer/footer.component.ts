@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.scss'],
   template: `
     <span class="created-by">
-      Created with ♥ by <b><a href="https://github.com/khalifa005/khalifa-angular-template" target="_blank">khalifa</a></b> 2023
+      @Copyright  <b><a href="https://github.com/khalifa005/khalifa-angular-template" target="_blank">ACIG</a></b> 2023
     </span>
     <div class="socials">
       <a href="https://github.com/khalifa005" target="_blank" class="ion ion-social-github"></a>
