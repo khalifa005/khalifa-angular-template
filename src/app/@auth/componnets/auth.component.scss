@@ -1,6 +1,14 @@
-
-.appearance-filled,.appearance-outline {
+.appearance-filled,
+.appearance-outline {
   text-transform: none !important;
+  margin: 2px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+.appearance-outline {
+  width: fit-content !important;
+ }
 }
 
 .backgroung-image {

@@ -1,5 +1,5 @@
 import { LanguageEnum } from './../../@core/enums/language.enum';
-import { I18nService } from '../../i18n/i18n.service';
+import { I18nService } from '../../@core/utils/i18n/i18n.service';
 import { Inject, LOCALE_ID, Pipe, PipeTransform } from "@angular/core";
 
 //how to use it

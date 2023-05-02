@@ -70,7 +70,8 @@ const NB_MODULES = [
   NbProgressBarModule,
 
   ReactiveFormsModule,
-  FormsModule
+  FormsModule,
+  TranslateModule,
 ];
 const COMPONENTS = [
   HeaderComponent,

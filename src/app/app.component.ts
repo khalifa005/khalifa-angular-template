@@ -11,7 +11,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { LangChangeEvent, TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import { LanguageTrackerService } from './@core/utils/language-tracker.service';
 import { cwd } from 'process';
-import { I18nService } from './i18n';
+import { I18nService } from './@core/utils/i18n';
 import { Logger } from './@core/utils/logger.service';
 import { Title } from '@angular/platform-browser';
 import { filter } from 'rxjs/operators';
@@ -48,7 +48,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     //START POINT OF THE APPLICATION FIRST com will render
     this.analytics.trackPageViews();
-    // this.seoService.trackCanonicalChanges();
+    this.seoService.trackCanonicalChanges();
 
     if (environment.production) {
       Logger.enableProductionMode();

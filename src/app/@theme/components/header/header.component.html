@@ -4,15 +4,12 @@
       <nb-icon icon="menu-2-outline"></nb-icon>
     </a>
     <a class="logo"  (click)="navigateHome()">
-      <img src="../../../../assets/images/ACIG-Logo.png" alt="" height="55 px" width="120"> </a>
+      <!-- <img src="../../../../assets/images/ACIG-Logo.png" alt="" height="55 px" width="120"> </a> -->
 
-      <!-- <img src="../../../../assets/images/ACIG.png" alt="" height="60 px" width="210"> </a> -->
+      <img src="../../../../assets/images/ACIG.png" alt="" height="60 px" width="210"> </a>
   </div>
-  <nb-select class="ml-5" [selected]="currentTheme" (selectedChange)="changeTheme($event)" status="primary">
-    <nb-option *ngFor="let theme of themes" [value]="theme.value"> {{ theme.name }}</nb-option>
-  </nb-select>
 
-  <ngx-layout-direction-switcher class="direction-switcher"></ngx-layout-direction-switcher>
+
 </div>
 
 <div class="header-container">
@@ -20,9 +17,23 @@
 
     <nb-action class="control-item">
       <!-- <nb-search type="rotate-layout"></nb-search> -->
+      <ngx-layout-direction-switcher class="control-item direction-switcher"></ngx-layout-direction-switcher>
+
     </nb-action>
-    <!-- <ngx-lang-switcher></ngx-lang-switcher> -->
+
+    <nb-action class="control-item">
+      <nb-select class="control-item ml-5" [selected]="currentTheme" (selectedChange)="changeTheme($event)" status="primary">
+        <nb-option *ngFor="let theme of themes" [value]="theme.value"> {{ theme.name }}</nb-option>
+      </nb-select>
+    </nb-action>
+
+    <!-- <nb-action class="control-item">
+      <nb-select class="control-item ml-5" [selected]="defaultLang" (selectedChange)="toggleDirection($event)" status="primary">
+        <nb-option *ngFor="let lang of supportedLanguages" [value]="lang"> {{ lang }}</nb-option>
+      </nb-select>
+    </nb-action> -->
     <!-- <nb-action class="control-item" icon="email-outline"></nb-action> -->
+
 
     <nb-action
     *ngIf="isAuthenticated"

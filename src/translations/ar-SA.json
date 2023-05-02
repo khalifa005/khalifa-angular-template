@@ -11,6 +11,8 @@
   "upload": "لايوجد ملف",
   "forget-password-title" : "تعديل كلمة المرور",
   "welcomeMessage": "{{ firstName }}مرحبا بك يا !",
+  "ar": "عربي",
+  "en": "انجليزي",
 
   "sideMenuItems": {
     "test": ""

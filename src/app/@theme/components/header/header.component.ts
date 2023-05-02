@@ -1,10 +1,11 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
+import { NbLayoutDirection, NbLayoutDirectionService, NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
 
 import { UserData } from '../../../@core/data/users';
 import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { I18nService } from '../../../@core/utils/i18n/i18n.service';
 
 @Component({
   selector: 'ngx-header',
@@ -36,7 +37,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     },
   ];
 
+  supportedLanguages!: string[];
+  directions = NbLayoutDirection;
+  currentDirection: NbLayoutDirection;
   currentTheme = 'default';
+  defaultLang;
 
   userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
 
@@ -45,11 +50,24 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private themeService: NbThemeService,
               private userService: UserData,
               private layoutService: LayoutService,
+              private i18nService: I18nService,
+              private directionService: NbLayoutDirectionService,
               private breakpointService: NbMediaBreakpointsService) {
+
+    this.directionService.onDirectionChange()
+    .pipe(takeUntil(this.destroy$))
+    .subscribe(newDirection => this.currentDirection = newDirection);
+
+
+    if( this.i18nService.language === "ar-SA"){
+      this.directionService.setDirection(this.directions.RTL);
+    }
   }
 
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
+    this.defaultLang = this.i18nService.language;
+    this.supportedLanguages = this.i18nService.supportedLanguages;
 
     this.userService.getUsers()
       .pipe(takeUntil(this.destroy$))
@@ -69,6 +87,29 @@ export class HeaderComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$),
       )
       .subscribe(themeName => this.currentTheme = themeName);
+  }
+
+  toggleDirection(newDirection) {
+    this.directionService.setDirection(newDirection);
+//keep this as it will change the lang
+    if(newDirection == "rtl"){
+      this.i18nService.language = 'ar-SA';
+      //([`/${url}`])
+
+      // this.router.navigateByUrl('/',{skipLocationChange:true}).then(()=>{
+      //   this.router.navigate([`/`]).then(()=>{
+      //   console.log(`After navigation I am on:${this.router.url}`)
+      //   })
+      //   })
+    }else{
+      this.i18nService.language = 'en-US';
+    //  this.languageTrackerService.SendMessage("en");
+    // this.router.navigateByUrl('/',{skipLocationChange:true}).then(()=>{
+    //   this.router.navigate([`/`]).then(()=>{
+    //   console.log(`After navigation I am on:${this.router.url}`)
+    //   })
+    //   })
+    }
   }
 
   ngOnDestroy() {

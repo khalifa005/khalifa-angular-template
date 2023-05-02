@@ -4,17 +4,17 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageTrackerService } from '../../../@core/utils/language-tracker.service';
-import { I18nService } from '../../../i18n/i18n.service';
+import { I18nService } from '../../../@core/utils/i18n/i18n.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-layout-direction-switcher',
   template: `
-    <ngx-switcher
-      [firstValue]="directions.RTL"
-      [secondValue]="directions.LTR"
-      [firstValueLabel]="'Ar'"
-      [secondValueLabel]="'En'"
+    <ngx-switcher translate
+      [firstValue]="directions.LTR"
+      [secondValue]="directions.RTL"
+      [firstValueLabel]="'en' | translate"
+      [secondValueLabel]="'ar' | translate"
       [value]="currentDirection"
       (valueChange)="toggleDirection($event)"
       [vertical]="vertical">

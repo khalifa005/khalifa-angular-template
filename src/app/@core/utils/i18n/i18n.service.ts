@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
-import enUS from '../../translations/en-US.json';
-import arSa from '../../translations/ar-SA.json';
-import { Logger } from '../@core/utils/logger.service';
+import enUS from '../../../../translations/en-US.json';
+import arSa from '../../../../translations/ar-SA.json';
+import { Logger } from '../logger.service';
 // import frFR from '../../translations/fr-FR.json';
 
 const log = new Logger('I18nService');
