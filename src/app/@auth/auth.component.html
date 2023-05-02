@@ -1,0 +1,13 @@
+<nb-layout>
+  <nb-layout-header fixed>
+    <ngx-header [isAuthenticated]="isAuthenticated"></ngx-header>
+  </nb-layout-header>
+
+  <nb-layout-column class="backgroung-image">
+     <router-outlet></router-outlet>
+  </nb-layout-column>
+
+  <nb-layout-footer fixed>
+    <ngx-footer></ngx-footer>
+  </nb-layout-footer>
+</nb-layout>

@@ -1,123 +1,233 @@
-<h1 id="title" class="title">Register</h1>
-
-<nb-alert *ngIf="showMessages.error && errors?.length && !submitted" outline="danger" role="alert">
-  <p class="alert-title"><b>Oh snap!</b></p>
-  <ul class="alert-message-list">
-    <li *ngFor="let error of errors" class="alert-message">{{ error }}</li>
-  </ul>
-</nb-alert>
-
-<nb-alert *ngIf="showMessages.success && messages?.length && !submitted" outline="success" role="alert">
-  <p class="alert-title"><b>Hooray!</b></p>
-  <ul class="alert-message-list">
-    <li *ngFor="let message of messages" class="alert-message">{{ message }}</li>
-  </ul>
-</nb-alert>
-
-<form (ngSubmit)="register()"  aria-labelledby="title">
-
-  <div class="form-control-group">
-    <label class="label" for="input-name">Full name:</label>
-    <input nbInput
-           id="input-name"
-           name="fullName"
-           placeholder="Full name"
-           autofocus
-           fullWidth
-           fieldSize="large"
-          >
-    <ng-container >
-      <p class="caption status-danger" >
-        Full name is required!
-      </p>
-      <p class="caption status-danger" >
-        Full name should contains
-        characters
-      </p>
-    </ng-container>
+<div class="row acig-pt-10p">
+  <div class="col-md-1"></div>
+  <div class="col-md-3">
+    <nb-card>
+      <nb-card-header></nb-card-header>
+      <nb-card-body style="text-align: center !important;">
+        <img src="../../../../assets/images/acig_register_logo.png">
+      </nb-card-body>
+    </nb-card>
   </div>
 
-  <div class="form-control-group">
-    <label class="label" for="input-email">Email address:</label>
-    <input nbInput
-           id="input-email"
-           name="email"
-           pattern=".+@.+..+"
-           placeholder="Email address"
-           fullWidth
-           fieldSize="large"
+  <div class="col-md-7">
+    <nb-card>
+      <nb-card-header translate>registeration.register-new-user</nb-card-header>
+      <nb-card-body>
+        <div class="col-md-12">
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+
+            <div class="row">
+              <div class="col-sm-4">
+                <!--firstname-->
+                <div class="form-group" translate>
+                  <label class="label" for="firstname" translate>registeration.firstname </label>
+
+                  <input type="text" nbInput fullWidth id="firstname" name="firstname" formControlName="firstname"
+                    placeholder="{{ 'registeration.firstname' | translate }}"
+                    [status]=" !firstname?.valid && (firstname?.dirty ||firstname?.touched) ? 'danger' : null">
+
+                  <div *ngIf="!firstname?.valid && (firstname?.dirty ||firstname?.touched)">
+                    <div class="text-danger" [hidden]="!firstname.errors.required" translate>
+                      validations.field-required
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-4">
+                <!--middlename-->
+                <div class="form-group">
+                  <label class="label" for="middlename" translate>registeration.middlename </label>
+
+                  <input type="text" nbInput fullWidth id="middlename" name="middlename"
+                    formControlName="middlename" placeholder="{{ 'registeration.middlename' | translate }}"
+                    [status]=" !middlename?.valid && (middlename?.dirty ||middlename?.touched) ? 'danger' : null">
+
+                  <div *ngIf="!middlename?.valid && (middlename?.dirty ||middlename?.touched)">
+                    <div class="text-danger" [hidden]="!middlename.errors.required" translate>
+                      validations.field-required
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-4">
+                <!--lastname-->
+                <div class="form-group">
+                  <label class="label" for="lastname" translate>registeration.lastname </label>
+
+                  <input type="text" nbInput fullWidth id="lastname" name="lastname" formControlName="lastname"
+                    placeholder="{{ 'registeration.lastname' | translate }}"
+                    [status]=" !lastname?.valid && (lastname?.dirty ||lastname?.touched) ? 'danger' : null">
+
+                  <div *ngIf="!lastname?.valid && (lastname?.dirty ||lastname?.touched)">
+                    <div class="text-danger" [hidden]="!lastname.errors.required" translate>
+                      validations.field-required
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-sm-4">
+                <!--email-->
+                <div class="form-group">
+                  <label class="label" for="email" translate>registeration.email</label>
+
+                  <input type="email" nbInput fullWidth id="email" name="email" formControlName="email"
+                    placeholder="{{ 'registeration.email' | translate }}"
+                    [status]=" !email?.valid && (email?.dirty ||email?.touched) ? 'danger' : null">
+
+                  <div *ngIf="!email?.valid && (email?.dirty ||email?.touched)">
+                    <div class="text-danger" [hidden]="!email.errors.required" translate>
+                      validations.field-required
+                    </div>
+                    <div class="text-danger" [hidden]="!email.errors.email" translate>
+                      registeration.please-enter-valid-email
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <!--username-->
+                <div class="form-group">
+                  <label class="label" for="username" translate>registeration.username</label>
+
+                  <input type="text" nbInput fullWidth id="username" name="username" formControlName="username"
+                    placeholder="{{ 'registeration.username' | translate }}"
+                    [status]=" !username?.valid && (username?.dirty ||username?.touched) ? 'danger' : null">
+
+                  <div *ngIf="!username?.valid && (username?.dirty ||username?.touched)">
+                    <div class="text-danger" [hidden]="!username.errors.required" translate>
+                      validations.field-required
+                    </div>
+                    <div class="text-danger" [hidden]="!username.errors.minlength">
+                      {{ 'registeration.please-enter-at-least-characters' | translate: {param:
+                      username.errors.minlength?.requiredLength} }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-4">
+                <!--password-->
+                <div class="form-group">
+                  <label class="label" for="password" translate>registeration.password</label>
+
+                  <input type="password" nbInput fullWidth id="password" name="password" formControlName="password"
+                    placeholder="{{ 'registeration.password' | translate }}"
+                    [status]=" !password?.valid && (password?.dirty ||password?.touched) ? 'danger' : null">
+
+                  <div *ngIf="!password?.valid && (password?.dirty ||password?.touched)">
+                    <div class="text-danger" [hidden]="!password.errors.required" translate>
+                      validations.field-required
+                    </div>
+                    <div class="text-danger" [hidden]="!password.errors.pattern" translate>
+                      registeration.password-validation
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
-       >
-    <ng-container >
-      <p class="caption status-danger">
-        Email is required!
-      </p>
-      <p class="caption status-danger">
-        Email should be the real one!
-      </p>
-    </ng-container>
+            <div class="row">
+              <div class="col-sm-4">
+                <!--mobilenumber-->
+                <div class="form-group">
+                  <label class="label" for="mobilenumber" translate>registeration.mobilenumber</label>
+
+                  <input type="tel" nbInput fullWidth id="mobilenumber" name="mobilenumber"
+                    formControlName="mobilenumber" placeholder="0512345678"
+                    [status]=" !mobilenumber?.valid && (mobilenumber?.dirty ||mobilenumber?.touched) ? 'danger' : null">
+
+                  <div *ngIf="!mobilenumber?.valid && (mobilenumber?.dirty ||mobilenumber?.touched)">
+                    <div class="text-danger" [hidden]="!mobilenumber.errors.required" translate>
+                      validations.field-required
+                    </div>
+                    <div class="text-danger" [hidden]="!mobilenumber.errors?.pattern" translate>
+                      validations.invalid-field-value
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <!--idType-->
+                <div class="form-group">
+                  <label class="label" for="idType" translate>registeration.idtype</label>
+                  <nb-select fullWidth selected="1" id="idType" name="idType"
+                    (selectedChange)="changeIDTypeOption($event)" formControlName="idType">
+                    <nb-option value="1">National ID</nb-option>
+                    <nb-option value="2">Passport</nb-option>
+                  </nb-select>
+                </div>
+
+              </div>
+              <div class="col-sm-4 div-nataional">
+                <!--nataionalid-->
+                <div class="form-group ">
+                  <label class="label" for="nataionalid" translate>registeration.nationalid</label>
+
+                  <input type="text" nbInput fullWidth id="nataionalid" name="nataionalid"
+                    formControlName="nataionalid" placeholder="{{ 'registeration.nationalid' | translate }}"
+                    [status]=" !nataionalid?.valid && (nataionalid?.dirty ||nataionalid?.touched) ? 'danger' : null">
+
+                  <div *ngIf="!nataionalid?.valid && (nataionalid?.dirty ||nataionalid?.touched)">
+                    <div class="text-danger" [hidden]="!nataionalid.errors.required" translate>
+                      validations.field-required
+                    </div>
+                    <div class="text-danger" [hidden]="!nataionalid.errors.minlength">
+                      {{ 'registeration.please-enter-at-least-characters' | translate: {param :
+                      nataionalid.errors.minlength?.requiredLength} }}
+                    </div>
+                    <div class="text-danger" [hidden]="!nataionalid.errors.maxlength">
+                      {{ 'registeration.please-enter-at-least-characters' | translate: {param:
+                      nataionalid.errors.maxlength?.requiredLength} }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 div-Passport" style="display: none;">
+                <!--Passport-->
+                <div class="form-group">
+                  <label class="label" for="Passport" translate>registeration.passport</label>
+
+                  <input type="text" nbInput fullWidth id="passport" name="passport" formControlName="passport"
+                    placeholder="{{ 'registeration.passport' | translate }}"
+                    [status]=" !passport?.valid && (passport?.dirty ||passport?.touched) ? 'danger' : null">
+
+                  <div *ngIf="!passport?.valid && (passport?.dirty ||passport?.touched)">
+                    <div class="text-danger" [hidden]="!passport.errors.required" translate>
+                      validations.field-required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-12" style="text-align: center;">
+                <button type="submit" nbButton status="primary" translate>registeration.register</button>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12" style="text-align: center;">
+                <section class="another-action" translate>
+                  registeration.already-have-account <a class="text-link" routerLink="../login"
+                    translate>registeration.log-in</a>
+                </section>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </nb-card-body>
+    </nb-card>
   </div>
+  <div class="col-md-1"></div>
+</div>
 
-  <div class="form-control-group">
-    <label class="label" for="input-password">Password:</label>
-    <input nbInput
-           type="password"
-           id="input-password"
-           name="password"
-           placeholder="Password"
-           fullWidth
-           fieldSize="large"
-         >
-    <ng-container >
-      <p class="caption status-danger" >
-        Password is required!
-      </p>
-      <p class="caption status-danger" >
-        Password should contain
-
-        characters
-      </p>
-    </ng-container>
-  </div>
-
-  <div class="form-control-group">
-    <label class="label" for="input-re-password">Repeat password:</label>
-    <input nbInput
-           type="password"
-           id="input-re-password"
-           name="rePass"
-           placeholder="Confirm Password"
-           fullWidth
-           fieldSize="large"
-         >
-      <p class="caption status-danger">
-        Password confirmation is required!
-      </p>
-      <p class="caption status-danger" >
-        Password does not match the confirm password.
-      </p>
-  </div>
-
-  <div class="form-control-group accept-group" >
-    <nb-checkbox name="terms"  >
-      Agree to <a href="#" target="_blank"><strong>Terms & Conditions</strong></a>
-    </nb-checkbox>
-  </div>
-
-  <button nbButton
-          fullWidth
-          status="primary"
-          size="large"
-          [disabled]="submitted"
-          [class.btn-pulse]="submitted">
-    Register
-  </button>
-</form>
-
-
-<section class="another-action" aria-label="Sign in">
-  Already have an account? <a class="text-link" routerLink="../login">Log in</a>
-</section>
-
-<nb-layout style="display: none"></nb-layout>
+<!-- <nb-layout style="display: none"></nb-layout> -->

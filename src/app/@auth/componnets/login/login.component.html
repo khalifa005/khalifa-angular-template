@@ -1,1 +1,91 @@
-<h1>login works</h1>
+
+<div class="row acig-pt-10p">
+  <div class="col-md-3"></div>
+  <div class="col-md-3">
+      <nb-card>
+          <!-- <nb-card-header></nb-card-header> -->
+          <nb-card-body style="text-align: center !important;padding:0">
+              <img src="../../../../assets/images/acig_register_logo.png" style=" width: 100%;">
+          </nb-card-body>
+      </nb-card>
+  </div>
+
+  <div class="col-md-3">
+      <nb-card>
+          <nb-card-header translate>registeration.log-in</nb-card-header>
+          <nb-card-body>
+              <div class="col-md-12">
+                  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+
+
+                      <div class="row">
+                          <div class="col-sm-12">
+                            <!--username-->
+                            <div class="form-group">
+                              <label class="label" for="username" translate>login.username</label>
+
+                              <input type="text" nbInput fullWidth id="username" name="username" formControlName="username"
+                                placeholder="{{ 'registeration.username' | translate }}"
+                                [status]=" !username?.valid && (username?.dirty ||username?.touched) ? 'danger' : null">
+
+                              <div *ngIf="!username?.valid && (username?.dirty ||username?.touched)">
+                                <div class="text-danger" [hidden]="!username.errors.required" translate>
+                                  validations.field-required
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-sm-12">
+                              <!--password-->
+                              <div class="form-group">
+                                <label class="label" for="password" translate>login.password</label>
+
+                                <input type="password" nbInput fullWidth id="password" name="password" formControlName="password"
+                                  placeholder="{{ 'registeration.password' | translate }}"
+                                  [status]=" !password?.valid && (password?.dirty ||password?.touched) ? 'danger' : null">
+
+                                <div *ngIf="!password?.valid && (password?.dirty ||password?.touched)">
+                                  <div class="text-danger" [hidden]="!password.errors.required" translate>
+                                    validations.field-required
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      <div class="form-group row " style="text-align: center;">
+                          <div class="col-sm-1">
+
+                          </div>
+                          <div class="col-sm-4">
+                              <button type="submit" nbButton status="primary"
+                                  translate>registeration.log-in</button>
+                          </div>
+                          <div class="col-sm-4" >
+                              <button type="button" nbButton outline status="primary"
+                                  translate routerLink="../request-password" translate>login.forget-password-lnk</button>
+                          </div>
+                          <div class="col-sm-3">
+
+                          </div>
+                      </div>
+
+                      <div class="row">
+                          <div class="col-sm-12" style="text-align: center;">
+                              <section class="another-action" translate>
+                                  <a class="text-link" routerLink="../register"
+                                      translate>registeration.register-new-user</a>
+                              </section>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </nb-card-body>
+      </nb-card>
+  </div>
+  <div class="col-md-3"></div>
+</div>
+
+<!-- <nb-layout style="display: none"></nb-layout> -->

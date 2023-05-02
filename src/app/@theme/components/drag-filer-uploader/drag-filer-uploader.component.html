@@ -1,4 +1,8 @@
 <!-- [formControl]="control" -->
+<!-- <input type="file" #fileSelector
+formControlName="file_selection"
+[accept]="config.MIME_types_accepted"
+multiple="{{config.is_multiple_selection_allowed}}"> -->
 
 <div class="container" appDnd (fileDropped)="onFileDropped($event)">
 
@@ -6,7 +10,6 @@
    type="file"
    #fileDropRef
    id="fileDropRef"
-   multiple
    [accept]="requiredFileType"
    (change)="fileBrowseHandler($event.target.files)" />
 

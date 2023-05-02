@@ -9,17 +9,41 @@
   "address": "العنوان",
   "submit": "حفظ",
   "upload": "لايوجد ملف",
-
+  "forget-password-title" : "تعديل كلمة المرور",
   "welcomeMessage": "{{ firstName }}مرحبا بك يا !",
 
   "sideMenuItems": {
     "test": ""
   },
 
+  "recovery-now" : "إسترجاع الأن",
+
   "login": {
-    "username": "المستخدم ",
-    "password": "الرقم السري"
+    "username": "اسم المستخدم",
+    "password": "كلمة المرور",
+    "forget-password-lnk" : "نسيت كلمة المرور"
   },
+
+  "registeration" :{
+    "register-new-user" : "تسجيل مستخدم جديد",
+    "firstname" : "الاسم الاول",
+    "middlename" : "الاسم الثاني",
+    "lastname" : "الاسم الاخير",
+    "email" : "البريد الالكتروني",
+    "username" : "اسم المستخدم",
+    "password" : "كلمة المرور",
+    "mobilenumber" : "رقم الجوال",
+    "idtype" : "نوع الهوية",
+    "nationalid" : "رقم الهوية / الأقامة",
+    "passport" : "جواز السفر",
+    "register" : "تسجيل",
+    "please-enter-valid-email" : "من فضلك ادخل بريد الكترونى صحيح",
+    "please-enter-at-least-characters" : "الرجاء إدخال {{param}} حرفًا على الأقل.",
+    "password-validation" : "يجب أن تحتوي على أحرف كبيرة وصغيرة ورموز خاصة",
+    "already-have-account": "هل لديك حساب؟",
+    "log-in" : "تسجيل الدخول"
+  },
+
 
   "ticket": {
     "title": "عنوان الطلب",
@@ -46,8 +70,11 @@
     "select-category": "اختار نوع الطلب",
     "order": "تصنيف الطلب"
   },
+
   "validations": {
-    "please-provide-value": "الرجاء ادخال قيمة"
+    "please-provide-value": "الرجاء ادخال قيمة",
+    "field-required" : "هذاالحقل مطلوب",
+    "invalid-field-value" : "الرجاء إدخال قيمة صحيحة."
   },
 
   "forms": {

@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   template: `
     <nb-layout windowMode>
       <nb-layout-header fixed>
-        <ngx-header></ngx-header>
+        <ngx-header [isAuthenticated]="isAuthenticated"></ngx-header>
       </nb-layout-header>
 
       <nb-sidebar  class="menu-sidebar" tag="menu-sidebar" responsive start>
@@ -24,4 +24,7 @@ import { Component } from '@angular/core';
     </nb-layout>
   `,
 })
-export class OneColumnLayoutComponent {}
+export class OneColumnLayoutComponent {
+
+  isAuthenticated = true;
+}

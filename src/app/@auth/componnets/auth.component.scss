@@ -1,39 +1,15 @@
-@use '../../theme/styles/globals' as *;
 
-:host {
-  $auth-layout-padding: 2.5rem;
+.appearance-filled,.appearance-outline {
+  text-transform: none !important;
+}
 
-  nb-card {
-    margin: 0;
-    height: calc(100vh - 2 * #{$auth-layout-padding});
-  }
+.backgroung-image
+{
+  background-image: url(../../../assets/images/site-crm-backgroung.png); 
+  background-size: 100% 100%;
+}
 
-  .navigation .link {
-    display: inline-block;
-    text-decoration: none;
-
-    nb-icon {
-      font-size: 2rem;
-      vertical-align: middle;
-    }
-  }
-
-  .links nb-icon {
-    font-size: 2.5rem;
-  }
-
-  nb-card-body {
-    display: flex;
-    width: 100%;
-  }
-
-
-  @include media-breakpoint-down(sm) {
-    nb-card {
-      border-radius: 0;
-      height: 100vh;
-    }
-  }
-
-
+.acig-pt-10p
+{
+  padding-top: 7% !important;
 }
