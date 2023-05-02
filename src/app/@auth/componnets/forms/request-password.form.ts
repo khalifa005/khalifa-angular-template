@@ -1,5 +1,5 @@
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { numeric } from "../../../@core/utils/static-data/form.regx";
+import { numeric } from "../../../@core/utils/static-data/form.validation-helpers";
 
 
 export class RequestPasswordDTO{

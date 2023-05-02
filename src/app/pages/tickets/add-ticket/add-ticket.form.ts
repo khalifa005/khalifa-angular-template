@@ -1,11 +1,12 @@
 import { AppDefaultValues } from './../../../@core/utils/static-data/default-values';
-import { RequiredFileType, numeric } from '../../../@core/utils/static-data/form.regx';
-import { alphaArabic } from '../../../@core/utils/static-data/form.regx';
-import { optionalCarPolicyRequiredValidator } from '../../../@core/utils/static-data/form.regx';
+import { RequiredFileType, numeric, RquiredFileUploadValidationSizeInMB } from '../../../@core/utils/static-data/form.validation-helpers';
+import { alphaArabic } from '../../../@core/utils/static-data/form.validation-helpers';
+import { optionalCarPolicyRequiredValidator } from '../../../@core/utils/static-data/form.validation-helpers';
 import { state } from "@angular/animations";
 import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms";
 import { zip } from "rxjs";
 import { TicketDto } from "../models/ticket.dto";
+import { calculatedFileSizeInKB } from '../../../@core/utils/helpers-function';
 
 export class TicketForm extends FormGroup {
   readonly categoryId = this.get('categoryId') as FormControl;
@@ -47,10 +48,8 @@ export class TicketForm extends FormGroup {
         cityId: [model?.cityId, [Validators.required,Validators.min(1)]],
         title: [model?.title, Validators.required],
         description: [model?.description],
-        file: [model?.file, [Validators.required, RequiredFileType('png')]],
-        // image: [model?.file, [Validators.required]],
-
-      // zip: [model?.zip, [Validators.required, Validators.maxLength(5), Validators.minLength(5)]]
+        // file: [model?.file, [Validators.required, RquiredFileUploadValidationSize(1)]],
+        file: [model?.file, [Validators.required, RequiredFileType('png'), RquiredFileUploadValidationSizeInMB(1)]],
     }).controls
 
     );

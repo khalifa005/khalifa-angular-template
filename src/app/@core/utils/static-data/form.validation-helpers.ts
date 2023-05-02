@@ -1,4 +1,5 @@
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from "@angular/forms"
+import { HTMLInputEvent, calculatedFileSizeInKB } from "../helpers-function";
 //use this in form validation
 
 // export const alpha: ValidatorFn = Validators.pattern('[a-zA-Z]*%content%#039;');
@@ -143,3 +144,25 @@ export function RequiredFileType( type: string ) {
     return null;
   };
 }
+
+export function RquiredFileUploadValidationSizeInMB(size: number) {
+  return function (control: FormControl) {
+    const file = control.value;
+    if ( file ) {
+      const extension = file.name.split('.')[1].toLowerCase();
+
+      let fileInKB = calculatedFileSizeInKB(size)
+      if (file.size > fileInKB ) {
+        return {
+          requiredFileSize: true
+        };
+      }
+
+      return null;
+    }
+
+    return null;
+  };
+
+}
+
