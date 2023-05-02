@@ -57,7 +57,7 @@
     }
 
 
-    display: flex;
+    // display: flex;
     flex-grow: 1;
 
     .name {
@@ -76,7 +76,7 @@
     }
 
     .info {
-      width: 100%
+      width: 100%;
     }
   }
 }
@@ -92,7 +92,7 @@
   }
 
   20% {
-    transform: translate(-3px, 0px) rotate(1deg);
+    transform: translate(-3px, 0) rotate(1deg);
   }
 
   30% {
