@@ -2,13 +2,13 @@
   "compileOnSave": false,
   "compilerOptions": {
     "importHelpers": true,
-    "baseUrl": ".",
-    "paths": {
-      // "@env": ["src/environments/environment"],
-      // "@shared/*": ["src/app/shared/*"],
-      // "@core/*": ["src/app/core/*"],
-      // "@pages/*":["src/app/pages/*"]
-    },
+    // "baseUrl": ".",
+    // "paths": {
+    //   // "@env": ["src/environments/environment"],
+    //   // "@shared/*": ["src/app/shared/*"],
+    //   // "@core/*": ["src/app/core/*"],
+    //   // "@pages/*":["src/app/pages/*"]
+    // },
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports":true,
     "module": "es2020",

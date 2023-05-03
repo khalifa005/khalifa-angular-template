@@ -9,6 +9,9 @@ import { NbInputModule, NbCardModule, NbButtonModule, NbActionsModule, NbUserMod
 import { FormsRoutingModule } from '../forms/forms-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemeModule } from '../../@theme/theme.module';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 
 const components = [
   TicketsComponent,
@@ -27,7 +30,6 @@ const components = [
     TranslateModule,
     ThemeModule,
     // ngFormsModule,
-
     NbInputModule,
     NbCardModule,
     NbButtonModule,
@@ -39,6 +41,11 @@ const components = [
     FormsRoutingModule,
     NbSelectModule,
     NbIconModule,
+
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+
     // MatFormFieldModule,
     // MatInputModule,
   ],

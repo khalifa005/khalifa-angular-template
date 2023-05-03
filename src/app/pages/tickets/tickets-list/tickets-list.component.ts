@@ -9,7 +9,11 @@ import { ToastNotificationService } from '../../../@core/utils/toast-notificatio
 })
 export class TicketsListComponent implements OnInit {
 
+  // employees: Employee[] = [];
+  message = '';
+
   constructor(private toastNotificationService:ToastNotificationService) { }
+
 
   ngOnInit() {
     this.toastNotificationService.showToast(NotitficationsDefaultValues.Primary, 'Error', 'test error');
