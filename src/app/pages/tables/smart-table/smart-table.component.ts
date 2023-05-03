@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { SmartTableData } from '../../../@core/data/smart-table';
 import { Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
+import { TableCellContentComponent } from './table-cell-content/table-cell-content.component';
 
 @Component({
   selector: 'ngx-smart-table',
@@ -34,10 +35,19 @@ export class SmartTableComponent implements OnInit {
     columns: {
       id: {
         title: 'ID',
-        type: 'number',
+        type: 'custom',
+      renderComponent: TableCellContentComponent,
         editable: false,
         addable: false,
         filter: false,
+        compareFunction(direction: any, a: any, b: any) {
+
+        },
+        // valuePrepareFunction: (data) => { return '<p>' + data + '</p>'; },
+      //   valuePrepareFunction: (cell, row) => {
+      //     return `<span style="color:${cell};" >${cell}</span>`;
+      // },
+
         sort: {
           type: 'custom',
         }
