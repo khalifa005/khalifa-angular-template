@@ -30,20 +30,7 @@ export class SmartTableComponent implements OnInit {
       add: false,
       edit: false,
   },
-    // add: {
-    //   addButtonContent: '<i class="nb-plus"></i>',
-    //   createButtonContent: '<i class="nb-checkmark"></i>',
-    //   cancelButtonContent: '<i class="nb-close"></i>',
-    // },
-    // edit: {
-    //   editButtonContent: '<i class="nb-edit"></i>',
-    //   saveButtonContent: '<i class="nb-checkmark"></i>',
-    //   cancelButtonContent: '<i class="nb-close"></i>',
-    // },
-    // delete: {
-    //   deleteButtonContent: '<i class="nb-trash"></i>',
-    //   confirmDelete: true,
-    // },
+
     columns: {
       id: {
         title: 'ID',
@@ -51,6 +38,10 @@ export class SmartTableComponent implements OnInit {
         editable: false,
         addable: false,
         filter: false,
+        sort: {
+          type: 'custom',
+        }
+
       },
       firstName: {
         title: 'First Name',
@@ -58,6 +49,7 @@ export class SmartTableComponent implements OnInit {
         editable: false,
         addable: false,
         filter: false,
+        sort: false
       },
       lastName: {
         title: 'Last Name',
@@ -97,6 +89,7 @@ export class SmartTableComponent implements OnInit {
     // this.initData();
     const data = this.service.getData();
 
+    this.source.setSort( [],false)
     this.source.load(data);
 
   }
