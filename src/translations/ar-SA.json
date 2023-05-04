@@ -48,6 +48,7 @@
 
 
   "ticket": {
+    "myTicketsList": "طلباتي",
     "title": "عنوان الطلب",
     "category": "نوع",
     "insuranceType": "نوع التامين",

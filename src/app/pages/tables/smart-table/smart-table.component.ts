@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { Subscription } from 'rxjs';
 
@@ -16,7 +16,12 @@ import { IPaginatorModel } from '../../../@core/models/interfaces/IPaginator.int
   templateUrl: './smart-table.component.html',
   styleUrls: ['./smart-table.component.scss'],
 })
-export class SmartTableComponent implements OnInit {
+export class SmartTableComponent implements OnInit, OnDestroy {
+
+  private subs: Subscription[] = [];
+
+  @Input() tableHeaderTitle: string;
+  // @Input() tableHeaderTitle: any[];
 
   loger = new Logger(SmartTableComponent.name);
   source: LocalDataSource = new LocalDataSource();
@@ -122,7 +127,6 @@ export class SmartTableComponent implements OnInit {
       let convertedValue = val as ISmartTableModel<TetsUserDataModel>;
       this.loger.debug("table change tracker started");
       this.loger.debug(convertedValue.action)
-
       // this.loger.debug(convertedValue);
 
       if(SmartTableEvents.Refresh == convertedValue.action){
@@ -147,6 +151,7 @@ export class SmartTableComponent implements OnInit {
       }
     });
 
+    this.subs.push(tableSub);
   }
 
   onPageSizeChange(newPageSize) {
@@ -165,4 +170,7 @@ export class SmartTableComponent implements OnInit {
     this.loger.debug("eventData.pager");
   }
 
+  ngOnDestroy() {
+    this.subs.forEach((s) => s.unsubscribe());
+  }
 }

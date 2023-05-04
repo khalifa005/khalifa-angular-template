@@ -19,6 +19,8 @@
   "recovery-now" : "Recovery Now",
 
   "ticket": {
+    "myTicketsList": "My tickets",
+
     "title": "Ticket title",
     "category": "Category",
     "insuranceType": "Insurance type",

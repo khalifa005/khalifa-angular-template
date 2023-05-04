@@ -9,6 +9,7 @@ import { TableCellContentComponent } from './smart-table/table-cell-content/tabl
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     NbSelectModule,
     TranslateModule,
+    NgxPaginationModule
   ],
   declarations: [
     ...routedComponents,

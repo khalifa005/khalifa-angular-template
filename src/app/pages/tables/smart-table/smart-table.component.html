@@ -1,6 +1,7 @@
 <nb-card>
   <nb-card-header>
     Smart Table
+    <!-- {{tableHeaderTitle}} -->
   </nb-card-header>
 
   <nb-card-body *ngIf="data.length > 0">
@@ -18,5 +19,6 @@
      [totalItems]="totalItems"
      [currentPage]="currentPage"
      [pageSize]="pageSize" ></ngx-paginator>
+
   </nb-card-body>
 </nb-card>

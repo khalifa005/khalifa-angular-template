@@ -1,3 +1,24 @@
-<p>
-  tickets-list works!
-</p>
+<nb-card>
+  <nb-card-header translate>
+    ticket.myTicketsList
+    <!-- {{tableHeaderTitle}} -->
+  </nb-card-header>
+
+  <nb-card-body *ngIf="data.length > 0">
+
+  <label for="pageSize" class="label pl-3 pr-3" translate>table.selectPageSize</label>
+
+    <select id="pageSize" [(ngModel)]="pageSize" (ngModelChange)="onPageSizeChange($event)" name="sel3">
+      <option [ngValue]="item" *ngFor="let item of itemsPerPage">{{item}}</option>
+    </select>
+
+    <ng2-smart-table [settings]="settings" [source]="source" translate> </ng2-smart-table>
+
+    <ngx-paginator
+     (pagerChangedEmitter)="onPagerChanged($event)"
+     [totalItems]="totalItems"
+     [currentPage]="currentPage"
+     [pageSize]="pageSize" ></ngx-paginator>
+
+  </nb-card-body>
+</nb-card>

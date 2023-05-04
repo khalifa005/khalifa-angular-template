@@ -1,5 +1,5 @@
 import { convertToFormData } from '../../../@core/utils/helpers-function';
-import { AppDefaultValues } from './../../../@core/utils/static-data/default-values';
+import { AppDefaultValues, NotitficationsDefaultValues } from './../../../@core/utils/static-data/default-values';
 import { LookupDto } from './../../../@core/models/lookup.model';
 import { GetTicketLookupsService } from './../../../@core/api/services/tickets/lookups.service';
 import { Logger } from './../../../@core/utils/logger.service';
@@ -9,6 +9,8 @@ import { TicketForm } from './add-ticket.form';
 // import { Subscription } from 'rxjs-compat';
 import { TicketDto } from '../models/ticket.dto';
 import { Subscription } from 'rxjs';
+import { ToastNotificationService } from '../../../@core/utils/toast-notification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-add-ticket',
@@ -35,6 +37,8 @@ export class AddTicketComponent implements OnInit, OnDestroy {
       AppDefaultValues.DropDownAllOptionEn);
 
   constructor(
+    private router:Router,
+    private toastNotificationService:ToastNotificationService,
     public fb: FormBuilder,
     private ticketLookupsService: GetTicketLookupsService) {
     //load loockups
@@ -119,6 +123,8 @@ handleForm(form: TicketForm): void {
   let test = convertToFormData(ticketDto)
 
   this.log.info(ticketDto);
+  this.toastNotificationService.showToast(NotitficationsDefaultValues.Success, 'Ticket', 'new ticket has been saved');
+  this.router.navigateByUrl("/pages/ticket/list");
   // JSON.stringify(ticketDto);
 }
 
