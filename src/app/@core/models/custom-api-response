@@ -1,0 +1,6 @@
+export class ApiResponse<t> {
+  data?: t;
+  errors?: string[] | null;
+  resultStatus?: number;
+  message?: string | null;
+}

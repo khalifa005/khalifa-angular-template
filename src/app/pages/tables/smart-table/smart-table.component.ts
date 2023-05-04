@@ -6,6 +6,9 @@ import { SmartTableData } from '../../../@core/data/smart-table';
 import { Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 import { TableCellContentComponent } from './table-cell-content/table-cell-content.component';
+import { Logger } from '../../../@core/utils/logger.service';
+import { ISmartTableModel, TetsUserDataModel } from '../../../@core/models/interfaces/ISmart-table.model';
+import { SmartTableEvents } from '../../../@core/utils/static-data/default-values';
 
 @Component({
   selector: 'ngx-smart-table',
@@ -14,16 +17,19 @@ import { TableCellContentComponent } from './table-cell-content/table-cell-conte
 })
 export class SmartTableComponent implements OnInit {
 
-  showPerPage = 10;
+  loger = new Logger(SmartTableComponent.name);
+  source: LocalDataSource = new LocalDataSource();
+  itemsPerPage = [1, 2, 3, 4, 5, 6, 7];
   currentPage = 1;
-  totalCount;
-  pageSize = 30;
+  pageSize = 3;
+  totalItems: number = 0;
+  data:any[];
 
   settings = {
     mode: 'external',
     pager:{
-      display: true,
-      perPage: this.showPerPage,
+      display: false,
+      perPage: this.pageSize,
     },
 
     actions: {
@@ -92,75 +98,59 @@ export class SmartTableComponent implements OnInit {
     },
   };
 
-  source: LocalDataSource = new LocalDataSource();
-
   constructor(private service: SmartTableData, private router: Router) {
     //consider this api
-    // this.initData();
-    const data = this.service.getData();
+    this.buildTable();
+  }
 
-    this.source.setSort( [],false)
-    this.source.load(data);
-
+  buildTable(){
+    this.data = [];
+    //call api and sent the params them do analysis - rset the table settings
+    this.data = this.service.getData() as TetsUserDataModel[];
+    this.loger.debug("table builder started" );
+    this.totalItems = this.data.length;
+    // this.source.setSort([], false);
+    this.source.setPaging(this.currentPage, this.pageSize, false);
+    this.source.load(this.data);
   }
 
   ngOnInit(){
-    let tst = this.source.getElements();
-    // this.initOnChagedData();
-    // let sd = this.source.onUpdated().subscribe(val =>{
-    //   let test = val;
-    // });
 
+    let tableSub = this.source.onChanged().subscribe(val =>{
 
+      let convertedValue = val as ISmartTableModel<TetsUserDataModel>;
+      this.loger.debug("table change tracker started");
+      this.loger.debug(convertedValue.action)
 
-    let dsdsdsd = this.source.onChanged().subscribe(val =>{
-      let test =
-      val;
+      // this.loger.debug(convertedValue);
+
+      if(SmartTableEvents.Refresh == convertedValue.action){
+        // this.loger.debug(SmartTableEvents.Refresh);
+      }
+      else if(SmartTableEvents.Load == convertedValue.action)
+      {
+        // this.loger.debug(SmartTableEvents.Load);
+      }
+      else if(SmartTableEvents.Paging == convertedValue.action)
+      {
+        // this.loger.debug(SmartTableEvents.Paging);
+        this.buildTable();
+      }
+      else if(SmartTableEvents.Sort == convertedValue.action)
+      {
+        this.loger.debug(convertedValue.sort);
+        this.buildTable();
+      }else
+      {
+        // this.loger.debug("SmartTableEvents- else")
+      }
     });
 
-    // let dsdsd = this.source.getElements().then(val =>{
-    //   let test = val;
-    // });
-
   }
 
-
-
-  initData(){
-    // this.source = new LocalDataSource();
-    // this.service.getClients(this.currentPage, this.pageSize).subscribe( (result: HttpResponse<any>) => {
-    //   if(!result){
-    //     return;
-    //   }
-    //   this.source.load(result.body);
-    //   this.totalCount = JSON.parse(result.headers.get("X-Pagination"));
-    //   this.totalCount = this.totalCount["totalCount"];
-    //   console.log(this.source.count());
-    // }
-    // )
+  onPageSizeChange(newItem) {
+    this.source.setPaging(this.currentPage, newItem, true);
   }
 
-  // initOnChagedData(){
-  //   this.source.onChanged().subscribe((change) => {
-  //     if (change.action === 'page') {
-  //       this.pageChange(change.paging.page);
-  //     }
-  //   });
-  // }
-
-  // pageChange(pageIndex) {
-  //   var getNew = pageIndex * this.showPerPage;
-  //   if( getNew >= this.source.count() && getNew < this.totalCount){
-  //     this.currentPage = this.currentPage + 1;
-  //     this.service.getClients(this.currentPage, this.pageSize).subscribe( result => {
-  //       if(!result){
-  //         return;
-  //       }
-  //       result.body.forEach(element => {
-  //         this.source.add(element);
-  //       });
-  //     })
-  //   }
-  // }
 
 }

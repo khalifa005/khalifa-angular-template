@@ -21,7 +21,7 @@ export class TableCellContentComponent implements ViewCell, OnInit {
 
   ngOnInit()  {
 
-    console.log(this.value);
+    // console.log(this.value);
     // console.log(this.rowData);
     // this.stateClass = 'warning';
     // this.percentage = this.rowData;

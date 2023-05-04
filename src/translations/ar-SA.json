@@ -79,6 +79,10 @@
     "invalid-field-value" : "الرجاء إدخال قيمة صحيحة."
   },
 
+  "table": {
+    "selectPageSize": "اختار عدد"
+  },
+
   "forms": {
     "please-provide-value": "الرجاء ادخال قيمة"
   }

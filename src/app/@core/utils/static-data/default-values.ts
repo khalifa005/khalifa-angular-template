@@ -17,3 +17,10 @@ export class NotitficationsDefaultValues {
   public static readonly Info = "info";
   public static readonly Basic = "basic";
 }
+
+export class SmartTableEvents {
+  public static readonly Load = "load";
+  public static readonly Refresh = "refresh";
+  public static readonly Sort = "sort";
+  public static readonly Paging = "paging";
+}

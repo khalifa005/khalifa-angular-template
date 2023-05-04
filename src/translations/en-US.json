@@ -73,6 +73,11 @@
     "log-in" : "Log in"
   },
 
+
+  "table": {
+    "selectPageSize": "Select page size"
+  },
+
   "validations": {
     "please-provide-value": "please fill the required field",
     "field-required" : "This field is required.",

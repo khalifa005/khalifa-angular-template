@@ -53,6 +53,7 @@ import { DragFilerUploaderComponent } from './components/drag-filer-uploader/dra
 import { ReactiveFormsModule } from '@angular/forms';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 import { FormsModule } from '@angular/forms';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -87,6 +88,7 @@ const COMPONENTS = [
   FileUploaderComponent,
   DragFilerUploaderComponent,
   DndDirective,
+  PaginatorComponent,
   // ProgressComponent,
 ];
 const PIPES = [

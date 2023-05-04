@@ -3,8 +3,16 @@
     Smart Table
   </nb-card-header>
 
-  <nb-card-body>
-    <ng2-smart-table [settings]="settings" [source]="source"  >
-    </ng2-smart-table>
+  <nb-card-body *ngIf="data">
+
+  <label for="pageSize" class="label pl-3 pr-3" translate>table.selectPageSize</label>
+
+    <select id="pageSize" [(ngModel)]="pageSize" (ngModelChange)="onPageSizeChange($event)" name="sel3">
+      <option [ngValue]="item" *ngFor="let item of itemsPerPage">{{item}}</option>
+    </select>
+
+    <ng2-smart-table [settings]="settings" [source]="source" translate> </ng2-smart-table>
+
+    <ngx-paginator [totalItems]="totalItems" [currentPage]="currentPage" [pageSize]="pageSize" ></ngx-paginator>
   </nb-card-body>
 </nb-card>
