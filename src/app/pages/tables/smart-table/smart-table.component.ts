@@ -9,6 +9,7 @@ import { TableCellContentComponent } from './table-cell-content/table-cell-conte
 import { Logger } from '../../../@core/utils/logger.service';
 import { ISmartTableModel, TetsUserDataModel } from '../../../@core/models/interfaces/ISmart-table.model';
 import { SmartTableEvents } from '../../../@core/utils/static-data/default-values';
+import { IPaginatorModel } from '../../../@core/models/interfaces/IPaginator.interface';
 
 @Component({
   selector: 'ngx-smart-table',
@@ -148,9 +149,20 @@ export class SmartTableComponent implements OnInit {
 
   }
 
-  onPageSizeChange(newItem) {
-    this.source.setPaging(this.currentPage, newItem, true);
+  onPageSizeChange(newPageSize) {
+    this.pageSize = newPageSize;
+    this.buildTable();
+    // this.source.setPaging(this.currentPage, newPageSize, true);
   }
 
+
+  onPagerChanged(eventData: { pager: IPaginatorModel }) {
+    this.loger.debug("onPagerChanged");
+    this.loger.debug(eventData.pager);
+    // this.pageSize = eventData.pager.pageSize;
+    this.currentPage  = eventData.pager.currentPage;
+    this.buildTable();
+    this.loger.debug("eventData.pager");
+  }
 
 }

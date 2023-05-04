@@ -80,7 +80,11 @@
   },
 
   "table": {
-    "selectPageSize": "اختار عدد"
+    "selectPageSize": "اختار عدد",
+    "previous":"قبل",
+    "next":"بعد",
+    "first":"الاول",
+    "last":"الاخير"
   },
 
   "forms": {

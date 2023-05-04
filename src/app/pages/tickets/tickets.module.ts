@@ -42,9 +42,9 @@ const components = [
     NbSelectModule,
     NbIconModule,
 
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
+    // MatTableModule,
+    // MatPaginatorModule,
+    // MatSortModule,
 
     // MatFormFieldModule,
     // MatInputModule,

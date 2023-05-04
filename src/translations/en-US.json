@@ -75,7 +75,11 @@
 
 
   "table": {
-    "selectPageSize": "Select page size"
+    "selectPageSize": "Select page size",
+    "previous":"previous",
+    "next":"next",
+    "first":"first",
+    "last":"last"
   },
 
   "validations": {

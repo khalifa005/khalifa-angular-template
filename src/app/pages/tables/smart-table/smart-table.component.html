@@ -3,7 +3,7 @@
     Smart Table
   </nb-card-header>
 
-  <nb-card-body *ngIf="data">
+  <nb-card-body *ngIf="data.length > 0">
 
   <label for="pageSize" class="label pl-3 pr-3" translate>table.selectPageSize</label>
 
@@ -13,6 +13,10 @@
 
     <ng2-smart-table [settings]="settings" [source]="source" translate> </ng2-smart-table>
 
-    <ngx-paginator [totalItems]="totalItems" [currentPage]="currentPage" [pageSize]="pageSize" ></ngx-paginator>
+    <ngx-paginator
+     (pagerChangedEmitter)="onPagerChanged($event)"
+     [totalItems]="totalItems"
+     [currentPage]="currentPage"
+     [pageSize]="pageSize" ></ngx-paginator>
   </nb-card-body>
 </nb-card>
