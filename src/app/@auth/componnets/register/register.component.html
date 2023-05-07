@@ -1,15 +1,12 @@
-<div class="row acig-pt-10p">
-  <div class="col-md-1"></div>
-  <div class="col-md-3">
-    <nb-card>
-      <nb-card-header></nb-card-header>
-      <nb-card-body style="text-align: center !important;">
-        <img src="../../../../assets/images/acig_register_logo.png">
-      </nb-card-body>
-    </nb-card>
+<div class="row">
+  <div class="col-lg-6"></div>
+
+  <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+    <div class="logo-container" style="text-align: center;padding-bottom: 5px;">
+     
+      <img src="../../../../assets/images/ACIG.png" alt="" height="100px" width="250">
   </div>
 
-  <div class="col-md-7">
     <nb-card>
       <nb-card-header translate>registeration.register-new-user</nb-card-header>
       <nb-card-body>
@@ -17,7 +14,7 @@
           <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
 
             <div class="row">
-              <div class="col-sm-4">
+              <div class="col-lg-6 col-md-6 col-sm-6">
                 <!--firstname-->
                 <div class="form-group" translate>
                   <label class="label" for="firstname" translate>registeration.firstname </label>
@@ -34,7 +31,7 @@
                 </div>
               </div>
 
-              <div class="col-sm-4">
+              <div class="col-lg-6 col-md-6 col-sm-6">
                 <!--middlename-->
                 <div class="form-group">
                   <label class="label" for="middlename" translate>registeration.middlename </label>
@@ -51,7 +48,11 @@
                 </div>
               </div>
 
-              <div class="col-sm-4">
+            </div>
+
+            <div class="row">
+
+              <div class="col-lg-6 col-md-6 col-sm-6">
                 <!--lastname-->
                 <div class="form-group">
                   <label class="label" for="lastname" translate>registeration.lastname </label>
@@ -68,10 +69,7 @@
                 </div>
               </div>
 
-            </div>
-
-            <div class="row">
-              <div class="col-sm-4">
+              <div class="col-lg-6 col-md-6 col-sm-6">
                 <!--email-->
                 <div class="form-group">
                   <label class="label" for="email" translate>registeration.email</label>
@@ -90,7 +88,11 @@
                   </div>
                 </div>
               </div>
-              <div class="col-sm-4">
+            
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6">
                 <!--username-->
                 <div class="form-group">
                   <label class="label" for="username" translate>registeration.username</label>
@@ -111,7 +113,7 @@
                 </div>
               </div>
 
-              <div class="col-sm-4">
+              <div class="col-lg-6 col-md-6 col-sm-6">
                 <!--password-->
                 <div class="form-group">
                   <label class="label" for="password" translate>registeration.password</label>
@@ -124,7 +126,7 @@
                     <div class="text-danger" [hidden]="!password.errors.required" translate>
                       validations.field-required
                     </div>
-                    <div class="text-danger" [hidden]="!password.errors.pattern" translate>
+                    <div class="text-danger" [hidden]="!password.errors?.passwordStrength" translate>
                       registeration.password-validation
                     </div>
                   </div>
@@ -132,9 +134,8 @@
               </div>
             </div>
 
-
             <div class="row">
-              <div class="col-sm-4">
+              <div class="col-lg-6 col-md-6 col-sm-6">
                 <!--mobilenumber-->
                 <div class="form-group">
                   <label class="label" for="mobilenumber" translate>registeration.mobilenumber</label>
@@ -153,64 +154,70 @@
                   </div>
                 </div>
               </div>
-              <div class="col-sm-4">
+              <div class="col-lg-6 col-md-6 col-sm-6">
                 <!--idType-->
                 <div class="form-group">
                   <label class="label" for="idType" translate>registeration.idtype</label>
-                  <nb-select fullWidth selected="1" id="idType" name="idType"
-                    (selectedChange)="changeIDTypeOption($event)" formControlName="idType">
-                    <nb-option value="1">National ID</nb-option>
-                    <nb-option value="2">Passport</nb-option>
+                  <nb-select fullWidth class="d-inline" id="idType" name="idType"
+                     formControlName="idType">
+                    <nb-option value="1">{{ 'registeration.nationalid' | translate }} </nb-option>
+                    <nb-option value="2">{{ 'registeration.passport' | translate }} </nb-option>
                   </nb-select>
                 </div>
 
               </div>
-              <div class="col-sm-4 div-nataional">
-                <!--nataionalid-->
-                <div class="form-group ">
-                  <label class="label" for="nataionalid" translate>registeration.nationalid</label>
+            </div>
 
-                  <input type="text" nbInput fullWidth id="nataionalid" name="nataionalid"
-                    formControlName="nataionalid" placeholder="{{ 'registeration.nationalid' | translate }}"
-                    [status]=" !nataionalid?.valid && (nataionalid?.dirty ||nataionalid?.touched) ? 'danger' : null">
+           <div class="row">
+            <div *ngIf="!hideNationalIDSection" class="col-lg-6 col-md-6 col-sm-6">
+              <!--nataionalid-->
+              <div class="form-group ">
+                <label class="label" for="nataionalid" translate>registeration.nationalid</label>
 
-                  <div *ngIf="!nataionalid?.valid && (nataionalid?.dirty ||nataionalid?.touched)">
-                    <div class="text-danger" [hidden]="!nataionalid.errors.required" translate>
-                      validations.field-required
-                    </div>
-                    <div class="text-danger" [hidden]="!nataionalid.errors.minlength">
-                      {{ 'registeration.please-enter-at-least-characters' | translate: {param :
-                      nataionalid.errors.minlength?.requiredLength} }}
-                    </div>
-                    <div class="text-danger" [hidden]="!nataionalid.errors.maxlength">
-                      {{ 'registeration.please-enter-at-least-characters' | translate: {param:
-                      nataionalid.errors.maxlength?.requiredLength} }}
-                    </div>
+                <input type="text" nbInput fullWidth  [ngxPattern]="numberPatternTenCharactersLimit" id="nataionalid" name="nataionalid"
+                  formControlName="nataionalid" placeholder="{{ 'registeration.nationalid' | translate }}"
+                  [status]=" !nataionalid?.valid && (nataionalid?.dirty ||nataionalid?.touched) ? 'danger' : null">
+
+                <div *ngIf="!nataionalid?.valid && (nataionalid?.dirty ||nataionalid?.touched)">
+                  <div class="text-danger" [hidden]="!nataionalid.errors.required" translate>
+                    validations.field-required
                   </div>
-                </div>
-              </div>
-              <div class="col-sm-4 div-Passport" style="display: none;">
-                <!--Passport-->
-                <div class="form-group">
-                  <label class="label" for="Passport" translate>registeration.passport</label>
-
-                  <input type="text" nbInput fullWidth id="passport" name="passport" formControlName="passport"
-                    placeholder="{{ 'registeration.passport' | translate }}"
-                    [status]=" !passport?.valid && (passport?.dirty ||passport?.touched) ? 'danger' : null">
-
-                  <div *ngIf="!passport?.valid && (passport?.dirty ||passport?.touched)">
-                    <div class="text-danger" [hidden]="!passport.errors.required" translate>
-                      validations.field-required
-                    </div>
+                  <div class="text-danger" [hidden]="!nataionalid.errors.minlength">
+                    {{ 'registeration.please-enter-at-least-characters' | translate: {param :
+                    nataionalid.errors.minlength?.requiredLength} }}
+                  </div>
+                  <div class="text-danger" [hidden]="!nataionalid.errors.maxlength">
+                    {{ 'registeration.please-enter-at-least-characters' | translate: {param:
+                    nataionalid.errors.maxlength?.requiredLength} }}
                   </div>
                 </div>
               </div>
             </div>
+            <div *ngIf="!hidePassportIDSection" class="col-lg-6 col-md-6 col-sm-6 div-Passport">
+              <!--Passport-->
+              <div class="form-group">
+                <label class="label" for="Passport" translate>registeration.passport</label>
+
+                <input type="text" nbInput fullWidth id="passport" name="passport" formControlName="passport"
+                  placeholder="{{ 'registeration.passport' | translate }}"
+                  [status]=" !passport?.valid && (passport?.dirty ||passport?.touched) ? 'danger' : null">
+
+                <div *ngIf="!passport?.valid && (passport?.dirty ||passport?.touched)">
+                  <div class="text-danger" [hidden]="!passport.errors.required" translate>
+                    validations.field-required
+                  </div>
+                </div>
+              </div>
+            </div>
+           </div>
+
 
             <div class="form-group row">
-              <div class="col-sm-12" style="text-align: center;">
+              <div class="col-sm-4"></div>
+              <div class="col-sm-4" style="text-align: center;">
                 <button type="submit" nbButton status="primary" translate>registeration.register</button>
               </div>
+              <div class="col-sm-4"></div>
             </div>
 
             <div class="row">
@@ -227,7 +234,7 @@
       </nb-card-body>
     </nb-card>
   </div>
-  <div class="col-md-1"></div>
+
 </div>
 
 <!-- <nb-layout style="display: none"></nb-layout> -->

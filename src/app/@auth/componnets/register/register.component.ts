@@ -9,6 +9,11 @@ import { FormGroup, FormControl, AbstractControl,Validators, ValidationErrors, V
 import { NbLayoutDirectionService, NbLayoutDirection } from '@nebular/theme';
 import { TranslateService } from '@ngx-translate/core';
 import { RegisterationDTO, RegisterForm } from '../forms/register.form';
+import { Subscription } from 'rxjs';
+import { Logger } from './../../../@core/utils/logger.service';
+import { numericWithTenCharactersLimit } from '../../../@core/utils/static-data/input-validator.regx'
+import { ToastNotificationService } from '../../../@core/utils/toast-notification.service';
+import { NotitficationsDefaultValues } from "../../../@core/utils/static-data/default-values";
 
 @Component({
   selector: 'nb-register',
@@ -18,14 +23,20 @@ import { RegisterationDTO, RegisterForm } from '../forms/register.form';
 })
 export class NbRegisterComponent implements OnInit, OnDestroy {
 
-  redirectDelay: number = 0;
-  showMessages: any = {};
-  strategy: string = '';
+  private log = new Logger(NbRegisterComponent.name);
 
-  submitted = false;
-  errors: string[] = [];
-  messages: string[] = [];
-  user: any = {};
+  private subs: Subscription[] = [];
+  // redirectDelay: number = 0;
+  // showMessages: any = {};
+  // strategy: string = '';
+
+  // submitted = false;
+  // errors: string[] = [];
+  // messages: string[] = [];
+  // user: any = {};
+  numberPatternTenCharactersLimit  : RegExp = numericWithTenCharactersLimit;
+  hidePassportIDSection: boolean = true;
+  hideNationalIDSection: boolean = false;
   directions = NbLayoutDirection;
 
   registerationDTO : RegisterationDTO ={
@@ -36,7 +47,7 @@ export class NbRegisterComponent implements OnInit, OnDestroy {
     username :"",
     password :"",
     mobilenumber :"",
-    idType :"1",
+    idType : "1",
     nataionalid :"",
     passport :"",
   };
@@ -45,7 +56,9 @@ export class NbRegisterComponent implements OnInit, OnDestroy {
 
   constructor(private directionService: NbLayoutDirectionService,
     public translate: TranslateService,
-    public fb: FormBuilder
+    public fb: FormBuilder,
+    private router: Router,
+    private toastNotificationService: ToastNotificationService
     ) {
       if( this.translate.currentLang === "ar-SA"){
         this.directionService.setDirection(this.directions.RTL);
@@ -92,58 +105,71 @@ export class NbRegisterComponent implements OnInit, OnDestroy {
     return this.registerForm.get('passport');
   } 
 
-  onSubmit() {
-    if (this.registerForm.valid) {
-      //Logic for valid form 
-    console.log(this.registerForm);
-    } else {
-      this.registerForm.markAllAsTouched()
-     };
-    }
-
     ngOnInit() {
       this.registerForm = new RegisterForm(this.registerationDTO);
+      this.onIDTypeChange();
     }
 
     ngOnDestroy() {
-      
+      this.subs.forEach((s) => s.unsubscribe());
    }
 
    reset() {
     this.registerForm.reset();
   }
 
-  changeIDTypeOption(selectedOption){
-   const idTypeInput = document.getElementById('idType') as HTMLInputElement;
-   const nataionalInput = document.getElementsByClassName('div-nataional')[0] as HTMLInputElement;
-   const passportInput = document.getElementsByClassName('div-Passport')[0] as HTMLInputElement;
 
-   if(selectedOption == "1"){
-    idTypeInput.setAttribute("selected","1");
-    idTypeInput.setAttribute("ng-reflect-selected","1");
-    nataionalInput.setAttribute("style","display:block");
-    passportInput.setAttribute("style","display:none");
+  private onIDTypeChange():void{
+    const eventIdType =this.registerForm.get('idType').valueChanges.subscribe((idTypeValue: number) => {
+      
+      //try to extarct into function
+      if(idTypeValue == 1){
+        this.hidePassportIDSection = true;
+        this.hideNationalIDSection = false;
+      }
+      else{
+        this.hidePassportIDSection = false;
+        this.hideNationalIDSection = true;
+      }
+    });
 
-   }else{
-    idTypeInput.setAttribute("selected","2");
-    idTypeInput.setAttribute("ng-reflect-selected","2");
-    passportInput.setAttribute("style","display:block");
-    nataionalInput.setAttribute("style","display:none");
+    this.subs.push(eventIdType);
+}
 
-   }
+private mapFormToRegisterationDto(form: RegisterForm): RegisterationDTO {
+  return {
+    ...form.value,
+    // orders: this.mapOrders(form.Orders)
+  } as RegisterationDTO;
+}
+
+handleForm(form: RegisterForm): void {
+  // this.customerService.saveCustomer(this.mapFormToCustomer(form));
+  let registerationDTO =  this.mapFormToRegisterationDto(form);
+  this.log.info(registerationDTO);
+  // JSON.stringify(registerationDTO);
+}
+
+
+onSubmit() {
+  if (this.registerForm.valid) {
+    //Logic for valid form 
+  this.log.info(this.registerForm);
+  this.handleForm(this.registerForm);
+
+  this.router.navigateByUrl("/auth/login").then(()=>{
+    let body = this.translate.instant('registeration.success-registeration');
+    let title = this.translate.instant('Success');
+    this.toastNotificationService.showNotificationWithCustomIcon(NotitficationsDefaultValues.Success,'checkmark-circle-2-outline',title,body);
+  });
+
+  } else {
+    this.registerForm.markAllAsTouched()
+   };
   }
 
 
+
 }
-
-
-export function checkIDTypeValidator() : ValidatorFn{
-  return (form: FormGroup): ValidationErrors | null => {
-
-    const idType = form.get("idType").value
-
-    return null;
-}
- }
 
 

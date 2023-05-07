@@ -6,16 +6,21 @@
 }
 
 @media (min-width: 768px) {
-.appearance-outline {
+[nbButton].appearance-outline {
   width: fit-content !important;
  }
 }
 
-.backgroung-image {
+.backgroung-image-registeration {
   background-image: url('../../../assets/images/site-crm-backgroung.png');
   background-size: 100% 100%;
 }
 
-.acig-pt-10p {
+.backgroung-image-registeration-ar {
+  background-image: url('../../../assets/images/ar-site-crm-backgroung.png');
+  background-size: 100% 100%;
+}
+
+.acig-pt-7p {
   padding-top: 7% !important;
 }

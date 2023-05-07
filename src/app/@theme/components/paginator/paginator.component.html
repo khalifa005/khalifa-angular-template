@@ -1,32 +1,46 @@
 
-<nav aria-label="Page navigation example">
-  <ul *ngIf="pager.pages && pager.pages.length"
-       class="pagination">
+<div class="row">
+  <div class="col-md-8">
 
-       <li [ngClass]="{disabled:pager.currentPage === 1}"
-       (click)="setPage(pager.currentPage - 1)"
-       class="page-item">
-       <a class="page-link" (click)="setPage(1)" translate>table.first</a></li>
+    <nav aria-label="Page navigation example">
+      <ul *ngIf="pager.pages && pager.pages.length"
+           class="pagination">
 
-       <li [ngClass]="{disabled:pager.currentPage === 1}"
-        (click)="setPage(pager.currentPage - 1)"
+           <li [ngClass]="{disabled:pager.currentPage === 1}"
+           (click)="setPage(pager.currentPage - 1)"
+           class="page-item">
+           <a class="page-link" (click)="setPage(1)" translate>table.first</a></li>
+
+           <li [ngClass]="{disabled:pager.currentPage === 1}"
+            (click)="setPage(pager.currentPage - 1)"
+            class="page-item ">
+            <a class="page-link" translate>table.previous</a></li>
+
+        <li *ngFor="let page of pager.pages"
+             class="page-item">
+              <a (click)="setPage(page)"
+              class="page-link" >{{page}}</a>
+        </li>
+
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}"
+        (click)="setPage(pager.currentPage + 1)"
         class="page-item ">
-        <a class="page-link" translate>table.previous</a></li>
+        <a class="page-link" translate>table.next</a></li>
 
-    <li *ngFor="let page of pager.pages"
-         class="page-item">
-          <a (click)="setPage(page)"
-          class="page-link" >{{page}}</a>
-    </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}"
+        (click)="setPage(pager.currentPage + 1)"
+        class="page-item">
+        <a class="page-link" (click)="setPage(pager.totalPages)" translate>table.last</a></li>
+      </ul>
+    </nav>
 
-    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}"
-    (click)="setPage(pager.currentPage + 1)"
-    class="page-item ">
-    <a class="page-link" translate>table.next</a></li>
+  </div>
+  <!-- <div  class="col-md-4 text-right">
+    <label for="pageSize" class="label pl-3 pr-3" translate>table.selectPageSize</label>
 
-    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}"
-    (click)="setPage(pager.currentPage + 1)"
-    class="page-item">
-    <a class="page-link" (click)="setPage(pager.totalPages)" translate>table.last</a></li>
-  </ul>
-</nav>
+  <select id="pageSize" [(ngModel)]="pageSize" (ngModelChange)="onPageSizeChange($event)" name="sel3">
+    <option [ngValue]="item" *ngFor="let item of itemsPerPage">{{item}}</option>
+  </select>
+  </div> -->
+</div>
+

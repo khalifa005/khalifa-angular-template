@@ -3,7 +3,7 @@
     <ngx-header [isAuthenticated]="isAuthenticated"></ngx-header>
   </nb-layout-header>
 
-  <nb-layout-column class="backgroung-image">
+  <nb-layout-column [class]="this.translate.currentLang === 'ar-SA'? 'backgroung-image-registeration-ar': 'backgroung-image-registeration'" >
      <router-outlet></router-outlet>
   </nb-layout-column>
 

@@ -1,0 +1,1 @@
+export const numericWithTenCharactersLimit = /^[0-9]{0,10}$/;

@@ -23,7 +23,8 @@
   "login": {
     "username": "اسم المستخدم",
     "password": "كلمة المرور",
-    "forget-password-lnk" : "نسيت كلمة المرور"
+    "forget-password-lnk" : "نسيت كلمة المرور",
+    "invalid-user-info" : "خطأ في اسم المستخدم أو كلمة المرور"
   },
 
   "registeration" :{
@@ -41,10 +42,12 @@
     "register" : "تسجيل",
     "please-enter-valid-email" : "من فضلك ادخل بريد الكترونى صحيح",
     "please-enter-at-least-characters" : "الرجاء إدخال {{param}} حرفًا على الأقل.",
-    "password-validation" : "يجب أن تحتوي على أحرف كبيرة وصغيرة ورموز خاصة",
+    "password-validation" : "يجب أن تحتوي على أحرف كبيرة وصغيرة وأرقام",
     "already-have-account": "هل لديك حساب؟",
-    "log-in" : "تسجيل الدخول"
+    "log-in" : "تسجيل الدخول",
+    "success-registeration": "تم التسجيل بنجاح ، تحقق من بريدك الإلكتروني"
   },
+
 
 
   "ticket": {

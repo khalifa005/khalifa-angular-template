@@ -1,21 +1,23 @@
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { numeric } from "../../../@core/utils/static-data/form.validation-helpers";
+import { Subscription } from 'rxjs';
+import { OnDestroy } from "@angular/core";
+import { createPasswordStrengthValidator, numeric } from "../../../@core/utils/static-data/form.validation-helpers";
 
-export class RegisterationDTO{
-    firstname : string;
-    middlename : string;
-    lastname :string;
-    email :string;
-    username : string;
+export class RegisterationDTO {
+    firstname: string;
+    middlename: string;
+    lastname: string;
+    email: string;
+    username: string;
     password: string;
-    mobilenumber :string;
-    idType :string ;
-    nataionalid :string;
-    passport:string;
+    mobilenumber: string;
+    idType: string;
+    nataionalid: string;
+    passport: string;
 }
 
 
-export class RegisterForm extends FormGroup{
+export class RegisterForm extends FormGroup {
 
     readonly firstname = this.get('firstname') as FormControl;
     readonly middlename = this.get('middlename') as FormControl;
@@ -29,23 +31,45 @@ export class RegisterForm extends FormGroup{
     readonly passport = this.get('passport') as FormControl;
 
 
-constructor(readonly model: RegisterationDTO , readonly fb: FormBuilder = new FormBuilder()){
+    constructor(readonly model: RegisterationDTO, readonly fb: FormBuilder = new FormBuilder()) {
 
- super(
-    fb.group({
-        firstname :[model?.firstname, Validators.required],
-        middlename :[model?.middlename, Validators.required],
-        lastname :[model?.lastname, Validators.required],
-        email :[model?.email, [Validators.required,Validators.email]],
-        username :[model?.username, [Validators.required,Validators.minLength(6)]],
-        password :[model?.password, [Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&*-]).{3,}$")]],
-        mobilenumber :[model?.mobilenumber, [Validators.required,numeric]],
-        idType :[model?.idType],
-        nataionalid :[model?.nataionalid],
-        passport :[model?.passport],
-    }).controls
-  );
+        super(
+            fb.group({
+                firstname: [model?.firstname, Validators.required],
+                middlename: [model?.middlename, Validators.required],
+                lastname: [model?.lastname, Validators.required],
+                email: [model?.email, [Validators.required, Validators.email]],
+                username: [model?.username, [Validators.required, Validators.minLength(6)]],
+                password: [model?.password, [Validators.required, createPasswordStrengthValidator()]],
+                mobilenumber: [model?.mobilenumber, [Validators.required, numeric]],
+                idType: [model?.idType],
+                nataionalid: [model?.nataionalid,[Validators.required,Validators.minLength(10),Validators.maxLength(10),numeric]],
+                passport: [model?.passport],
+            }).controls
+        );
 
-}
+
+        this.trackIDTypeValue();
+
+    }
+
+
+    private trackIDTypeValue(): void {
+        const eventIdType =  this.idType.valueChanges.subscribe((idTypeValue: number) => {
+
+            if (idTypeValue == 1) {
+                this.nataionalid.setValidators([Validators.required,Validators.minLength(10),Validators.maxLength(10),numeric]);
+                this.passport.clearValidators();
+                this.passport.reset();
+            } else {
+                this.passport.setValidators([Validators.required]);
+                this.nataionalid.clearValidators();
+                this.nataionalid.reset();
+            }
+
+            this.nataionalid.updateValueAndValidity();
+            this.passport.updateValueAndValidity();
+        });
+    }
 
 }

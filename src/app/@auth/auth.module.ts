@@ -26,6 +26,7 @@ import { NbRegisterComponent } from './componnets/register/register.component';
 import { NbRequestPasswordComponent } from './componnets/request-password/request-password.component';
 import { AuthComponent } from './auth.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxPatternModule } from 'ngx-pattern';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { BrowserModule } from '@angular/platform-browser';
     NbSelectModule,
     NbIconModule,
     RouterModule,
+    NgxPatternModule
   ],
   declarations: [
     // ... here goes our new components

@@ -18,6 +18,9 @@ export class PaginatorComponent implements OnInit, OnChanges {
   // array of all items to be paged
   // private allItems: any[];
   @Output() pagerChangedEmitter = new EventEmitter<{ pager: IPaginatorModel }>();
+  @Output() pageSizeChangedEmitter = new EventEmitter<{ pageSize: number }>();
+
+  @Input() itemsPerPage: number [] = [1, 2, 3, 4, 5, 6, 7];;
 
   @Input() totalItems: number;
   @Input() currentPage: number;
@@ -52,6 +55,14 @@ setPage(page: number) {
 
 onPagerChanged() {
   this.pagerChangedEmitter.emit({ pager: this.pager });
+}
+
+onPageSizeChange(newPageSize) {
+  this.pageSize = newPageSize;
+  this.setPage(this.currentPage);
+
+  // this.pageSizeChangedEmitter.emit({ pageSize: newPageSize });
+  // this.source.setPaging(this.currentPage, newPageSize, true);
 }
 
 }

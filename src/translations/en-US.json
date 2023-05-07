@@ -49,10 +49,12 @@
 
 
 
+
   "login": {
     "username": "User Name",
     "password": "Password",
-    "forget-password-lnk":"Forget Password"
+    "forget-password-lnk":"Forget Password",
+    "invalid-user-info" : "Invalid User Name or Password"
   },
 
   "registeration" :{
@@ -70,10 +72,12 @@
     "register" : "Register",
     "please-enter-valid-email" : "Please enter a valid email address.",
     "please-enter-at-least-characters" : "Please enter at least {{param}} characters.",
-    "password-validation" : "Should have capital and small letters and special character .",
+    "password-validation" : "Should have capital and small letters and numbers .",
     "already-have-account": "Already have an account?",
-    "log-in" : "Log in"
+    "log-in" : "Log in",
+     "success-registeration": "Registered successfully, check you email"
   },
+
 
 
   "table": {

@@ -21,7 +21,7 @@ export class AuthComponent implements OnInit {
   constructor(private directionService: NbLayoutDirectionService,
     public translate: TranslateService,
     ) {
-      if( this.translate.currentLang === "ar-SA"){
+      if(this.translate.currentLang === "ar-SA"){
         this.directionService.setDirection(this.directions.RTL);
       }
   }
