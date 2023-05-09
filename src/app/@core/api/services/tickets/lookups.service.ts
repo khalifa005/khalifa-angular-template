@@ -35,14 +35,14 @@ export class GetTicketLookupsService {
         nameAr: AppDefaultValues.DropDownAllOptionAr,
         nameEn: AppDefaultValues.DropDownAllOptionEn,
       },
-      { id: 1, nameAr: 'Motor TPL', nameEn: 'Motor TPL' },
-      { id: 2, nameAr: 'Motor Comprehensive', nameEn: 'Motor Comprehensive' },
-      { id: 3, nameAr: 'Medical', nameEn: 'Medical' },
-      { id: 4, nameAr: 'General Insurance', nameEn: 'General Insurance' },
-      { id: 5, nameAr: 'Travel', nameEn: 'Travel' },
-      { id: 6, nameAr: 'MLP', nameEn: 'MLP' },
-      { id: 7, nameAr: 'visitor insurance', nameEn: 'visitor insurance' },
-      { id: 8, nameAr: 'Other', nameEn: 'Other' },
+      { id: 1, nameAr: 'Motor TPL', nameEn: 'Motor TPL' },//
+      { id: 2, nameAr: 'Motor Comprehensive', nameEn: 'Motor Comprehensive' },//
+      { id: 3, nameAr: 'Medical', nameEn: 'Medical' },//
+      { id: 4, nameAr: 'General Insurance', nameEn: 'General Insurance' },//
+      { id: 5, nameAr: 'Travel', nameEn: 'Travel' }, //empty list of case titles
+      { id: 6, nameAr: 'MLP', nameEn: 'MLP' },//empty list of case titles
+      { id: 7, nameAr: 'visitor insurance', nameEn: 'visitor insurance' }, //empty list of case titles
+      { id: 8, nameAr: 'Other', nameEn: 'Other' },//
     ];
     return this.insuranceTypes;
   }
