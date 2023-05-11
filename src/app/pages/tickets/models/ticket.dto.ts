@@ -5,6 +5,7 @@ export class TicketDto{
   caseTitleTypeId:number;//lookup
 
   //related to each other
+  cancellationRequestDate:string;
   policyNumber:string;
   claimNumber:string;
   plateNumber:string;

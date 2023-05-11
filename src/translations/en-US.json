@@ -25,6 +25,10 @@
     "category": "Category",
     "insuranceType": "Insurance type",
     "caseTitleType": "Case title type",
+
+    "cancellationRequestDate": "cancellation request date",
+    "cancellationRequestDatePlaceholder": "cancellation request date",
+
     "policyNumber": "Policy number",
     "policyNumberPlaceholder": "P/205/5515/18/00479064/00",
 

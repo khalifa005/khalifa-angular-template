@@ -58,6 +58,8 @@
     "caseTitleType": "نوع الحالة",
     "policyNumber": "رقم بوصلة التأمين",
     "policyNumberPlaceholder": "P/205/5515/18/00479064/00",
+    "cancellationRequestDate": "تاريخ الالغاء",
+    "cancellationRequestDatePlaceholder": "ادخل تاريخ الالغاء",
     "plateLetters": "حرف اللحوحة",
     "plateLettersPlaceholder": "س ص ع",
     "plateNumber": "رقم اللوحة",

@@ -13,6 +13,8 @@ export class TicketForm extends FormGroup {
   readonly insuranceTypeId = this.get('insuranceTypeId') as FormControl;
   readonly caseTitleTypeId = this.get('caseTitleTypeId') as FormControl;
 
+  readonly cancellationRequestDate = this.get('cancellationRequestDate') as FormControl;
+
   readonly policyNumber = this.get('policyNumber') as FormControl;
   readonly claimNumber = this.get('claimNumber') as FormControl;
   readonly plateNumber = this.get('plateNumber') as FormControl;
@@ -37,6 +39,7 @@ export class TicketForm extends FormGroup {
         insuranceTypeId: [model?.insuranceTypeId, [Validators.required, Validators.min(1)]],
         caseTitleTypeId: [model?.caseTitleTypeId, [Validators.required,Validators.min(1)]],
 
+        cancellationRequestDate: [model?.cancellationRequestDate],
         policyNumber: [model?.policyNumber],
 
         //required in certin cases
@@ -68,8 +71,12 @@ export class TicketForm extends FormGroup {
       this.plateLetters.setValidators([Validators.required]);
       this.plateNumber.setValidators([Validators.required]);
       this.najmCaseId.setValidators([Validators.required]);
+      this.cancellationRequestDate.setValidators([Validators.required]);
 
       }else{
+        this.cancellationRequestDate.clearValidators();
+        this.cancellationRequestDate.reset();
+
         this.policyNumber.clearValidators();
         this.policyNumber.reset();
 
@@ -86,6 +93,7 @@ export class TicketForm extends FormGroup {
         this.najmCaseId.reset();
       }
 
+      this.cancellationRequestDate.updateValueAndValidity();
       this.policyNumber.updateValueAndValidity();
       this.claimNumber.updateValueAndValidity();
       this.plateLetters.updateValueAndValidity();

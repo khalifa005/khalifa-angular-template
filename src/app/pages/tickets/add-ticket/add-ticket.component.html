@@ -93,6 +93,27 @@
         </div>
       </div>
 
+      <div *ngIf="!hideCancellationRequestDate">
+        <div class="form-group">
+          <label for="cancellationRequestDate" class="label" translate>ticket.cancellationRequestDate</label>
+          <input
+           type="text"
+           nbInput fullWidth
+           id="cancellationRequestDate"
+           placeholder="{{ 'ticket.cancellationRequestDatePlaceholder' | translate }}"
+
+           [status]="(form.get('cancellationRequestDate').invalid && (form.get('cancellationRequestDate').dirty || form.get('cancellationRequestDate').touched)) ? 'danger' : null"
+           formControlName="cancellationRequestDate"
+           >
+           <div
+           translate
+           class="text-danger"
+           *ngIf="form.get('cancellationRequestDate').invalid && (form.get('cancellationRequestDate').dirty || form.get('cancellationRequestDate').touched)">
+           validations.please-provide-value
+          </div>
+        </div>
+      </div>
+
       <div *ngIf="!hideCarInsuranceSection">
         <div class="form-group">
           <label for="policyNumber" class="label" translate>ticket.policyNumber</label>

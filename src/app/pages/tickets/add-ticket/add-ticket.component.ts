@@ -26,6 +26,7 @@ export class AddTicketComponent implements OnInit, OnDestroy {
   private subs: Subscription[] = [];
 
   hideCarInsuranceSection: boolean = true;
+  hideCancellationRequestDate: boolean = true;
   form: TicketForm;
   categoryTypes: LookupDto[];
   insuranceTypes: LookupDto[];
@@ -56,6 +57,7 @@ export class AddTicketComponent implements OnInit, OnDestroy {
     categoryId:-1,
     insuranceTypeId: -1,
     caseTitleTypeId:-1,
+    cancellationRequestDate:'',
     policyNumber:'',
     claimNumber:'',
     plateNumber:'',
@@ -96,9 +98,11 @@ private onInsuranceTypeIdChange(): void {
     //try to extarct into function
     if(insuranceTypeIdValue === 2){
       this.hideCarInsuranceSection = false;
+      this.hideCancellationRequestDate = false;
     }
     else{
       this.hideCarInsuranceSection = true;
+      this.hideCancellationRequestDate = true;
     }
     // this.log.info(this.form);
 
