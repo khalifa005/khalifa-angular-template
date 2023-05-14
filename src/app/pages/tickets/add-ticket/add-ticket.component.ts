@@ -11,6 +11,7 @@ import { TicketDto } from '../models/ticket.dto';
 import { Subscription } from 'rxjs';
 import { ToastNotificationService } from '../../../@core/utils/toast-notification.service';
 import { Router } from '@angular/router';
+import { TicketCategoriesApiService } from '../../../@core/api/services/lookups/branches.api.service';
 
 @Component({
   selector: 'ngx-add-ticket',
@@ -39,6 +40,7 @@ export class AddTicketComponent implements OnInit, OnDestroy {
 
   constructor(
     private router:Router,
+    private ticketCategoriesApiService:TicketCategoriesApiService,
     private toastNotificationService:ToastNotificationService,
     public fb: FormBuilder,
     private ticketLookupsService: GetTicketLookupsService) {
@@ -83,6 +85,16 @@ export class AddTicketComponent implements OnInit, OnDestroy {
 
 
 ngOnInit() {
+
+  let apiServiceSub = this.ticketCategoriesApiService.getListItem()
+  .subscribe((res) => {
+this.log.info("ticketCategoriesApiService");
+this.log.info(res);
+  },
+  (erorr) => {
+
+  });
+
   //GET from api service and ini the form
     this.form = new TicketForm(this.ticketDto);
     this.onInsuranceTypeIdChange();

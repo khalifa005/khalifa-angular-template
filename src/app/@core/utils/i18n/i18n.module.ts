@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { LanguageSelectorComponent } from './language-selector.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -10,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { LanguageSelectorComponent } from './language-selector.component';
 // /MaterialModule
 @NgModule({
-  imports: [CommonModule, TranslateModule, FlexLayoutModule,
+  imports: [CommonModule, TranslateModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
