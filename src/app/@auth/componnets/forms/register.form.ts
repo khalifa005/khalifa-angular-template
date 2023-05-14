@@ -1,6 +1,4 @@
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { Subscription } from 'rxjs';
-import { OnDestroy } from "@angular/core";
 import { createPasswordStrengthValidator, numeric } from "../../../@core/utils/static-data/form.validation-helpers";
 
 export class RegisterationDTO {

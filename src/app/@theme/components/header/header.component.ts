@@ -6,6 +6,9 @@ import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { I18nService } from '../../../@core/utils/i18n/i18n.service';
+import { AuthService } from '../../../@auth/services/auth.service';
+import { UserStoreService } from '../../../@auth/services/user-store.service';
+
 
 @Component({
   selector: 'ngx-header',
@@ -17,6 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
   user: any;
+  fullName : string;
   @Input() isAuthenticated : true;
   themes = [
     {
@@ -42,17 +46,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
   currentDirection: NbLayoutDirection;
   currentTheme = 'default';
   defaultLang;
+  userPicture : string = "../../../../assets/images/logo.png";
+  
 
-  userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
+  userMenu = [ { title: 'Profile' }, { title: 'Log out', link: '/auth/logout'  } ];
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
               private themeService: NbThemeService,
-              private userService: UserData,
               private layoutService: LayoutService,
               private i18nService: I18nService,
               private directionService: NbLayoutDirectionService,
-              private breakpointService: NbMediaBreakpointsService) {
+              private breakpointService: NbMediaBreakpointsService,
+              private authService : AuthService,
+              private userStoreService : UserStoreService) {
 
     this.directionService.onDirectionChange()
     .pipe(takeUntil(this.destroy$))
@@ -69,9 +76,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.defaultLang = this.i18nService.language;
     this.supportedLanguages = this.i18nService.supportedLanguages;
 
-    this.userService.getUsers()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((users: any) => this.user = users.khalifa);
+     this.userStoreService.getFullNameFromStore()
+     .subscribe(val=>{
+        let fullNameFromToken = this.authService.getFullNameFromToken();
+        this.fullName = val || fullNameFromToken;
+     })
 
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()

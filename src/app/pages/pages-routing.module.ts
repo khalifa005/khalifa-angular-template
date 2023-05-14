@@ -19,7 +19,7 @@ const routes: Routes = [{
     {
       path: 'iot-dashboard',
       component: DashboardComponent,
-      canActivate:[AuthGuard]
+
     },
     {
       path: 'ticket',
@@ -88,6 +88,7 @@ const routes: Routes = [{
       component: NotFoundComponent,
     },
   ],
+  canActivate:[AuthGuard]
 }];
 
 @NgModule({

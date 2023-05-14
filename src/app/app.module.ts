@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
@@ -20,6 +20,7 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { MyComponentComponent } from './my-component/my-component.component';
+import { HeadersInterceptor } from './@core/interceptors/headers.interceptor';
 
 @NgModule({
   declarations: [	AppComponent,
@@ -48,9 +49,16 @@ import { MyComponentComponent } from './my-component/my-component.component';
 
     ThemeModule,
     AppRoutingModule,
+    HttpClientModule,
 
   ],
   bootstrap: [AppComponent],
+  providers :[{
+    provide : HTTP_INTERCEPTORS,
+    useClass : HeadersInterceptor,
+    multi : true
+
+  }]
 })
 export class AppModule {
 }
