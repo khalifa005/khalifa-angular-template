@@ -1,0 +1,119 @@
+
+<nb-layout>
+  <nb-layout-header fixed>
+    <ngx-header ></ngx-header>
+  </nb-layout-header>
+
+  <nb-layout-column>
+
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <nb-card class="card text-center">
+          <nb-card-header>{{ 'Feedback.feedback-welcome-message' | translate: user }}</nb-card-header>
+          <nb-card-body>
+<!--
+            <form [formGroup]="form" (ngSubmit)="save()" *ngIf="form"></form> -->
+            <form>
+
+              <nb-card>
+                <nb-card-body>
+
+                  <ngx-star-rating [rating]="rating" (ratingUpdated)="onRatingChanged($event)"></ngx-star-rating>
+                  <!-- <div class="form-group">
+
+                    <label for="cityId" class="label" translate>ticket.cityId</label>
+                    <nb-select
+                    class="d-inline"
+                    id="cityId"
+                    [status]="(form.get('cityId').invalid && (form.get('cityId').dirty || form.get('cityId').touched)) ? 'danger' : null"
+
+                    formControlName="cityId">
+
+                      <nb-option *ngFor="let x of cities" [value]="x.id" >
+                        {{x.nameEn | translator : x.nameAr}}
+                      </nb-option>
+                    </nb-select>
+
+                      <div
+                      translate
+                      class="text-danger"
+                      *ngIf="form.get('cityId').invalid && (form.get('cityId').dirty || form.get('cityId').touched)">
+                      validations.please-provide-value
+                    </div>
+                  </div> -->
+
+                  <!-- <div class="form-group">
+                    <label for="exampleInputEmail1" class="label" translate>Email address</label>
+                    <input type="email" nbInput fullWidth id="exampleInputEmail1" placeholder="Email">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputPassword1" class="label" translate>Password</label>
+                    <input type="password" nbInput fullWidth id="exampleInputPassword1" placeholder="Password">
+                  </div> -->
+
+                  <!-- <label class="label d-inline" translate>Radios</label> -->
+
+
+
+                  <label class="label d-inline" translate>Radios</label>
+                  <div class="form-group" *ngIf="options">
+                    <nb-radio-group class="d-inline" [(ngModel)]="option"  name="something">
+                      <nb-radio class="d-inline"
+                        *ngFor="let option of options"
+                        [value]="option.value">
+
+                        {{ option.label }}
+                        <nb-icon icon="attach-2-outline">s</nb-icon>
+                      </nb-radio>
+                    </nb-radio-group>
+                  </div>
+
+                  <label class="label d-inline" translate>Radios</label>
+                  <div class="form-group" *ngIf="options">
+                    <bar-rating [(rate)]="rate" [max]="5">
+                      <ng-template ratingActive>
+                        <i class="bi bi-star-fill" style="margin: 2px; color: #edb867"></i>
+                      </ng-template>
+                      <ng-template ratingInactive>
+                        <i class="bi bi-star-fill" style="margin: 2px; color: #d2d2d2"></i>
+                      </ng-template>
+                    </bar-rating>
+                  </div>
+
+                </nb-card-body>
+              </nb-card>
+
+              <!-- <button
+              class="col-md-6 offset-md-3"
+              type="submit"
+              nbButton
+              [status]=" !form.valid ? 'danger' : 'success' "
+              [disabled]="!form.valid"
+              translate>submit</button> -->
+
+              <!-- <button
+              class="col-md-6 offset-md-3"
+              type="submit"
+              nbButton
+              [status]=" 'success' "
+              translate>submit</button> -->
+              </form>
+
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </div>
+
+
+
+
+
+  </nb-layout-column>
+
+  <nb-layout-footer fixed>
+    <ngx-footer></ngx-footer>
+  </nb-layout-footer>
+</nb-layout>

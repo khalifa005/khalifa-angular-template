@@ -2,6 +2,8 @@ import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { MyComponentComponent } from './my-component/my-component.component';
+import { FeedbackModule } from './@feedback/feedback.module';
+import { FeedbackComponent } from './@feedback/Feedback/feedback.component';
 
 export const routes: Routes = [
   {
@@ -15,6 +17,12 @@ export const routes: Routes = [
     //this will group all the component into pages component in single view with the side menu par
     path: 'com',
     component: MyComponentComponent
+    },
+
+  {
+    //this will group all the component into pages component in single view with the side menu par
+    path: 'feedback',
+    component: FeedbackComponent
     },
 
   // {

@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -21,6 +22,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { MyComponentComponent } from './my-component/my-component.component';
 import { HeadersInterceptor } from './@core/interceptors/headers.interceptor';
+import { FeedbackModule } from './@feedback/feedback.module';
 
 @NgModule({
   declarations: [	AppComponent,
@@ -46,10 +48,11 @@ import { HeadersInterceptor } from './@core/interceptors/headers.interceptor';
     //what we added start from here
     NbLayoutModule,
     TranslateModule.forRoot(),
-
+    FeedbackModule,
     ThemeModule,
     AppRoutingModule,
     HttpClientModule,
+
 
   ],
   bootstrap: [AppComponent],
