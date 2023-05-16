@@ -54,6 +54,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 import { FormsModule } from '@angular/forms';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { FileUploaderDotnetComponent } from './components/file-uploader-dotnet/file-uploader-dotnet.component';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -86,6 +87,8 @@ const COMPONENTS = [
   LayoutDirectionSwitcherComponent,
 
   FileUploaderComponent,
+  FileUploaderDotnetComponent,
+
   DragFilerUploaderComponent,
   DndDirective,
   PaginatorComponent,

@@ -13,7 +13,7 @@ import {environment} from '../../../environments/environment'
 export class AuthService {
 
   private log = new Logger(AuthService.name);
-  private baseUrl : string = environment.serverUrl + '/User/';
+  private baseUrl : string = environment.serverUrl + '/api/User/';
   private userPayload : any;
   constructor(private http : HttpClient , private router: Router) {
     this.userPayload = this.decodeToken();

@@ -15,7 +15,7 @@ export const routes: Routes = [
 
   {
     //this will group all the component into pages component in single view with the side menu par
-    path: 'com',
+    path: 'test',
     component: MyComponentComponent
     },
 

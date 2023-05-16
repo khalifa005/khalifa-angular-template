@@ -10,7 +10,8 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'http://localhost:18878/api',
+  serverUrl: 'http://localhost:18878',
+  resourcesFolderPath: 'Resources/Images/',
   defaultLanguage: 'ar-SA',
   supportedLanguages: ['en-US', 'ar-SA'],
 };

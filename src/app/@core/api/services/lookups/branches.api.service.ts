@@ -10,7 +10,7 @@ import { environment } from '../../../../../environments/environment';
 })
 export class TicketCategoriesApiService {
   // Define API
-  getList = environment.serverUrl + '/TicketCategories';
+  getList = environment.serverUrl + '/api/TicketCategories';
 
   constructor(private http: HttpClient, private errorHandlerService: ErrorHandlerService) {}
 

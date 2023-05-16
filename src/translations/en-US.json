@@ -18,6 +18,19 @@
   "forget-password-title" : "Forget Password",
   "recovery-now" : "Recovery Now",
 
+  "feedback": {
+    "feedback": "Feedback",
+    "description": "We would like to know if you have any suggestion",
+    "would-you-like-to-buy-or-renew-your-insurance-policy": "Would you like to buy or renew your insurance policy",
+    "did-you-hear-about-acig-portal": "Did you hear about acig portal",
+    "how-did-you-hear-about-us": "How did you hear about us",
+    "experince-with-estores": "Experince with estores",
+    "employee-attuide": "Employee attuide",
+    "easiness-to-reach-acig-branch": "Easiness to reach acig branch",
+    "please-rate-the-following": "Please rate the following",
+    "feedback-welcome-message": "welcome  {{ firstName }} your opinon matter"
+
+  },
   "ticket": {
     "myTicketsList": "My tickets",
 

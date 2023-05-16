@@ -24,18 +24,36 @@ export class FeedbackComponent implements OnInit {
   verticalRate = 5;
   fontAwesomeRate = 3.5;
   rate = 3;
-    options = [
-      { value: 'This is value 1', label: 'Option 1' },
-      { value: 'This is value 2', label: 'Option 2' },
-      { value: 'This is value 3', label: 'Option 3' },
-      { value: 'This is value 4', label: 'Option 4' },
+
+    aboutUsOptions = [
+      { value: 'WhatsApp', label: 'WhatsApp', icon:'phone-call' },
+      { value: 'Twitter', label: 'Twitter', icon:'twitter' },
+      { value: 'Facebook', label: 'Facebook', icon:'facebook' },
+      { value: 'Linkedin', label: 'Linkedin', icon:'linkedin' },
+      { value: 'Other', label: 'Other', icon:'hash' },
     ];
-    option;
+    selectedAboutUsOption;
+
+    portalOptions = [
+      { value: 'true', label: 'Yes', icon:'checkmark' },
+      { value: 'false', label: 'No', icon:'close' },
+    ];
+    portalOption;
+
+    policyOptions = [
+      { value: 'true', label: 'Yes', icon:'checkmark' },
+      { value: 'false', label: 'No', icon:'close' },
+    ];
+    policyOption;
 
   user!: { firstName: string; lastName: string; };
 
-  rating:number = 3;
   starCount:number = 5;
+  rachRatingScore:number = 0;
+  attiudeRatingScore:number = 0;
+  estoresRatingScore:number = 0;
+  
+  suggestion:string = '';
 
 
   constructor(private fb: FormBuilder,
@@ -43,9 +61,16 @@ export class FeedbackComponent implements OnInit {
     private translateService: TranslateService){
   }
 
-  onRatingChanged(rating){
-    console.log(rating);
-    this.rating = rating;
+  onReachRatingChanged(rating){
+    this.rachRatingScore = rating;
+  }
+  
+  onAttiudeRatingChanged(rating){
+    this.attiudeRatingScore = rating;
+  }
+  
+  onEstoreRatingChanged(rating){
+    this.estoresRatingScore = rating;
   }
 
   ngOnInit(): void {

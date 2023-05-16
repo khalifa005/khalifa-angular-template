@@ -11,7 +11,14 @@
     <div class="row">
       <div class="col-md-12">
         <nb-card class="card text-center">
-          <nb-card-header>{{ 'Feedback.feedback-welcome-message' | translate: user }}</nb-card-header>
+          <nb-card-header>
+
+            <h4 style="color: #0563aa;" >{{ 'feedback.feedback-welcome-message' | translate: user }}
+              <nb-icon class="m-2" [options]="{ animation: { type: 'flip in Y' } }" icon="message-circle"></nb-icon>
+            </h4>
+            
+
+          </nb-card-header>
           <nb-card-body>
 <!--
             <form [formGroup]="form" (ngSubmit)="save()" *ngIf="form"></form> -->
@@ -20,7 +27,6 @@
               <nb-card>
                 <nb-card-body>
 
-                  <ngx-star-rating [rating]="rating" (ratingUpdated)="onRatingChanged($event)"></ngx-star-rating>
                   <!-- <div class="form-group">
 
                     <label for="cityId" class="label" translate>ticket.cityId</label>
@@ -58,31 +64,102 @@
 
 
 
-                  <label class="label d-inline" translate>Radios</label>
-                  <div class="form-group" *ngIf="options">
-                    <nb-radio-group class="d-inline" [(ngModel)]="option"  name="something">
+
+                  <strong class="d-block mb-3" translate>feedback.please-rate-the-following</strong>
+
+                  <div class="form-group  bg-gradient-primary" >
+                    <label class="label d-inline m-4" translate>feedback.easiness-to-reach-acig-branch</label>
+                    <ngx-star-rating [rating]="rachRatingScore" (ratingUpdated)="onReachRatingChanged($event)"></ngx-star-rating>
+                  </div>
+              
+
+                  <div class="form-group  bg-gradient-primary" >
+                    <label class="label d-inline m-4" translate>feedback.employee-attuide</label>
+                    <ngx-star-rating [rating]="attiudeRatingScore" (ratingUpdated)="onAttiudeRatingChanged($event)"></ngx-star-rating>
+                  </div>
+              
+
+                  <div class="form-group" >
+                    <label class="label d-inline m-4" translate>feedback.experince-with-estores</label>
+                    <ngx-star-rating [rating]="estoresRatingScore" (ratingUpdated)="onEstoreRatingChanged($event)"></ngx-star-rating>
+                  </div>
+              
+                  <hr/>
+                  
+                 
+
+                  <label class="label d-inline" translate>feedback.did-you-hear-about-acig-portal</label>
+                  <div class="form-group" *ngIf="portalOptions">
+                    
+                    <nb-radio-group class="d-inline" [(ngModel)]="selectedAboutUsOption"  name="portalOptions">
                       <nb-radio class="d-inline"
-                        *ngFor="let option of options"
+                        *ngFor="let option of portalOptions"
                         [value]="option.value">
 
                         {{ option.label }}
-                        <nb-icon icon="attach-2-outline">s</nb-icon>
+                        <nb-icon [options]="{ animation: { type: 'flip in Y' } }" [icon]="option.icon"></nb-icon>
                       </nb-radio>
                     </nb-radio-group>
                   </div>
 
-                  <label class="label d-inline" translate>Radios</label>
-                  <div class="form-group" *ngIf="options">
-                    <bar-rating [(rate)]="rate" [max]="5">
-                      <ng-template ratingActive>
-                        <i class="bi bi-star-fill" style="margin: 2px; color: #edb867"></i>
-                      </ng-template>
-                      <ng-template ratingInactive>
-                        <i class="bi bi-star-fill" style="margin: 2px; color: #d2d2d2"></i>
-                      </ng-template>
-                    </bar-rating>
-                  </div>
+                  <label class="label d-inline" translate>feedback.would-you-like-to-buy-or-renew-your-insurance-policy</label>
+                  <div class="form-group" *ngIf="policyOptions">
+                    <nb-radio-group class="d-inline" [(ngModel)]="selectedAboutUsOption"  name="policyOptions">
+                      <nb-radio class="d-inline"
+                        *ngFor="let option of policyOptions"
+                        [value]="option.value">
 
+                        {{ option.label }}
+                        <nb-icon [options]="{ animation: { type: 'flip in Y' } }" [icon]="option.icon"></nb-icon>
+                      </nb-radio>
+                    </nb-radio-group>
+                  </div>
+              
+                  <label class="label d-inline" translate>feedback.how-did-you-hear-about-us</label>
+                  <div class="form-group" *ngIf="aboutUsOptions">
+                    <nb-radio-group class="d-inline" [(ngModel)]="selectedAboutUsOption"  name="aboutUsOptions">
+                      <nb-radio class="d-inline"
+                        *ngFor="let option of aboutUsOptions"
+                        [value]="option.value">
+
+                        {{ option.label }}
+                        <nb-icon [options]="{ animation: { type: 'flip in Y' } }" [icon]="option.icon"></nb-icon>
+                      </nb-radio>
+                    </nb-radio-group>
+                  </div>
+                  <hr/>
+
+                  <div class="form-group">
+                    <label for="description" class="label" translate>feedback.description</label>
+            
+                    <textarea
+                    rows="5"
+                    nbInput fullWidth shape="round"
+                    id="description"
+                    name="des"
+                    
+                    [(ngModel)]="suggestion"
+                    >
+                    </textarea>
+            
+                    <!-- <textarea
+                    rows="5"
+                    nbInput fullWidth shape="round"
+                    id="description"
+                    placeholder="{{ 'ticket.description' | translate }}"
+                    [status]=" (form.get('description').invalid && (form.get('description').dirty || form.get('description').touched)) ? 'danger' : null"
+                    formControlName="description"
+                    >
+                    </textarea>
+            
+             -->
+                     <!-- <div
+                     translate
+                     class="text-danger"
+                     *ngIf="form.get('description').invalid && (form.get('description').dirty || form.get('description').touched)">
+                     validations.please-provide-value
+                    </div> -->
+                  </div>
                 </nb-card-body>
               </nb-card>
 
@@ -94,12 +171,12 @@
               [disabled]="!form.valid"
               translate>submit</button> -->
 
-              <!-- <button
-              class="col-md-6 offset-md-3"
+              <button
+              class="col-md-6"
               type="submit"
               nbButton
               [status]=" 'success' "
-              translate>submit</button> -->
+              translate>submit</button>
               </form>
 
           </nb-card-body>

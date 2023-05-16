@@ -1,5 +1,18 @@
 <p>
-  my-component works!
+test uploader with img preview
 </p>
+
+<ngx-file-uploader-dotnet (uploadFinishedEmitter)="uploadFinished($event)"></ngx-file-uploader-dotnet>
+
+<div *ngIf="showImag">
+  <img [src]="createImgPath(dbPath)" alt="profile picture" style="width:60px; height:60px;">
+
+</div>
+
+<button type="button" class="btn btn-success" (click)="saveFile(dbPath, 'test downloader')">Download file</button>
+<p>
+  test uploader with img preview
+  </p>
+
 
 <nb-layout style="display: none"></nb-layout>

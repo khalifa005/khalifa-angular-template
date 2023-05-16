@@ -50,6 +50,22 @@
 
 
 
+  "feedback": {
+    "feedback": "التقييم",
+    "feedback-welcome-message": "{{ firstName }}مرحبا بك يا ",
+
+    "description": "هل لديك اي اقتراحات",
+    "would-you-like-to-buy-or-renew-your-insurance-policy": "هل تريد شراء او تجديد تامينك",
+    "did-you-hear-about-acig-portal": "هل سمعت عن منصة اسيج",
+    "how-did-you-hear-about-us": "كيف سمعت عنا",
+    "experince-with-estores": "هل لديك خبره في الشراء الالكتروني",
+    "employee-attuide": "Employee attuide",
+    "easiness-to-reach-acig-branch": "سهولة الوصول للفرع",
+    "please-rate-the-following": "من فضلك اضف تقيمك للتالي"
+
+  },
+
+
   "ticket": {
     "myTicketsList": "طلباتي",
     "title": "عنوان الطلب",
