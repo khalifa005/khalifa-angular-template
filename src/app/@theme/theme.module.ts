@@ -55,6 +55,7 @@ import { FileUploaderComponent } from './components/file-uploader/file-uploader.
 import { FormsModule } from '@angular/forms';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { FileUploaderDotnetComponent } from './components/file-uploader-dotnet/file-uploader-dotnet.component';
+import { MultiFileUploaderComponent } from './components/multi-file-uploader/multi-file-uploader.component';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -88,6 +89,7 @@ const COMPONENTS = [
 
   FileUploaderComponent,
   FileUploaderDotnetComponent,
+  MultiFileUploaderComponent,
 
   DragFilerUploaderComponent,
   DndDirective,

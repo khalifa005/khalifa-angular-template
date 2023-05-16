@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/http';
 import { Component, ElementRef, HostListener, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl } from '@angular/forms';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'ngx-file-uploader',
@@ -24,7 +25,7 @@ export class FileUploaderComponent implements ControlValueAccessor  {
     this.file = file;
   }
 
-  constructor( private host: ElementRef<HTMLInputElement> ) {
+  constructor( private http: HttpClient, private host: ElementRef<HTMLInputElement> ) {
   }
 
   writeValue( value: null ) {
@@ -42,6 +43,10 @@ export class FileUploaderComponent implements ControlValueAccessor  {
 
   onFileSelected(event) {
 
+    // if (event.target.files.length === 0) {
+    //   return;
+    // }
+
       const file:File = event.target.files[0];
 
       if (file) {
@@ -52,10 +57,22 @@ export class FileUploaderComponent implements ControlValueAccessor  {
 
           formData.append("thumbnail", file);
 
-          // const upload$ = this.http.post("/api/thumbnail-upload", formData);
 
+          this.http.post(`${environment.serverUrl}/api/upload`, formData, {reportProgress: true, observe: 'events'})
+              .subscribe({
+                next: (event) => {
+                // if (event.type === HttpEventType.UploadProgress)
+                //   this.progress = Math.round(100 * event.loaded / event.total);
+                // else if (event.type === HttpEventType.Response) {
+                //   this.message = 'Upload success.';
+                //   this.uploadFinishedEmitter.emit(event.body);
+                // }
+              },
+              error: (err: HttpErrorResponse) => console.log(err)
+            });
           // upload$.subscribe();
       }
+
   }
 
   // cancelUpload() {

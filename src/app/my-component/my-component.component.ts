@@ -34,6 +34,16 @@ uploadFinished = (event) => {
   this.showImag = true;
 }
 
+
+uploadMultipleFinished = (event) => {
+  this.response = event;
+  this.dbPath = this.response.dbPath;
+  // this.dbPath = `${environment.serverUrl}/Resources/Images/${this.response.dbPath}` ;
+  this.log.info("this.response.dbPath");
+  this.log.info(this.response.dbPath);
+  this.showImag = true;
+}
+
 public createImgPath = (filePath: string) => {
   // return `${environment.serverUrl}/Resources/Images/${filePath}`;
   return `${environment.serverUrl}/${filePath}`;

@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'ngx-drag-filer-uploader',
@@ -14,7 +16,8 @@ export class DragFilerUploaderComponent  {
   // @Input() formcontrol: FormControl;
 
   files: any[] = [];
-
+  constructor( private http: HttpClient, private host: ElementRef<HTMLInputElement> ) {
+  }
   /**
    * on file drop handler
    */
@@ -54,21 +57,43 @@ export class DragFilerUploaderComponent  {
         this.control.patchValue(fileData);
       }
 
+      //if we want to upload it to the server when user select the files
+      // const file:File = this.files[0];
 
-    // setTimeout(() => {
-    //   if (index === this.files.length) {
-    //     return;
-    //   } else {
-    //     const progressInterval = setInterval(() => {
-    //       if (this.files[index].progress === 100) {
-    //         clearInterval(progressInterval);
-    //         this.uploadFilesSimulator(index + 1);
-    //       } else {
-    //         this.files[index].progress += 5;
-    //       }
-    //     }, 200);
-    //   }
-    // }, 1000);
+      // if (file) {
+
+      //     const formData = new FormData();
+
+      //     formData.append("thumbnail", file);
+      //     this.http.post(`${environment.serverUrl}/api/upload`, formData, {reportProgress: true, observe: 'events'})
+      //     .subscribe({
+      //       next: (event) => {
+      //       // if (event.type === HttpEventType.UploadProgress)
+      //       //   this.progress = Math.round(100 * event.loaded / event.total);
+      //       // else if (event.type === HttpEventType.Response) {
+      //       //   this.message = 'Upload success.';
+      //       //   this.uploadFinishedEmitter.emit(event.body);
+      //       // }
+      //     },
+      //     error: (err: HttpErrorResponse) => console.log(err)
+      //   });
+
+      // }
+
+    setTimeout(() => {
+      if (index === this.files.length) {
+        return;
+      } else {
+        const progressInterval = setInterval(() => {
+          if (this.files[index].progress === 100) {
+            clearInterval(progressInterval);
+            this.uploadFilesSimulator(index + 1);
+          } else {
+            this.files[index].progress += 5;
+          }
+        }, 200);
+      }
+    }, 1000);
   }
 
   /**

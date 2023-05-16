@@ -10,9 +10,11 @@ test uploader with img preview
 </div>
 
 <button type="button" class="btn btn-success" (click)="saveFile(dbPath, 'test downloader')">Download file</button>
+<hr/>
 <p>
-  test uploader with img preview
+  test multi uploader with img preview
   </p>
 
+  <ngx-multi-file-uploader (uploadMultipleFinishedEmitter)="uploadMultipleFinished($event)"></ngx-multi-file-uploader>
 
 <nb-layout style="display: none"></nb-layout>
