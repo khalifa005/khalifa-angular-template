@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { environment } from '../../../../environments/environment';
 
@@ -14,6 +14,7 @@ export class DragFilerUploaderComponent  {
   @Input() requiredFileType:string;
   @Input() control: FormControl;
   // @Input() formcontrol: FormControl;
+  @Output() fileDroppedEmitter = new EventEmitter<any>();
 
   files: any[] = [];
   constructor( private http: HttpClient, private host: ElementRef<HTMLInputElement> ) {
@@ -80,6 +81,7 @@ export class DragFilerUploaderComponent  {
 
       // }
 
+      //we will upload it later when user click save just simulate it for now
     setTimeout(() => {
       if (index === this.files.length) {
         return;
@@ -100,12 +102,14 @@ export class DragFilerUploaderComponent  {
    * Convert Files list to normal array list
    * @param files (Files List)
    */
-  prepareFilesList(files: Array<any>) {
-    for (const item of files) {
+  prepareFilesList(selectedFiles: Array<any>) {
+    let lastIndexOfFileList = this.files.length;
+    for (const item of selectedFiles) {
       item.progress = 0;
       this.files.push(item);
     }
-    this.uploadFilesSimulator(0);
+    this.uploadFilesSimulator(lastIndexOfFileList);
+    // this.uploadFilesSimulator(0);
   }
 
   /**
